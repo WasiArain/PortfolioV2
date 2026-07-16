@@ -1,0 +1,62 @@
+:root {
+  /* ===== Brand Colors ===== */
+  --color-primary: #DC143C;
+  --color-primary-rgb: 220, 20, 60;
+  --color-secondary: #8A2BE2;
+  --color-secondary-rgb: 138, 43, 226;
+  --gradient-brand: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+
+  /* ===== Light Theme ===== */
+  --bg-base: #f4f5fa;
+  --bg-elevated: rgba(255, 255, 255, 0.45);
+  --border-glass: rgba(255, 255, 255, 0.4);
+  --text-primary: #14141c;
+  --text-secondary: #4a4a58;
+  --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.12);
+  --bg-overlay: rgba(255, 255, 255, 0.7);
+
+  /* ===== Glassmorphism Tokens (shared) ===== */
+  --glass-blur: 16px;
+  --glass-saturate: 180%;
+  --radius-card: 20px;
+  --radius-pill: 999px;
+
+  /* ===== Typography ===== */
+  --font-display: 'Barlow', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-accent: 'Dancing Script', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --font-comfortaa: 'Comfortaa', cursive;
+  --font-comforter-brush: 'Comforter Brush', cursive;
+  --font-comic-neue: 'Comic Neue', cursive;
+  --font-lilita-one: 'Lilita One', cursive;
+  --font-lobster: 'Lobster', cursive;
+  --font-luxurious-roman: 'Luxurious Roman', cursive;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-montserrat-alternates: 'Montserrat Alternates', sans-serif;
+  --font-moon-dance: 'Moon Dance', cursive;
+  --font-oswald: 'Oswald', sans-serif;
+  --font-pacifico: 'Pacifico', cursive;
+  --font-roboto: 'Roboto', sans-serif;
+  --font-sniglet: 'Sniglet', cursive;
+  --font-nautigal: 'The Nautigal', cursive;
+  --font-vujahday: 'Vujahday Script', cursive;
+  --font-waterfall: 'Waterfall', cursive;
+
+  /* ===== Motion ===== */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 200ms;
+  --dur-medium: 400ms;
+  --dur-slow: 700ms;
+}
+
+[data-theme="dark"] {
+  --bg-base: #0b0b12;
+  --bg-elevated: rgba(20, 20, 30, 0.55);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --text-primary: #f4f5fa;
+  --text-secondary: #b3b3c2;
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --bg-overlay: rgba(0, 0, 0, 0.8);
+}
