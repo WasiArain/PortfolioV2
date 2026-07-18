@@ -1,6 +1,6 @@
 export function initHeroBg() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || 
-      window.matchMedia('(max-width: 768px)').matches) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    window.matchMedia('(max-width: 768px)').matches) {
     return; // Skip on mobile or reduced motion for perf
   }
 
@@ -10,30 +10,30 @@ export function initHeroBg() {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  
+
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
   // Particles
   const particlesGeometry = new THREE.BufferGeometry();
   const particlesCount = window.innerWidth > 1024 ? 600 : 300;
-  
+
   const posArray = new Float32Array(particlesCount * 3);
   const colorsArray = new Float32Array(particlesCount * 3);
-  
+
   // Brand colors
   const color1 = new THREE.Color('#DC143C');
   const color2 = new THREE.Color('#8A2BE2');
 
-  for(let i = 0; i < particlesCount * 3; i+=3) {
+  for (let i = 0; i < particlesCount * 3; i += 3) {
     posArray[i] = (Math.random() - 0.5) * 15;
-    posArray[i+1] = (Math.random() - 0.5) * 15;
-    posArray[i+2] = (Math.random() - 0.5) * 15;
+    posArray[i + 1] = (Math.random() - 0.5) * 15;
+    posArray[i + 2] = (Math.random() - 0.5) * 15;
 
     const mixedColor = color1.clone().lerp(color2, Math.random());
     colorsArray[i] = mixedColor.r;
-    colorsArray[i+1] = mixedColor.g;
-    colorsArray[i+2] = mixedColor.b;
+    colorsArray[i + 1] = mixedColor.g;
+    colorsArray[i + 2] = mixedColor.b;
   }
 
   particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
@@ -69,10 +69,10 @@ export function initHeroBg() {
 
   function animate() {
     requestAnimationFrame(animate);
-    
+
     // Visibility pause
     if (document.visibilityState !== 'visible') return;
-    
+
     const elapsedTime = clock.getElapsedTime();
 
     targetX = mouseX * 0.001;

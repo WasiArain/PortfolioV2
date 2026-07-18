@@ -8,13 +8,15 @@ import { initServicesCarousel } from './services-carousel.js';
 import { initPortfolio } from './portfolio.js';
 import { initTestimonials } from './testimonials.js';
 import { initHeroBg } from './hero-bg.js';
+// import { initScrollToTop } from './utils/Scroll-to-Top.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initPreloader();
   initTheme();
   initNav();
   initAntiCopy();
-  
+  // initScrollToTop();
+
   // Wait for preloader to finish before starting heavy animations
   document.addEventListener('preloaderComplete', () => {
     // Typewriter
@@ -26,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "Developing Scalable\nCMS Architecture"
       ]);
     }
-    
+
     // Defer heavy stuff
     if ('requestIdleCallback' in window) {
       requestIdleCallback(() => {
@@ -36,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initPortfolio();
         initTestimonials();
         initVanillaTilt();
+        // initScrollToTop();
       });
     } else {
       setTimeout(() => {
@@ -45,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initPortfolio();
         initTestimonials();
         initVanillaTilt();
+        // initScrollToTop();
       }, 100);
     }
   });

@@ -19,7 +19,7 @@ export function initNav() {
     mobileBtn.addEventListener('click', () => {
       mobilePanel.classList.toggle('open');
       document.body.style.overflow = mobilePanel.classList.contains('open') ? 'hidden' : '';
-      
+
       // Toggle icon
       const icon = mobileBtn.querySelector('ion-icon');
       if (icon) {
@@ -65,7 +65,7 @@ export function initNav() {
             const icon = mobileBtn.querySelector('ion-icon');
             if (icon) icon.setAttribute('name', 'menu-outline');
           }
-          
+
           const headerHeight = header.offsetHeight;
           const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - headerHeight;
           window.scrollTo({

@@ -1,13 +1,13 @@
 // Theme toggle logic
 export function initTheme() {
   const toggleBtns = document.querySelectorAll('.theme-toggle');
-  
+
   // Check local storage or system preference
   let currentTheme = localStorage.getItem('theme');
   if (!currentTheme) {
     currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
-  
+
   document.documentElement.setAttribute('data-theme', currentTheme);
   updateIcon(currentTheme);
 

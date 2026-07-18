@@ -3,9 +3,9 @@ export function initServicesCarousel() {
   const track = document.querySelector('.services-track');
   const cards = Array.from(document.querySelectorAll('.service-card'));
   const bulletContainer = document.getElementById('services-bullets');
-  
+
   if (!track || !bulletContainer || cards.length === 0) return;
-  
+
   let currentIndex = 0;
   let isHovered = false;
 
@@ -20,16 +20,16 @@ export function initServicesCarousel() {
     });
     bulletContainer.appendChild(b);
   });
-  
+
   const bullets = Array.from(bulletContainer.querySelectorAll('.carousel-bullet'));
-  
+
   function updateCarousel() {
     cards.forEach((card, i) => {
       // Reset classes
       card.className = 'service-card glass';
-      
+
       const diff = (i - currentIndex + cards.length) % cards.length;
-      
+
       if (diff === 0) {
         card.classList.add('active');
       } else if (diff === 1) {
@@ -40,25 +40,25 @@ export function initServicesCarousel() {
         card.classList.add('hidden');
       }
     });
-    
+
     bullets.forEach((b, i) => {
       b.classList.toggle('active', i === currentIndex);
     });
   }
-  
+
   function next() {
     if (isHovered) return;
     currentIndex = (currentIndex + 1) % cards.length;
     updateCarousel();
   }
-  
+
   wrapper.addEventListener('mouseenter', () => isHovered = true);
   wrapper.addEventListener('mouseleave', () => isHovered = false);
-  
+
   // Also pause if user touches (mobile)
-  wrapper.addEventListener('touchstart', () => isHovered = true, {passive: true});
-  wrapper.addEventListener('touchend', () => isHovered = false, {passive: true});
-  
+  wrapper.addEventListener('touchstart', () => isHovered = true, { passive: true });
+  wrapper.addEventListener('touchend', () => isHovered = false, { passive: true });
+
   updateCarousel();
   setInterval(next, 3000);
 }

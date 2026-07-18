@@ -1,6 +1,6 @@
 export function initReveal() {
   const elements = document.querySelectorAll('.reveal');
-  
+
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     elements.forEach(el => {
       el.style.opacity = '1';

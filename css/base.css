@@ -1,6 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Comforter+Brush&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Dancing+Script:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Lilita+One&family=Lobster&family=Luxurious+Roman&family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Moon+Dance&family=Oswald:wght@200;300;400;500;600;700&family=Pacifico&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Sniglet&family=The+Nautigal:wght@400;700&family=Vujahday+Script&family=Waterfall&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Comforter+Brush&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Dancing+Script:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Lilita+One&family=Lobster&family=Luxurious+Roman&family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Moon+Dance&family=Oswald:wght@200;300;400;500;600;700&family=Pacifico&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Sniglet&family=The+Nautigal:wght@400;700&family=Vujahday+Script&family=Waterfall&display=swap");
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -17,24 +19,52 @@ body {
   color: var(--text-primary);
   overflow-x: hidden;
   line-height: 1.6;
-  transition: background-color var(--dur-medium) var(--ease-standard), color var(--dur-medium) var(--ease-standard);
+  transition:
+    background-color var(--dur-medium) var(--ease-standard),
+    color var(--dur-medium) var(--ease-standard);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none; /* Anti-copy layer */
+  user-select: none;
+  /* Anti-copy layer */
+}
+
+/* custom scroll bar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #c0c0c0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
 }
 
 /* Exceptions for anti-copy */
-.selectable, input, textarea {
+.selectable,
+input,
+textarea {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: text;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.2;
 }
 
@@ -43,7 +73,8 @@ a {
   color: inherit;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -75,7 +106,7 @@ img {
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius-pill);
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
@@ -89,9 +120,12 @@ img {
 }
 
 .btn::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: var(--gradient-brand);
   z-index: -1;
   transition: opacity var(--dur-medium) var(--ease-standard);
@@ -101,7 +135,9 @@ img {
 .btn:hover {
   color: #fff;
   border-color: transparent;
-  box-shadow: 0 0 24px rgba(var(--color-primary-rgb), .5), 0 0 48px rgba(var(--color-secondary-rgb), .35);
+  box-shadow:
+    0 0 24px rgba(var(--color-primary-rgb), 0.5),
+    0 0 48px rgba(var(--color-secondary-rgb), 0.35);
 }
 
 .btn:hover::before {
@@ -112,11 +148,15 @@ img {
   color: #fff;
   border-color: transparent;
 }
+
 .btn-solid::before {
   opacity: 1;
 }
+
 .btn-solid:hover {
-  box-shadow: 0 0 24px rgba(var(--color-primary-rgb), .5), 0 0 48px rgba(var(--color-secondary-rgb), .35);
+  box-shadow:
+    0 0 24px rgba(var(--color-primary-rgb), 0.5),
+    0 0 48px rgba(var(--color-secondary-rgb), 0.35);
 }
 
 /* Typography utils */
@@ -151,18 +191,28 @@ section {
   margin-bottom: 3rem;
 }
 
+.about-card p {
+  font-size: 0.9rem;
+}
+
 /* Preloader */
 #preloader {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  width: 100vw; height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
   background: var(--bg-base);
   z-index: 99999;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    visibility 0.5s ease;
 }
 
 .loader-blob {
@@ -181,7 +231,7 @@ section {
 
 .loader-blob span {
   color: #fff;
-  font-family: var(--font-mono);
+  font-family: var(--font-jetbrains-mono);
   font-weight: 700;
   font-size: 2.5rem;
   letter-spacing: 2px;
@@ -204,17 +254,30 @@ section {
 }
 
 @keyframes morph {
-  0% { border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; }
-  50% { border-radius: 60% 40% 60% 40% / 50% 50% 50% 50%; }
-  100% { border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; }
+  0% {
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  }
+
+  50% {
+    border-radius: 60% 40% 60% 40% / 50% 50% 50% 50%;
+  }
+
+  100% {
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  }
 }
 
 @keyframes progress {
-  to { width: 100%; }
+  to {
+    width: 100%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

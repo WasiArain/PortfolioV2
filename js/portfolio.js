@@ -6,7 +6,7 @@ export function initPortfolio() {
   const modalOverlay = document.querySelector('.modal-overlay');
   const modalClose = document.querySelector('.modal-close');
   const fsViewer = document.querySelector('.fullscreen-viewer');
-  
+
   if (!grid) return;
 
   const portfolioData = [
@@ -164,9 +164,9 @@ export function initPortfolio() {
   function renderGrid() {
     grid.innerHTML = "";
     const filtered = currentFilter === "All" ? portfolioData : portfolioData.filter(p => p.category.includes(currentFilter));
-    
+
     const limit = showingAll ? filtered.length : Math.min(filtered.length, 6);
-    
+
     if (showMoreBtn) {
       if (filtered.length <= 6) {
         showMoreBtn.style.display = "none";
@@ -197,7 +197,7 @@ export function initPortfolio() {
       card.addEventListener("click", () => openTier1Modal(proj));
       grid.appendChild(card);
     }
-    
+
     if (window.VanillaTilt && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       window.VanillaTilt.init(grid.querySelectorAll(".portfolio-card"), { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
     }
@@ -235,7 +235,7 @@ export function initPortfolio() {
         <img id="tier1-img" src="${proj.screenshots[activeSlideIndex]}" class="active" alt="${proj.title}" style="cursor:zoom-in;">
       </div>
       <div class="carousel-bullets" id="t1-bullets" style="margin-top: -10px; margin-bottom: 20px;">
-        ${proj.screenshots.map((s, i) => `<div class="carousel-bullet ${i===0?'active':''}" data-index="${i}"></div>`).join('')}
+        ${proj.screenshots.map((s, i) => `<div class="carousel-bullet ${i === 0 ? 'active' : ''}" data-index="${i}"></div>`).join('')}
       </div>
       <h2>${proj.title}</h2>
       <div class="portfolio-tags" style="margin-bottom: 1rem;">
@@ -246,10 +246,10 @@ export function initPortfolio() {
 
     const imgEl = content.querySelector('#tier1-img');
     imgEl.addEventListener('click', () => openTier2Modal());
-    
+
     content.querySelector('#t1-prev').addEventListener('click', (e) => { e.stopPropagation(); updateSlide(-1); });
     content.querySelector('#t1-next').addEventListener('click', (e) => { e.stopPropagation(); updateSlide(1); });
-    
+
     content.querySelectorAll('#t1-bullets .carousel-bullet').forEach(b => {
       b.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -263,23 +263,23 @@ export function initPortfolio() {
   }
 
   function updateSlide(dir) {
-    if(!activeProj) return;
+    if (!activeProj) return;
     activeSlideIndex = (activeSlideIndex + dir + activeProj.screenshots.length) % activeProj.screenshots.length;
-    
+
     const imgEl = document.getElementById('tier1-img');
-    if(imgEl) {
+    if (imgEl) {
       imgEl.style.opacity = 0;
       setTimeout(() => {
         imgEl.src = activeProj.screenshots[activeSlideIndex];
         imgEl.style.opacity = 1;
       }, 200);
     }
-    
+
     const bullets = document.querySelectorAll('#t1-bullets .carousel-bullet');
     bullets.forEach((b, i) => b.classList.toggle('active', i === activeSlideIndex));
-    
+
     // If fsViewer is active, sync it
-    if(fsViewer && fsViewer.classList.contains('active')) {
+    if (fsViewer && fsViewer.classList.contains('active')) {
       const fsImg = fsViewer.querySelector("img");
       fsImg.style.opacity = 0;
       setTimeout(() => {

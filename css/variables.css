@@ -16,20 +16,22 @@
   --bg-overlay: rgba(255, 255, 255, 0.7);
 
   /* ===== Glassmorphism Tokens (shared) ===== */
-  --glass-blur: 16px;
-  --glass-saturate: 180%;
+  --glass-blur: 12px;
+  --glass-saturate: 480%;
   --radius-card: 20px;
   --radius-pill: 999px;
 
   /* ===== Typography ===== */
-  --font-display: 'Barlow', sans-serif;
-  --font-body: 'Poppins', sans-serif;
-  --font-accent: 'Dancing Script', cursive;
-  --font-mono: 'JetBrains Mono', monospace;
-  
+  --font-display: 'Lilita One', cursive;
+  --font-body: 'Sniglet', cursive;
+  --font-accent: 'Pacifico', cursive;
+  --font-jetbrains-mono: 'JetBrains Mono', monospace;
+
+  --font-barlow: 'Barlow', sans-serif;
   --font-comfortaa: 'Comfortaa', cursive;
   --font-comforter-brush: 'Comforter Brush', cursive;
   --font-comic-neue: 'Comic Neue', cursive;
+  --font-dancing-script: 'Dancing Script', cursive;
   --font-lilita-one: 'Lilita One', cursive;
   --font-lobster: 'Lobster', cursive;
   --font-luxurious-roman: 'Luxurious Roman', cursive;
@@ -38,6 +40,7 @@
   --font-moon-dance: 'Moon Dance', cursive;
   --font-oswald: 'Oswald', sans-serif;
   --font-pacifico: 'Pacifico', cursive;
+  --font-poppins: 'Poppins', sans-serif;
   --font-roboto: 'Roboto', sans-serif;
   --font-sniglet: 'Sniglet', cursive;
   --font-nautigal: 'The Nautigal', cursive;

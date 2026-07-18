@@ -8,10 +8,10 @@ export class TypeLoop {
     this.typeSpeed = config.typeSpeed || 100;
     this.deleteSpeed = config.deleteSpeed || 50;
     this.delay = config.delay || 2000;
-    
+
     // Pause if reduced motion
     this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
+
     if (this.prefersReducedMotion) {
       this.element.innerHTML = `<span class="wrap">${this.strings[0]}</span>`;
     } else {

@@ -1,6 +1,6 @@
 export function initTestimonials() {
   const container = document.querySelector('.testimonial-carousel');
-  if(!container) return;
+  if (!container) return;
 
   const testimonials = [
     {
