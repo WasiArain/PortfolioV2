@@ -12,147 +12,185 @@ export function initPortfolio() {
   const portfolioData = [
     {
       id: 'proj-1',
-      title: 'Modern E-Commerce Store',
-      category: ['Shopify', 'React/Next'],
-      thumb: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80',
+      title: 'Wiki Profile Creations',
+      category: ['Custom (HTML/CSS/JS)'],
+      thumb: './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-thumbnail.png',
       screenshots: [
-        'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=1200&q=80'
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-landing-page.png',
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-home.png',
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-about-us.png',
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-portfolio.png',
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-services.png',
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-contact-us.png',
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-why-hire-us.png',
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-faqs.png'
       ],
-      description: 'A headless Shopify build with extremely fast load times.'
+      description: 'Wiki Profile Creations Website built with Custom (HTML/CSS/JS). It is outstanding Wikipedia Page & Profile creation service website with a modern design and user-friendly interface.'
     },
     {
       id: 'proj-2',
-      title: 'Corporate Webflow Site',
-      category: ['Webflow'],
-      thumb: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80',
+      title: 'StepTech Solutions',
+      category: ['WordPress/Wix/Shopify'],
+      thumb: './assets/portfolio/StepTech/StepTech-thumbnail.png',
       screenshots: [
-        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&q=80'
+        './assets/portfolio/StepTech/StepTech-Landing-Page.png',
+        './assets/portfolio/StepTech/StepTech-Home.png',
+        './assets/portfolio/StepTech/StepTech-Portfolio.png',
+        './assets/portfolio/StepTech/StepTech-Services.png',
+        './assets/portfolio/StepTech/StepTech-Contact-Us.png'
       ],
-      description: 'Full corporate redesign with complex Webflow interactions.'
+      description: 'StepTech Solutions Website built with WordPress.'
     },
     {
       id: 'proj-3',
-      title: 'Custom Admin Dashboard',
-      category: ['Custom (HTML/CSS/JS)', 'Node.js/PHP'],
-      thumb: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80',
+      title: 'Jaries Pet Shop',
+      category: ['WordPress/Wix/Shopify'],
+      thumb: './assets/portfolio/Jaries_Pet_Shop/jariespetshop-thumbnail.png',
       screenshots: [
-        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1543286386-2e659306cd6c?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80'
+        './assets/portfolio/Jaries_Pet_Shop/jariespetshop-thumbnail.png',
+        './assets/portfolio/Jaries_Pet_Shop/jariespetshop-shop.png',
+        './assets/portfolio/Jaries_Pet_Shop/jariespetshop-collections.png',
+        './assets/portfolio/Jaries_Pet_Shop/jariespetshop-featured.png',
+        './assets/portfolio/Jaries_Pet_Shop/jariespetshop-social.png',
+        './assets/portfolio/Jaries_Pet_Shop/jariespetshop-home.jpeg',
+        './assets/portfolio/Jaries_Pet_Shop/jariespetshop-logo.jpeg'
       ],
-      description: 'Internal CMS dashboard built with Vanilla JS and Node backend.'
+      description: 'Jaries Pet Shop Website built with Wix.'
     },
     {
       id: 'proj-4',
-      title: 'Local Business WordPress',
-      category: ['WordPress'],
-      thumb: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80',
+      title: 'Timeless Media',
+      category: ['Custom (HTML/CSS/JS)'],
+      thumb: './assets/portfolio/Timeless_Media/TimelessMedia-thumbnail.png',
       screenshots: [
-        'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80'
+        './assets/portfolio/Timeless_Media/TimelessMedia-landing-page.png',
+        './assets/portfolio/Timeless_Media/TimelessMedia-home.png',
+        './assets/portfolio/Timeless_Media/TimelessMedia-about-us.png',
+        './assets/portfolio/Timeless_Media/TimelessMedia-portfolio.png',
+        './assets/portfolio/Timeless_Media/TimelessMedia-contact-us.png',
+        './assets/portfolio/Timeless_Media/TimelessMedia-home-category-engagement.png',
+        './assets/portfolio/Timeless_Media/TimelessMedia-home-category-wedding.png',
+        './assets/portfolio/Timeless_Media/TimelessMedia-home-category-portrait.png'
       ],
-      description: 'Custom Elementor theme for a local service business.'
+      description: 'Timeless Media Website built with Custom (HTML/CSS/JS).'
     },
     {
       id: 'proj-5',
-      title: 'Fitness App Landing Page',
-      category: ['React/Next'],
-      thumb: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=80',
+      title: 'KDar',
+      category: ['Custom (HTML/CSS/JS)'],
+      thumb: './assets/portfolio/KDar/KDar-thumbnail.png',
       screenshots: [
-        'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=80'
+        './assets/portfolio/KDar/KDar-Landing-Page.png',
+        './assets/portfolio/KDar/KDar-Home.png',
+        './assets/portfolio/KDar/KDar-About-Us.png'
       ],
-      description: 'High-conversion landing page for a mobile fitness application.'
+      description: 'KDar Website built with Custom (HTML/CSS/JS).'
     },
     {
       id: 'proj-6',
-      title: 'Real Estate Portal',
-      category: ['WordPress', 'Node.js/PHP'],
-      thumb: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80',
+      title: 'Muza Capital',
+      category: ['Custom (HTML/CSS/JS)'],
+      thumb: './assets/portfolio/Muza_Capital/MuzaCapital-thumbnail.png',
       screenshots: [
-        'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1200&q=80'
+        './assets/portfolio/Muza_Capital/MuzaCapital-Landing-Page.png',
+        './assets/portfolio/Muza_Capital/MuzaCapital-Home.png',
+        './assets/portfolio/Muza_Capital/MuzaCapital-SignIn.png',
+        './assets/portfolio/Muza_Capital/MuzaCapital-SignUp.png'
       ],
-      description: 'Property listing portal with custom filtering and maps.'
+      description: 'Muza Capital Website built with Custom (HTML/CSS/JS).'
     },
     {
       id: 'proj-7',
-      title: 'SaaS Dashboard',
-      category: ['React/Next', 'Custom (HTML/CSS/JS)'],
-      thumb: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80',
+      title: 'Monki NYC',
+      category: ['WordPress/Wix/Shopify'],
+      thumb: './assets/portfolio/MonkiNYC/monkinyc-thumbnail.png',
       screenshots: [
-        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80'
+        './assets/portfolio/MonkiNYC/monkinyc-thumbnail.png',
+        './assets/portfolio/MonkiNYC/monkinyc-home.png',
+        './assets/portfolio/MonkiNYC/monkinyc-about-us.png',
+        './assets/portfolio/MonkiNYC/monkinyc-our-projects.png',
+        './assets/portfolio/MonkiNYC/monkinyc-services-our-services-list.png',
+        './assets/portfolio/MonkiNYC/monkinyc-contact-us.png',
+        './assets/portfolio/MonkiNYC/monkinyc-book-appointment.png'
       ],
-      description: 'Analytics dashboard with D3.js charting.'
+      description: 'Monki NYC Website built with WordPress.'
     },
     {
       id: 'proj-8',
-      title: 'Creative Agency Portfolio',
-      category: ['Webflow'],
-      thumb: 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=600&q=80',
+      title: 'CNB Leather Goods',
+      category: ['WordPress/Wix/Shopify'],
+      thumb: './assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-thumbnail.png',
       screenshots: [
-        'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1481481322814-3d5408cb3cd7?auto=format&fit=crop&w=1200&q=80'
+        './assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Landing-Page.png',
+        './assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Home.png',
+        './assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Shop.png',
+        './assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Product-Page.png',
+        './assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Checkout.png',
+        './assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-About-Us.png'
       ],
-      description: 'Slick and highly animated portfolio for a creative agency.'
+      description: 'CNB Leather Goods Website built with WordPress.'
     },
     {
       id: 'proj-9',
-      title: 'Travel Blog CMS',
-      category: ['WordPress', 'Custom (HTML/CSS/JS)'],
-      thumb: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=600&q=80',
+      title: 'Tenwickets',
+      category: ['WordPress/Wix/Shopify'],
+      thumb: './assets/portfolio/Tenwickets/Tenwickets-thumbnail.png',
       screenshots: [
-        'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1494783367193-149034c05e8f?auto=format&fit=crop&w=1200&q=80'
+        './assets/portfolio/Tenwickets/Tenwickets-Landing-Page.png',
+        './assets/portfolio/Tenwickets/Tenwickets-Home.png',
+        './assets/portfolio/Tenwickets/Tenwickets-Livestream.png',
+        './assets/portfolio/Tenwickets/Tenwickets-News.png'
       ],
-      description: 'High performance WordPress theme customized for an international travel blog.'
+      description: 'Tenwickets Website built with WordPress.'
     },
     {
       id: 'proj-10',
-      title: 'Music Festival Landing Page',
-      category: ['React/Next'],
-      thumb: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=600&q=80',
+      title: 'Masquerade Candle Shop',
+      category: ['WordPress/Wix/Shopify'],
+      thumb: './assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-thumbnail.png',
       screenshots: [
-        'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1540039155732-6761b20ce8b1?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80'
+        './assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-home.png',
+        './assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-store.png',
+        './assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-gift-card.png',
+        './assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-contact-us.png',
+        './assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-blog.png'
       ],
-      description: 'Interactive Next.js page with WebGL animations for a large music festival.'
+      description: 'Masquerade Candle Shop Website built with Shopify.'
     },
     {
       id: 'proj-11',
-      title: 'Restaurant Order System',
-      category: ['Node.js/PHP', 'React/Next'],
-      thumb: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80',
+      title: 'Unique Kennels',
+      category: ['WordPress/Wix/Shopify'],
+      thumb: './assets/portfolio/Unique_Kennels/uniquekennels-org-thumbnail.png',
       screenshots: [
-        'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80'
+        './assets/portfolio/Unique_Kennels/uniquekennels-org-thumbnail.png',
+        './assets/portfolio/Unique_Kennels/uniquekennels-org-landing-page.png',
+        './assets/portfolio/Unique_Kennels/uniquekennels-org.png'
       ],
-      description: 'Full-stack application managing live orders and inventory for a restaurant.'
+      description: 'Unique Kennels Website built with Shopify.'
     },
     {
       id: 'proj-12',
-      title: 'Automotive Dealer Site',
-      category: ['Webflow', 'Custom (HTML/CSS/JS)'],
-      thumb: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80',
+      title: 'Black Travel Events',
+      category: ['WordPress/Wix/Shopify'],
+      thumb: './assets/portfolio/Black_Travel_Events/blacktravelevents-thumbnail.png',
       screenshots: [
-        'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=80'
+        './assets/portfolio/Black_Travel_Events/blacktravelevents-home-1.png',
+        './assets/portfolio/Black_Travel_Events/blacktravelevents-home-2.png',
+        './assets/portfolio/Black_Travel_Events/blacktravelevents-home-3.png'
       ],
-      description: 'Webflow build tailored for a luxury car dealership showcasing their catalog.'
+      description: 'Black Travel Events Website built with WordPress.'
+    },
+    {
+      id: 'proj-13',
+      title: 'WASI - Developers Old Portfolio',
+      category: ['Custom (HTML/CSS/JS)'],
+      thumb: './assets/portfolio/Wasi_-_Developers_Portfolio_Old/Wasi-Portfolio-thumbnail.png',
+      screenshots: [
+        './assets/portfolio/Wasi_-_Developers_Portfolio_Old/Wasi-Portfolio-thumbnail.png',
+        './assets/portfolio/Wasi_-_Developers_Portfolio_Old/Wasi-Portfolio.png'
+      ],
+      description: 'WASI - Developers Old Portfolio Website built with Custom (HTML/CSS/JS).'
     }
   ];
 

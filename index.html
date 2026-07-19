@@ -123,14 +123,14 @@
 
     <!-- About Section -->
     <section id="about">
-      <span class="code-glyph" style="top: 15%; left: 1%;">&lt;/WASI&gt;</span>
-      <span class="code-glyph" style="bottom: 35%; right: 1%;">{ CODE }</span>
-      <span class="code-glyph" style="top: 35%; left: 1%;">var</span>
-      <span class="code-glyph" style="bottom: 10%; left: 1%;">function</span>
-      <span class="code-glyph" style="top: 15%; right: 1%;">console.log()</span>
-      <span class="code-glyph" style="bottom: 35%; left: 1%;">if ()</span>
-      <span class="code-glyph" style="top: 35%; right: 1%;">const</span>
-      <span class="code-glyph" style="bottom: 10%; right: 1%;">else {}</span>
+      <span class="code-glyph" style="top: 15%; left: 3%;">&lt;/WASI&gt;</span>
+      <span class="code-glyph" style="bottom: 35%; right: 3%;">{ CODE }</span>
+      <span class="code-glyph" style="top: 35%; left: 3%;">var</span>
+      <span class="code-glyph" style="bottom: 10%; left: 3%;">function</span>
+      <span class="code-glyph" style="top: 15%; right: 3%;">console.log()</span>
+      <span class="code-glyph" style="bottom: 35%; left: 3%;">if ()</span>
+      <span class="code-glyph" style="top: 35%; right: 3%;">const</span>
+      <span class="code-glyph" style="bottom: 10%; right: 3%;">else {}</span>
 
       <div class="container about-content">
         <div class="about-card glass reveal" data-reveal="fade-right">
@@ -257,16 +257,16 @@
     <section id="portfolio">
       <div class="portfolio-blob"></div>
       <div class="container">
-        <h2 class="section-title reveal">Selected Work</h2>
+        <h2 class="section-title reveal">Selected Projects</h2>
 
         <div class="portfolio-filters reveal">
-          <button class="filter-btn active" data-filter="All">All</button>
-          <button class="filter-btn" data-filter="Custom (HTML/CSS/JS)">Custom (HTML/CSS/JS)</button>
-          <button class="filter-btn" data-filter="WordPress">WordPress</button>
-          <button class="filter-btn" data-filter="Shopify">Shopify</button>
-          <button class="filter-btn" data-filter="Webflow">Webflow</button>
-          <button class="filter-btn" data-filter="React/Next">React/Next</button>
-          <button class="filter-btn" data-filter="Node.js/PHP">Node.js/PHP</button>
+          <button type="button" class="filter-btn active" data-filter="All">All</button>
+          <button type="button" class="filter-btn" data-filter="Custom (HTML/CSS/JS)">Custom (HTML/CSS/JS)</button>
+          <button type="button" class="filter-btn" data-filter="WordPress/Wix/Shopify">WordPress/Wix/Shopify</button>
+          <button type="button" class="filter-btn" data-filter="React.js/Next.js">React.js/Next.js</button>
+          <button type="button" class="filter-btn" data-filter="PHP/SQL">PHP/SQL</button>
+          <!-- <button type="button" class="filter-btn" data-filter="SEO">Search Engine Optimization</button> -->
+          <!-- <button type="button" class="filter-btn" data-filter="Express.js/Node.js">Express.js/Node.js</button> -->
         </div>
 
         <div class="portfolio-grid">
@@ -274,7 +274,7 @@
         </div>
 
         <div class="portfolio-actions reveal" style="text-align: center; margin-top: 3rem;">
-          <button id="load-more-btn" class="btn" style="display: none;">Show More</button>
+          <button type="button" id="load-more-btn" class="btn" style="display: none;">Show More</button>
         </div>
       </div>
     </section>
@@ -289,31 +289,52 @@
         </div>
 
         <div class="experience-grid">
-          <div id="exp-technovative" class="exp-card glass reveal" data-tilt>
-            <div class="exp-date">Feb 2024 – Jun 2024</div>
-            <h3>Technovative Labs</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">Remote</p>
+          <div id="exp-freelance" class="exp-card glass reveal" data-tilt>
+            <div class="exp-date">2022 – Present</div>
+            <h3>Freelancing</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">Global</p>
+            <p style="font-size: 0.95rem;">Dozens of projects delivered, specializing in E-Commerce store development.</p>
+          </div>
+
+          <div id="exp-artstone-digital" class="exp-card glass reveal" data-tilt>
+            <div class="exp-date">Jan 2025 – Jun 2026</div>
+            <h3>ArtStone Digital</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">In-Office</p>
+            <p style="font-size: 0.95rem;">Web Application Development and CMS customization.</p>
+          </div>
+
+          <div id="exp-miloady-designs" class="exp-card glass reveal" data-tilt>
+            <div class="exp-date">Jun 2024 – Dec 2024</div>
+            <h3>Miloady Designs</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">Hybrid</p>
             <p style="font-size: 0.95rem;">Front-End Development and UI optimization for internal products.</p>
           </div>
 
+          <div id="exp-technovative" class="exp-card glass reveal" data-tilt>
+            <div class="exp-date">Feb 2024 – Jun 2024</div>
+            <h3>Technovative Labs</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">In-Office</p>
+            <p style="font-size: 0.95rem;">Dozens of projects delivered, specializing in E-Commerce store development.</p>
+          </div>
+
           <div id="exp-steptech" class="exp-card glass reveal" data-tilt>
-            <div class="exp-date">Jul 2023 – Jan 2024</div>
+            <div class="exp-date">Aug 2023 – Jan 2024</div>
             <h3>StepTech Solutions</h3>
             <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">Hybrid</p>
             <p style="font-size: 0.95rem;">Web Application Development and CMS customization.</p>
           </div>
 
-          <div id="exp-dotblue" class="exp-card glass reveal" data-tilt>
+          <div id="exp-technocate" class="exp-card glass reveal" data-tilt>
             <div class="exp-date">Jul 2022 – Aug 2023</div>
-            <h3>dotBlue Digital</h3>
+            <h3>Technocate</h3>
             <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">Remote</p>
             <p style="font-size: 0.95rem;">Frontend engineering for diverse digital agency clients.</p>
           </div>
 
-          <div id="exp-freelance" class="exp-card glass reveal" data-tilt>
-            <div class="exp-date">2022 – Present</div>
-            <h3>Freelancing</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">Global</p>
+          <div id="exp-dotblue" class="exp-card glass reveal" data-tilt>
+            <div class="exp-date">Jul 2022 – Aug 2023</div>
+            <h3>dotBlue Digital</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">Hybrid</p>
             <p style="font-size: 0.95rem;">Dozens of projects delivered, specializing in E-Commerce store development.</p>
           </div>
         </div>
@@ -329,7 +350,7 @@
             <div class="social-circle"><ion-icon name="logo-github"></ion-icon></div>
             <span>GitHub</span>
           </a>
-          <a href="https://linkedin.com/in/wasi-arain" target="_blank" rel="noopener noreferrer" class="social-capsule glass" style="--brand-color: #0A66C2;">
+          <a href="https://linkedin.com/in/wasi-arain" target="_blank" rel="noopener noreferrer" class="social-capsule glass" style="--brand-color: #0077B5;">
             <div class="social-circle"><ion-icon name="logo-linkedin"></ion-icon></div>
             <span>LinkedIn</span>
           </a>
@@ -349,7 +370,7 @@
             <div class="social-circle"><ion-icon name="logo-twitter"></ion-icon></div>
             <span>X (Twitter)</span>
           </a>
-          <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="social-capsule glass" style="--brand-color: #E4405F;">
+          <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="social-capsule glass" style="--brand-color: #E1306C;">
             <div class="social-circle"><ion-icon name="logo-instagram"></ion-icon></div>
             <span>Instagram</span>
           </a>
