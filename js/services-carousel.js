@@ -18,7 +18,7 @@ export function initServicesCarousel() {
     b.classList.add('carousel-bullet');
     // Set the first bullet as active initially
     if (i === 0) b.classList.add('active');
-    
+
     // Add click listener to navigate to the specific slide
     b.addEventListener('click', () => {
       currentIndex = i;
@@ -61,7 +61,7 @@ export function initServicesCarousel() {
   function next() {
     // Pause auto-play if the user is interacting with the carousel
     if (isHovered) return;
-    
+
     // Increment index and wrap around to 0 at the end
     currentIndex = (currentIndex + 1) % cards.length;
     updateCarousel();
@@ -77,7 +77,7 @@ export function initServicesCarousel() {
 
   // Initialize the carousel layout
   updateCarousel();
-  
+
   // Start auto-play interval (3 seconds per slide)
   setInterval(next, 3000);
 }

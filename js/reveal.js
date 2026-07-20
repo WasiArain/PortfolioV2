@@ -26,7 +26,7 @@ export function initReveal() {
       if (entry.isIntersecting) {
         // Add the 'active' class to trigger CSS transitions
         entry.target.classList.add('active');
-        
+
         // Unobserve the element so the animation only happens once per page load
         obs.unobserve(entry.target);
       }

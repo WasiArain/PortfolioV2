@@ -206,7 +206,7 @@ export function initPortfolio() {
   // Function to render the portfolio grid based on active filters
   function renderGrid() {
     grid.innerHTML = "";
-    
+
     // Filter projects based on the selected category
     const filtered = currentFilter === "All" ? portfolioData : portfolioData.filter(p => p.category.includes(currentFilter));
 
@@ -251,7 +251,7 @@ export function initPortfolio() {
     if (window.VanillaTilt && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       window.VanillaTilt.init(grid.querySelectorAll(".portfolio-card"), { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
     }
-    
+
     // Trigger entrance animations for newly added cards
     setTimeout(() => grid.querySelectorAll(".reveal").forEach(el => el.classList.add("active")), 50);
   }
@@ -262,7 +262,7 @@ export function initPortfolio() {
       // Update active state class on buttons
       filterBtns.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
-      
+
       // Update filter state and re-render grid
       currentFilter = btn.getAttribute("data-filter");
       showingAll = false;
@@ -284,7 +284,7 @@ export function initPortfolio() {
     activeProj = proj;
     activeSlideIndex = 0;
     const content = modalOverlay.querySelector(".modal-inner-content");
-    
+
     // Inject HTML for the modal content
     content.innerHTML = `
       <div class="modal-carousel" id="tier1-carousel">
@@ -329,7 +329,7 @@ export function initPortfolio() {
   // Function to change the active slide in the modal image viewers
   function updateSlide(dir) {
     if (!activeProj) return;
-    
+
     // Calculate new index with looping
     activeSlideIndex = (activeSlideIndex + dir + activeProj.screenshots.length) % activeProj.screenshots.length;
 

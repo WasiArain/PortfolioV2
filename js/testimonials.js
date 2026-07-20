@@ -37,10 +37,10 @@ export function initTestimonials() {
   setInterval(() => {
     // Increment index and loop back to the start if necessary
     currentIdx = (currentIdx + 1) % testimonials.length;
-    
+
     // Fade out
     container.style.opacity = '0';
-    
+
     // Wait for the fade-out transition, update content, then fade back in
     setTimeout(() => {
       renderTestimonial();

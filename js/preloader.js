@@ -2,7 +2,7 @@ export function initPreloader() {
   // Select preloader DOM elements
   const preloader = document.getElementById('preloader');
   const progressText = document.getElementById('progress-text');
-  
+
   // Guard clause if preloader is not present
   if (!preloader) return;
 
@@ -20,7 +20,7 @@ export function initPreloader() {
     const counterInterval = setInterval(() => {
       count++;
       progressText.innerText = count + '%'; // Update text
-      
+
       // Stop interval once 100% is reached
       if (count >= target) {
         clearInterval(counterInterval);

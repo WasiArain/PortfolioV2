@@ -61,12 +61,12 @@ export function initNav() {
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       const targetId = link.getAttribute('href');
-      
+
       // Only intercept in-page anchor links
       if (targetId.startsWith('#')) {
         e.preventDefault();
         const targetSection = document.querySelector(targetId);
-        
+
         if (targetSection) {
           // Close the mobile navigation panel if it's open
           if (mobilePanel && mobilePanel.classList.contains('open')) {
@@ -79,7 +79,7 @@ export function initNav() {
           // Calculate the exact scroll position, factoring in the sticky header height
           const headerHeight = header.offsetHeight;
           const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - headerHeight;
-          
+
           // Execute the smooth scroll
           window.scrollTo({
             top: targetPosition,

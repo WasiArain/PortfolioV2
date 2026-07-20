@@ -2,7 +2,7 @@
 export function initScrollToTop() {
   // Select the floating scroll-up button
   const scrollUpBtn = document.querySelector('.scroll-up-btn');
-  
+
   // Guard clause if button is not present
   if (!scrollUpBtn) return;
 
@@ -20,7 +20,7 @@ export function initScrollToTop() {
   scrollUpBtn.addEventListener('click', () => {
     // Remove global smooth scroll temporarily if necessary, but here we just force auto
     document.documentElement.style.scrollBehavior = "auto";
-    
+
     // Instantly jump to the top of the page
     window.scrollTo({ top: 0, behavior: "auto" });
   });

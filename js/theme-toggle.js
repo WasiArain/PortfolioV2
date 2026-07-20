@@ -13,7 +13,7 @@ export function initTheme() {
 
   // Apply the determined theme to the root HTML element
   document.documentElement.setAttribute('data-theme', currentTheme);
-  
+
   // Update UI icons and text to reflect the initial state
   updateIcon(currentTheme);
 
@@ -21,13 +21,13 @@ export function initTheme() {
   const switchTheme = () => {
     // Toggle the theme value
     currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    
+
     // Apply new theme to DOM
     document.documentElement.setAttribute('data-theme', currentTheme);
-    
+
     // Persist choice in local storage
     localStorage.setItem('theme', currentTheme);
-    
+
     // Update the UI
     updateIcon(currentTheme);
   };
@@ -43,11 +43,11 @@ export function initTheme() {
     // When in light mode, the button should offer to switch to dark mode (moon icon)
     const iconName = theme === 'dark' ? 'sunny-outline' : 'moon-outline';
     const textStr = theme === 'dark' ? 'Light' : 'Dark'; // Note: Logic adjusted so button text reflects what clicking it will do
-    
+
     toggleBtns.forEach(btn => {
       const iconContainer = btn.querySelector('.theme-toggle-icon');
       const textContainer = btn.querySelector('.theme-toggle-text');
-      
+
       if (iconContainer) iconContainer.innerHTML = `<ion-icon name="${iconName}"></ion-icon>`;
       if (textContainer) textContainer.innerText = textStr;
     });
