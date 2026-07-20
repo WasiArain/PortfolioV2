@@ -1,5 +1,6 @@
 
 export function initPortfolio() {
+  // Select necessary DOM elements for portfolio functionality
   const grid = document.querySelector('.portfolio-grid');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const showMoreBtn = document.getElementById('load-more-btn');
@@ -7,8 +8,10 @@ export function initPortfolio() {
   const modalClose = document.querySelector('.modal-close');
   const fsViewer = document.querySelector('.fullscreen-viewer');
 
+  // Guard clause to prevent errors on pages without the portfolio grid
   if (!grid) return;
 
+  // Array containing all portfolio projects and their details
   const portfolioData = [
     {
       id: 'proj-1',
@@ -25,7 +28,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-why-hire-us.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-faqs.png'
       ],
-      description: 'Wiki Profile Creations Website built with Custom (HTML/CSS/JS). It is outstanding Wikipedia Page & Profile creation service website with a modern design and user-friendly interface.'
+      description: 'A bespoke Wikipedia page and profile creation service featuring a modern, user-friendly interface built with custom HTML, CSS, and vanilla JavaScript.'
     },
     {
       id: 'proj-2',
@@ -39,7 +42,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/StepTech/StepTech-Services.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/StepTech/StepTech-Contact-Us.png'
       ],
-      description: 'StepTech Solutions Website built with WordPress.'
+      description: 'A comprehensive corporate website designed and developed for StepTech Solutions utilizing WordPress for scalable content management.'
     },
     {
       id: 'proj-3',
@@ -55,7 +58,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Jaries_Pet_Shop/jariespetshop-home.jpeg',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Jaries_Pet_Shop/jariespetshop-logo.jpeg'
       ],
-      description: 'Jaries Pet Shop Website built with Wix.'
+      description: 'A vibrant and engaging e-commerce platform for Jaries Pet Shop, built with Wix to streamline the shopping experience.'
     },
     {
       id: 'proj-4',
@@ -72,7 +75,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Timeless_Media/TimelessMedia-home-category-wedding.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Timeless_Media/TimelessMedia-home-category-portrait.png'
       ],
-      description: 'Timeless Media Website built with Custom (HTML/CSS/JS).'
+      description: 'A sleek, highly interactive portfolio and booking platform for Timeless Media, crafted entirely with custom HTML, CSS, and JavaScript.'
     },
     {
       id: 'proj-5',
@@ -84,7 +87,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/KDar/KDar-Home.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/KDar/KDar-About-Us.png'
       ],
-      description: 'KDar Website built with Custom (HTML/CSS/JS).'
+      description: 'A fast and responsive corporate landing page for KDar, developed using a custom HTML/CSS/JS architecture for optimal performance.'
     },
     {
       id: 'proj-6',
@@ -97,7 +100,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Muza_Capital/MuzaCapital-SignIn.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Muza_Capital/MuzaCapital-SignUp.png'
       ],
-      description: 'Muza Capital Website built with Custom (HTML/CSS/JS).'
+      description: 'A secure, visually refined digital presence and client portal interface for Muza Capital, built with pure web technologies.'
     },
     {
       id: 'proj-7',
@@ -113,7 +116,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/MonkiNYC/monkinyc-contact-us.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/MonkiNYC/monkinyc-book-appointment.png'
       ],
-      description: 'Monki NYC Website built with WordPress.'
+      description: 'A sophisticated, high-end agency portfolio for Monki NYC, powered by a customized WordPress architecture.'
     },
     {
       id: 'proj-8',
@@ -128,7 +131,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Checkout.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-About-Us.png'
       ],
-      description: 'CNB Leather Goods Website built with WordPress.'
+      description: 'A premium e-commerce storefront for CNB Leather Goods, seamlessly integrating shopping functionality within a tailored WordPress environment.'
     },
     {
       id: 'proj-9',
@@ -141,7 +144,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Tenwickets/Tenwickets-Livestream.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Tenwickets/Tenwickets-News.png'
       ],
-      description: 'Tenwickets Website built with WordPress.'
+      description: 'A dynamic sports news and live-streaming hub for Tenwickets, utilizing WordPress to handle frequent updates and rich media content.'
     },
     {
       id: 'proj-10',
@@ -155,7 +158,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-contact-us.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-blog.png'
       ],
-      description: 'Masquerade Candle Shop Website built with Shopify.'
+      description: 'An elegant, conversion-optimized Shopify storefront for Masquerade Candle Shop, featuring custom theme modifications.'
     },
     {
       id: 'proj-11',
@@ -167,7 +170,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Unique_Kennels/uniquekennels-org-landing-page.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Unique_Kennels/uniquekennels-org.png'
       ],
-      description: 'Unique Kennels Website built with Shopify.'
+      description: 'A dedicated Shopify e-commerce solution for Unique Kennels, designed to provide a seamless browsing and purchasing experience.'
     },
     {
       id: 'proj-12',
@@ -179,7 +182,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Black_Travel_Events/blacktravelevents-home-2.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Black_Travel_Events/blacktravelevents-home-3.png'
       ],
-      description: 'Black Travel Events Website built with WordPress.'
+      description: 'An engaging event directory and booking platform for Black Travel Events, built on a robust WordPress foundation.'
     },
     {
       id: 'proj-13',
@@ -190,21 +193,27 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wasi_-_Developers_Portfolio_Old/Wasi-Portfolio-thumbnail.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wasi_-_Developers_Portfolio_Old/Wasi-Portfolio.png'
       ],
-      description: 'WASI - Developers Old Portfolio Website built with Custom (HTML/CSS/JS).'
+      description: 'My previous personal portfolio iteration, showcasing early design concepts and vanilla JavaScript animations.'
     }
   ];
 
+  // State variables for filtering and pagination
   let currentFilter = "All";
   let showingAll = false;
   let activeProj = null;
   let activeSlideIndex = 0;
 
+  // Function to render the portfolio grid based on active filters
   function renderGrid() {
     grid.innerHTML = "";
+    
+    // Filter projects based on the selected category
     const filtered = currentFilter === "All" ? portfolioData : portfolioData.filter(p => p.category.includes(currentFilter));
 
+    // Determine how many projects to show
     const limit = showingAll ? filtered.length : Math.min(filtered.length, 6);
 
+    // Update the visibility and text of the 'Show More' button
     if (showMoreBtn) {
       if (filtered.length <= 6) {
         showMoreBtn.style.display = "none";
@@ -214,9 +223,10 @@ export function initPortfolio() {
       }
     }
 
+    // Create and append portfolio cards to the grid
     for (let idx = 0; idx < limit; idx++) {
       const proj = filtered[idx];
-      const delay = (idx % 6) * 100;
+      const delay = (idx % 6) * 100; // Staggered animation delay
       const card = document.createElement("div");
       card.className = "portfolio-card glass reveal";
       card.style.transitionDelay = delay + "ms";
@@ -232,26 +242,35 @@ export function initPortfolio() {
           </div>
         </div>
       `;
+      // Open the modal when a card is clicked
       card.addEventListener("click", () => openTier1Modal(proj));
       grid.appendChild(card);
     }
 
+    // Re-initialize Vanilla-Tilt effect for new cards
     if (window.VanillaTilt && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       window.VanillaTilt.init(grid.querySelectorAll(".portfolio-card"), { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
     }
+    
+    // Trigger entrance animations for newly added cards
     setTimeout(() => grid.querySelectorAll(".reveal").forEach(el => el.classList.add("active")), 50);
   }
 
+  // Attach event listeners to filter buttons
   filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
+      // Update active state class on buttons
       filterBtns.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
+      
+      // Update filter state and re-render grid
       currentFilter = btn.getAttribute("data-filter");
       showingAll = false;
       renderGrid();
     });
   });
 
+  // Attach event listener for the 'Show More' button
   if (showMoreBtn) {
     showMoreBtn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -260,10 +279,13 @@ export function initPortfolio() {
     });
   }
 
+  // Function to open the first-tier modal (project details and image slider)
   function openTier1Modal(proj) {
     activeProj = proj;
     activeSlideIndex = 0;
     const content = modalOverlay.querySelector(".modal-inner-content");
+    
+    // Inject HTML for the modal content
     content.innerHTML = `
       <div class="modal-carousel" id="tier1-carousel">
         <div class="carousel-nav" style="position:absolute; width:100%; top:50%; transform:translateY(-50%); display:flex; justify-content:space-between; z-index:10; pointer-events:none;">
@@ -282,12 +304,15 @@ export function initPortfolio() {
       <p>${proj.description}</p>
     `;
 
+    // Open fullscreen viewer on image click
     const imgEl = content.querySelector('#tier1-img');
     imgEl.addEventListener('click', () => openTier2Modal());
 
+    // Slider navigation logic
     content.querySelector('#t1-prev').addEventListener('click', (e) => { e.stopPropagation(); updateSlide(-1); });
     content.querySelector('#t1-next').addEventListener('click', (e) => { e.stopPropagation(); updateSlide(1); });
 
+    // Handle bullet navigation for the slider
     content.querySelectorAll('#t1-bullets .carousel-bullet').forEach(b => {
       b.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -296,14 +321,19 @@ export function initPortfolio() {
       });
     });
 
+    // Show the modal and lock background scrolling
     modalOverlay.classList.add("active");
     document.body.style.overflow = "hidden";
   }
 
+  // Function to change the active slide in the modal image viewers
   function updateSlide(dir) {
     if (!activeProj) return;
+    
+    // Calculate new index with looping
     activeSlideIndex = (activeSlideIndex + dir + activeProj.screenshots.length) % activeProj.screenshots.length;
 
+    // Fade out, swap source, and fade in the Tier 1 image
     const imgEl = document.getElementById('tier1-img');
     if (imgEl) {
       imgEl.style.opacity = 0;
@@ -313,10 +343,11 @@ export function initPortfolio() {
       }, 200);
     }
 
+    // Update active bullet indicators
     const bullets = document.querySelectorAll('#t1-bullets .carousel-bullet');
     bullets.forEach((b, i) => b.classList.toggle('active', i === activeSlideIndex));
 
-    // If fsViewer is active, sync it
+    // If fullscreen viewer is active, sync its image as well
     if (fsViewer && fsViewer.classList.contains('active')) {
       const fsImg = fsViewer.querySelector("img");
       fsImg.style.opacity = 0;
@@ -327,6 +358,7 @@ export function initPortfolio() {
     }
   }
 
+  // Function to open the second-tier modal (fullscreen image viewer)
   function openTier2Modal() {
     if (!fsViewer || !activeProj) return;
     const fsImg = fsViewer.querySelector("img");
@@ -336,6 +368,7 @@ export function initPortfolio() {
     fsViewer.classList.add("active");
   }
 
+  // Handle closing of the primary modal via close button
   if (modalClose) {
     modalClose.addEventListener("click", () => {
       modalOverlay.classList.remove("active");
@@ -344,6 +377,7 @@ export function initPortfolio() {
     });
   }
 
+  // Handle closing of the primary modal by clicking the background overlay
   if (modalOverlay) {
     modalOverlay.addEventListener("click", (e) => {
       if (e.target === modalOverlay) {
@@ -354,6 +388,7 @@ export function initPortfolio() {
     });
   }
 
+  // Setup listeners for the fullscreen viewer
   if (fsViewer) {
     const fsClose = fsViewer.querySelector(".fs-close");
     const fsPrev = fsViewer.querySelector(".fs-prev");
@@ -364,5 +399,6 @@ export function initPortfolio() {
     if (fsNext) fsNext.addEventListener("click", () => updateSlide(1));
   }
 
+  // Initial render of the grid on load
   renderGrid();
 }

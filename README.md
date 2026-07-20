@@ -5,13 +5,20 @@ This is the fully vanilla, production-grade personal portfolio website for Wasi 
 ## Architecture
 
 - **Stack:** Plain HTML5, CSS3, Vanilla JavaScript (ES6+).
-- **No Build Tools:** Zero backend, zero bundler, zero `npm install` step.
+- **No Build Tools:** Zero backend, zero bundler, zero `npm install` step for deployment. Purely static architecture.
 - **Hosting:** Deployable as-is to GitHub Pages or any static host.
 - **Third-party libraries used:**
   - [Three.js](https://threejs.org/) for the hero section particle network background.
   - [Vanilla-Tilt.js](https://micku7zu.github.io/vanilla-tilt.js/) for 3D card tilt-on-hover micro-interactions.
   - [Ionicons](https://ionic.io/ionicons) for lightweight SVG iconography.
-  - Hand-rolled `IntersectionObserver` reveal engine (replacing heavier ScrollReveal.js).
+  - Hand-rolled `IntersectionObserver` reveal engine.
+
+## Code Structure
+
+- `/index.html`: Main entry point and the sole view for the portfolio layout.
+- `/css/`: Core stylesheets (base setup, variables, and section styling).
+- `/js/`: Modular vanilla JavaScript codebase. Each UI feature (portfolio, preloader, services carousel, testimonials, etc.) is isolated into its own ES module, initialized inside `main.js`.
+- `/assets/`: Image resources and project thumbnails.
 
 ## How to Run & Deploy
 

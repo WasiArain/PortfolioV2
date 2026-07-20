@@ -1,22 +1,27 @@
-// Scroll-to-Top button functionality
-
-// Important Instructions for Gemini: Convert the following jQuery code to vanilla JavaScript & make sure the Scroll To Top button functionality works correctly. Link this file in main.js
-
+// Scroll-to-Top button functionality module
 export function initScrollToTop() {
-  $(document).ready(function () {
-    $(window).scroll(function () {
-      // scroll-up button show/hide script
-      if (this.scrollY > 500) {
-        $('.scroll-up-btn').addClass("show");
-      } else {
-        $('.scroll-up-btn').removeClass("show");
-      }
-    });
-    // slide-up script
-    $('.scroll-up-btn').click(function () {
-      $('html').animate({ scrollTop: 0 });
-      // removing smooth scroll on slide-up button click
-      $('html').css("scrollBehavior", "auto");
-    });
+  // Select the floating scroll-up button
+  const scrollUpBtn = document.querySelector('.scroll-up-btn');
+  
+  // Guard clause if button is not present
+  if (!scrollUpBtn) return;
+
+  // Listen for scroll events to determine when to show/hide the button
+  window.addEventListener('scroll', () => {
+    // Show the button when scrolled past 500px, otherwise hide it
+    if (window.scrollY > 500) {
+      scrollUpBtn.classList.add("show");
+    } else {
+      scrollUpBtn.classList.remove("show");
+    }
+  });
+
+  // Handle the click action on the scroll-up button
+  scrollUpBtn.addEventListener('click', () => {
+    // Remove global smooth scroll temporarily if necessary, but here we just force auto
+    document.documentElement.style.scrollBehavior = "auto";
+    
+    // Instantly jump to the top of the page
+    window.scrollTo({ top: 0, behavior: "auto" });
   });
 }

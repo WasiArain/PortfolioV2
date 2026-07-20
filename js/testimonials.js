@@ -1,7 +1,9 @@
 export function initTestimonials() {
+  // Select the container for the testimonial carousel
   const container = document.querySelector('.testimonial-carousel');
   if (!container) return;
 
+  // Array containing testimonial data
   const testimonials = [
     {
       name: "[Placeholder Client]",
@@ -15,8 +17,10 @@ export function initTestimonials() {
     }
   ];
 
+  // Track the currently displayed testimonial
   let currentIdx = 0;
 
+  // Function to update the DOM with the current testimonial content
   function renderTestimonial() {
     const t = testimonials[currentIdx];
     container.innerHTML = `
@@ -26,15 +30,21 @@ export function initTestimonials() {
     `;
   }
 
+  // Initial render
   renderTestimonial();
 
-  // Simple auto-advance
+  // Simple auto-advance mechanism for the carousel (every 5 seconds)
   setInterval(() => {
+    // Increment index and loop back to the start if necessary
     currentIdx = (currentIdx + 1) % testimonials.length;
+    
+    // Fade out
     container.style.opacity = '0';
+    
+    // Wait for the fade-out transition, update content, then fade back in
     setTimeout(() => {
       renderTestimonial();
       container.style.opacity = '1';
-    }, 300);
+    }, 300); // 300ms matches typical CSS transition durations
   }, 5000);
 }
