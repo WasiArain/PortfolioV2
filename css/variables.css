@@ -21,31 +21,24 @@
   --radius-card: 20px;
   --radius-pill: 999px;
 
-  /* ===== Typography ===== */
+  /*
+   * ===== Typography =====
+   * NOTE: This list is intentionally short. It previously carried ~15 additional
+   * font tokens (Barlow, Comfortaa, Dancing Script, Lobster, Montserrat, Oswald,
+   * Roboto, Waterfall, etc.) left over from early design exploration. None of
+   * those families were ever referenced by a CSS rule — they were dead tokens
+   * pointing at font-families that base.css doesn't even import anymore after
+   * the performance pass (see base.css comment). Keeping unused tokens around
+   * is a trap: a future dev reaches for var(--font-whatever), assumes it's a
+   * loaded webfont because it "looks official" here, and ships a silent
+   * system-font fallback. Only the four families actually in use are declared.
+   * If you deliberately want a new display/accent face, add the @font-face
+   * import to base.css AND the token here in the same commit.
+   */
   --font-display: 'Lilita One', cursive;
   --font-body: 'Sniglet', cursive;
   --font-accent: 'Pacifico', cursive;
   --font-jetbrains-mono: 'JetBrains Mono', monospace;
-
-  --font-barlow: 'Barlow', sans-serif;
-  --font-comfortaa: 'Comfortaa', cursive;
-  --font-comforter-brush: 'Comforter Brush', cursive;
-  --font-comic-neue: 'Comic Neue', cursive;
-  --font-dancing-script: 'Dancing Script', cursive;
-  --font-lilita-one: 'Lilita One', cursive;
-  --font-lobster: 'Lobster', cursive;
-  --font-luxurious-roman: 'Luxurious Roman', cursive;
-  --font-montserrat: 'Montserrat', sans-serif;
-  --font-montserrat-alternates: 'Montserrat Alternates', sans-serif;
-  --font-moon-dance: 'Moon Dance', cursive;
-  --font-oswald: 'Oswald', sans-serif;
-  --font-pacifico: 'Pacifico', cursive;
-  --font-poppins: 'Poppins', sans-serif;
-  --font-roboto: 'Roboto', sans-serif;
-  --font-sniglet: 'Sniglet', cursive;
-  --font-nautigal: 'The Nautigal', cursive;
-  --font-vujahday: 'Vujahday Script', cursive;
-  --font-waterfall: 'Waterfall', cursive;
 
   /* ===== Motion ===== */
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);

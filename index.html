@@ -8,10 +8,10 @@
   <meta name="description" content="Portfolio of Wasi Ullah, Front-End Web Developer & E-Commerce Specialist based in Pakistan.">
   <meta name="keywords" content="Wasi Ullah, Front-End Web Developer, E-Commerce Specialist, HTML/CSS/JS, WordPress, Wix, Shopify, React.js, Next.js, PHP, SQL, SEO, Web Development">
   <meta name="author" content="Wasi Ullah">
+  <meta name="theme-color" content="#0b0b12">
 
   <link rel="icon" href="https://wasiarain.github.io/PortfolioV2/assets/images/developer.png" type="image/png" sizes="16x16" />
-  <link rel="apple-touch-icon" sizes="180x180" href="https://wasiarain.github.io/PortfolioV2/assets/images/developer.png" />
-
+  <link rel="apple-touch-icon" href="https://wasiarain.github.io/PortfolioV2/assets/images/developer.png" />
   <!-- Open Graph / SEO -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Wasi Ullah | Front-End Web Developer">
@@ -19,12 +19,49 @@
   <meta property="og:url" content="https://wasiarain.github.io/PortfolioV2/">
   <meta property="og:image" content="https://wasiarain.github.io/PortfolioV2/assets/images/developer.png">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="./css/main.css" />
+  <!--
+    RESOURCE HINTS — open the connections to every third-party origin this
+    page will need as early as possible (DNS + TLS handshake happen during
+    HTML parsing instead of when the resource is actually requested later).
+    Cheap to add, real effect on cross-origin request latency.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://embed.tawk.to">
+
+  <!--
+    CSS — direct <link> tags instead of a single main.css that @imports the
+    rest. @import forces a serialized dependency chain: the browser must
+    fetch and parse the parent file before it even discovers the children
+    exist, costing at least one extra round trip before those requests can
+    start. Separate <link> tags are all visible to the HTML preload scanner
+    in a single pass over the raw markup and fetch in parallel immediately.
+
+    Order matters here for the cascade (not for loading speed): variables
+    before base, base before sections, so custom properties and resets are
+    defined before anything consumes them.
+  -->
+  <link rel="stylesheet" href="./css/variables.css" />
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/sections.css" />
+
+  <!--
+    animations.css is 100% decorative (see the file's own header comment)
+    and carries zero critical-path responsibility, so it's loaded without
+    blocking first paint via the standard preload+swap pattern. The
+    <noscript> fallback covers the vanishingly rare case of JS being
+    disabled, where the onload handler would never fire.
+  -->
+  <link rel="preload" href="./css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="./css/animations.css">
+  </noscript>
 
   <!-- CDNs: Ionicons, Three.js, Vanilla-Tilt -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script nomodule defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
 
@@ -36,6 +73,9 @@
       "name": "Wasi Ullah",
       "jobTitle": "Front-End Web Developer",
       "url": "https://wasiarain.github.io/PortfolioV2/",
+      "image": "https://wasiarain.github.io/PortfolioV2/assets/images/developer.png",
+      "email": "mailto:chaudhrywasiullah807@gmail.com",
+      "telephone": "+923358137166",
       "sameAs": [
         "https://github.com/WasiArain",
         "https://linkedin.com/in/wasi-arain"
@@ -60,7 +100,7 @@
     <div class="progress-container">
       <div class="progress-bar"></div>
     </div>
-    <div id="progress-text" style="font-family: var(--font-mono); color: var(--text-primary); font-size: 1.2rem; margin-top: 1rem; font-weight: bold; text-align: center;">0%</div>
+    <div id="progress-text">0%</div>
   </div>
 
   <!-- Mobile Nav Panel -->
@@ -217,6 +257,43 @@
       </div>
 
       <div class="services-carousel-wrapper reveal">
+        <!-- Decorative: slow SVG path-morph blobs (SMIL <animate>, not a
+             border-radius trick) anchored in the wrapper's own corners.
+             Styling/positioning lives in css/animations.css; the shape data
+             has to live here because SMIL animates the <path> markup itself. -->
+        <div class="services-decor decor-layer" aria-hidden="true">
+          <svg class="service-blob service-blob--a" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="svcBlobGradA" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" class="grad-stop-primary" />
+                <stop offset="100%" class="grad-stop-secondary" />
+              </linearGradient>
+            </defs>
+            <path fill="url(#svcBlobGradA)">
+              <animate attributeName="d" dur="17s" repeatCount="indefinite" values="
+                M411,296Q382,342,338,372Q294,402,246,398Q198,394,157,367Q116,340,92,296Q68,252,84,204Q100,156,138,124Q176,92,224,78Q272,64,318,86Q364,108,392,150Q420,192,417,244Q414,296,411,296Z;
+                M429,309Q397,368,340,392Q283,416,226,404Q169,392,127,352Q85,312,73,256Q61,200,92,153Q123,106,174,82Q225,58,276,72Q327,86,368,120Q409,154,421,204Q433,254,429,309Z;
+                M403,283Q373,316,340,352Q307,388,258,394Q209,400,164,378Q119,356,94,313Q69,270,77,220Q85,170,120,134Q155,98,203,84Q251,70,299,84Q347,98,378,136Q409,174,411,222Q413,270,403,283Z;
+                M411,296Q382,342,338,372Q294,402,246,398Q198,394,157,367Q116,340,92,296Q68,252,84,204Q100,156,138,124Q176,92,224,78Q272,64,318,86Q364,108,392,150Q420,192,417,244Q414,296,411,296Z" />
+            </path>
+          </svg>
+          <svg class="service-blob service-blob--b" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="svcBlobGradB" x1="100%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" class="grad-stop-secondary" />
+                <stop offset="100%" class="grad-stop-primary" />
+              </linearGradient>
+            </defs>
+            <path fill="url(#svcBlobGradB)">
+              <animate attributeName="d" dur="21s" repeatCount="indefinite" values="
+                M395,270Q368,340,300,368Q232,396,172,362Q112,328,96,264Q80,200,120,150Q160,100,224,90Q288,80,340,116Q392,152,398,211Q404,270,395,270Z;
+                M413,288Q390,356,320,384Q250,412,184,384Q118,356,90,290Q62,224,100,164Q138,104,204,86Q270,68,326,102Q382,136,398,206Q414,276,413,288Z;
+                M380,258Q354,316,296,346Q238,376,180,348Q122,320,102,260Q82,200,116,150Q150,100,210,88Q270,76,322,106Q374,136,382,197Q390,258,380,258Z;
+                M395,270Q368,340,300,368Q232,396,172,362Q112,328,96,264Q80,200,120,150Q160,100,224,90Q288,80,340,116Q392,152,398,211Q404,270,395,270Z" />
+            </path>
+          </svg>
+        </div>
+
         <div class="services-track">
           <div id="service-frontend" class="service-card glass">
             <div class="service-icon"><ion-icon name="code-slash-outline"></ion-icon></div>
@@ -255,7 +332,17 @@
 
     <!-- Portfolio Section -->
     <section id="portfolio">
-      <div class="portfolio-blob"></div>
+      <!-- Decorative: two out-of-phase pairs of bouncing balls in the
+           section's left/right gutters. Replaces the old .portfolio-blob,
+           which sat centered behind the grid and was invisible under the
+           content 99% of the time. -->
+      <div class="portfolio-decor decor-layer" aria-hidden="true">
+        <span class="p-ball p-ball--primary p-ball--1"></span>
+        <span class="p-ball p-ball--primary p-ball--2"></span>
+        <span class="p-ball p-ball--secondary p-ball--3"></span>
+        <span class="p-ball p-ball--secondary p-ball--4"></span>
+      </div>
+
       <div class="container">
         <h2 class="section-title reveal">Selected Projects</h2>
 
@@ -281,6 +368,17 @@
 
     <!-- Experience & Testimonials -->
     <section id="experience">
+      <!-- Decorative: rising glass bubbles in the gutters, styled to match
+           the site's own .glass language rather than looking bolted-on. -->
+      <div class="experience-decor decor-layer" aria-hidden="true">
+        <span class="exp-bubble exp-bubble--primary exp-bubble--1"></span>
+        <span class="exp-bubble exp-bubble--primary exp-bubble--2"></span>
+        <span class="exp-bubble exp-bubble--primary exp-bubble--3"></span>
+        <span class="exp-bubble exp-bubble--secondary exp-bubble--4"></span>
+        <span class="exp-bubble exp-bubble--secondary exp-bubble--5"></span>
+        <span class="exp-bubble exp-bubble--secondary exp-bubble--6"></span>
+      </div>
+
       <div class="container">
         <h2 class="section-title reveal">Experience & Feedback</h2>
 
@@ -343,6 +441,11 @@
 
     <!-- Social Section -->
     <section id="social">
+      <!-- Decorative: a "snake" of light chasing the section's inner
+           boundary — reuses the exact conic-gradient technique already
+           established by the header logo (.logo-container), just scaled up. -->
+      <div class="social-decor-frame decor-layer" aria-hidden="true"></div>
+
       <div class="container">
         <h2 class="section-title reveal">Connect With Me</h2>
         <div class="social-row reveal">
@@ -390,22 +493,22 @@
           Have a project in mind? Let's build something great together. Choose your preferred way to reach out below.
         </p>
         <div class="contact-grid">
-          <a href="tel:+923358137166" rel="noopener noreferrer" class="contact-card-new glass reveal" data-tilt style="--hover-color: #2196F3;">
+          <a href="tel:+923358137166" class="contact-card-new glass reveal" data-tilt style="--hover-color: #2196F3;">
             <div class="contact-icon"><ion-icon name="call-outline"></ion-icon></div>
             <h3>Phone Call</h3>
-            <span>+92 335 8137166</span>
+            <span class="selectable">+92 335 8137166</span>
           </a>
 
           <a href="https://wa.me/923312784186" target="_blank" rel="noopener noreferrer" class="contact-card-new glass reveal" data-tilt style="--hover-color: #25D366;">
             <div class="contact-icon"><ion-icon name="logo-whatsapp"></ion-icon></div>
             <h3>WhatsApp</h3>
-            <span>+92 331 2784186</span>
+            <span class="selectable">+92 331 2784186</span>
           </a>
 
-          <a href="mailto:chaudhrywasiullah807@gmail.com?subject=Hiring%20Inquiry%20%2F%20Service%20Request" rel="noopener noreferrer" class="contact-card-new glass reveal" data-tilt style="--hover-color: #EA4335;">
+          <a href="mailto:chaudhrywasiullah807@gmail.com?subject=Hiring%20Inquiry%20%2F%20Service%20Request" class="contact-card-new glass reveal" data-tilt style="--hover-color: #EA4335;">
             <div class="contact-icon"><ion-icon name="mail-outline"></ion-icon></div>
             <h3>Email</h3>
-            <span style="font-size: 0.85rem;">chaudhrywasiullah807@gmail.com</span>
+            <span class="selectable" style="font-size: 0.85rem;">chaudhrywasiullah807@gmail.com</span>
           </a>
         </div>
       </div>
@@ -475,19 +578,29 @@
   <!-- Scripts -->
   <script type="module" src="./js/main.js"></script>
 
-  <!--Start of Tawk.to Script-->
-  <script type="text/javascript" defer>
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function () {
+  <!--
+    Tawk.to live chat — deferred until after the preloader finishes instead
+    of firing on page load. It's a third-party widget with zero role in
+    first paint or in anything visible during the 5s preloader window;
+    letting it fetch immediately just means it competes for bandwidth with
+    fonts/CSS/Three.js/main.js, which actually matter for perceived speed.
+    Gating it on the site's own 'preloaderComplete' event (the same signal
+    main.js uses to kick off its own deferred work) costs nothing and keeps
+    the network quiet during the critical window.
+  -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart;
+    document.addEventListener('preloaderComplete', function loadTawkWidget() {
+      document.removeEventListener('preloaderComplete', loadTawkWidget);
+      Tawk_LoadStart = new Date();
       var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
       s1.async = true;
       s1.src = 'https://embed.tawk.to/6a5d89d13e6eca1d4973ba1b/1jtum4nbo';
       s1.charset = 'UTF-8';
       s1.setAttribute('crossorigin', '*');
       s0.parentNode.insertBefore(s1, s0);
-    })();
+    });
   </script>
-  <!--End of Tawk.to Script-->
 
 </body>
 

@@ -1,4 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Comforter+Brush&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Dancing+Script:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Lilita+One&family=Lobster&family=Luxurious+Roman&family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Moon+Dance&family=Oswald:wght@200;300;400;500;600;700&family=Pacifico&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Sniglet&family=The+Nautigal:wght@400;700&family=Vujahday+Script&family=Waterfall&display=swap");
+/*
+ * FONT IMPORT — TRIMMED FOR PERFORMANCE
+ * ---------------------------------------------------------------------------
+ * Previously this @import pulled ~19 font families (Barlow, Comfortaa,
+ * Comforter Brush, Comic Neue, Dancing Script, JetBrains Mono, Lilita One,
+ * Lobster, Luxurious Roman, Montserrat, Montserrat Alternates, Moon Dance,
+ * Oswald, Pacifico, Poppins, Roboto, Sniglet, The Nautigal, Vujahday Script,
+ * Waterfall) with multiple weights each. Auditing every CSS rule and every
+ * inline style in the codebase, only FOUR of those families are actually
+ * referenced anywhere: Lilita One (--font-display), Sniglet (--font-body),
+ * Pacifico (--font-accent), and JetBrains Mono (--font-jetbrains-mono).
+ *
+ * The other ~15 families were pure dead weight — every one of them was a
+ * render-blocking network request + parse cost for zero visual payoff. This
+ * is very likely the single largest performance regression in the entire
+ * codebase; trimming it should meaningfully cut Largest Contentful Paint and
+ * eliminate a stack of invisible CSSOM-blocking requests.
+ *
+ * If `fonts/fonts.css` still exists in the repo root, delete it — it's an
+ * orphaned file from early design exploration and is not linked from
+ * index.html anywhere. Same goes for the top-level `VanillaTilt.js` copy and
+ * `js/vanilla-tilt.js`: the site loads Vanilla-Tilt from a CDN in index.html
+ * (with `defer`), so both local copies are dead files, never fetched, safe
+ * to delete for repo hygiene.
+ */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Lilita+One&family=Pacifico&family=Sniglet&display=swap");
 
 *,
 *::before,
@@ -251,6 +276,20 @@ section {
   width: 0%;
   background: #00ff0a;
   animation: progress 5s linear forwards;
+}
+
+/* NOTE: was var(--font-mono) inline in index.html, a token that was never
+   defined anywhere in variables.css — silently fell back to the body font.
+   Moved here (presentation belongs in CSS, not inline attributes) and fixed
+   to the real token so the preloader percentage renders in the intended
+   monospace face. */
+#progress-text {
+  font-family: var(--font-jetbrains-mono);
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: center;
 }
 
 @keyframes morph {

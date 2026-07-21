@@ -1,0 +1,374 @@
+/* =============================================================================
+  ANIMATIONS.CSS — Non-critical decorative layer
+  =============================================================================
+  Everything in this file is PURELY decorative (aria-hidden, pointer-events:
+  none, zero effect on layout or content). Hero (Three.js canvas) and About
+  (code-glyph float) are NOT here — they're load-bearing / already tuned and
+  live in sections.css so they render with the critical path.
+
+  This file is loaded via a preload+swap pattern in index.html:
+    <link rel="preload" href="css/animations.css" as="style" onload="this.rel='stylesheet'">
+  ...which means it never blocks first paint. The trade-off: for a brief
+  window after first paint, these elements are invisible. That's intentional
+  and handled by a tiny guard rule in sections.css:
+    .decor-layer { opacity: 0; }
+  (opacity composites down the whole subtree regardless of any opacity a
+  descendant sets on itself, so one rule on the wrapper is enough) — so
+  there is zero flash of unstyled/unpositioned decoration. Elements simply
+  fade into existence once this stylesheet arrives, which for decorative
+  chrome is a perfectly fine trade against not blocking render for it.
+
+  All motion respects prefers-reduced-motion (see base.css's global
+  `*` rule for CSS animations, plus the explicit `display:none` block near
+  the bottom of this file for the one bit of SVG SMIL animation that the
+  global CSS rule can't reach).
+
+  All decorative layers are hidden below 992px — same breakpoint pattern
+  hero-bg.js already uses to skip Three.js on mobile. Small viewports have
+  no real gutter/whitespace for this content to live in anyway, and it's a
+  free paint-cost saving on the devices that need it most.
+============================================================================= */
+
+.decor-layer {
+  opacity: 1;
+  /* overrides the sections.css guard now that this file has loaded */
+}
+
+@media (max-width: 992px) {
+  .decor-layer {
+    display: none;
+  }
+}
+
+/* -----------------------------------------------------------------------
+  SERVICES — corner-anchored SVG blobs, real path-morph via SMIL <animate>
+  (not a border-radius trick). Sits in the wrapper's own negative-space
+  corners, clipped by the wrapper's existing overflow:hidden, so it reads
+  as ambient light bleeding in from outside the card stack rather than
+  something fighting the cards for attention.
+----------------------------------------------------------------------- */
+.services-decor {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.service-blob {
+  position: absolute;
+  filter: blur(30px);
+}
+
+.service-blob--a {
+  top: -110px;
+  left: -120px;
+  width: 380px;
+  height: 380px;
+  opacity: 0.16;
+}
+
+.service-blob--b {
+  bottom: -130px;
+  right: -110px;
+  width: 320px;
+  height: 320px;
+  opacity: 0.13;
+}
+
+.grad-stop-primary {
+  stop-color: var(--color-primary);
+}
+
+.grad-stop-secondary {
+  stop-color: var(--color-secondary);
+}
+
+.services-track {
+  /* Explicit stacking guard: without this, an auto/0 z-index positioned
+    element (.services-track) painting after .services-decor in DOM order
+    happens to work today, but relying on paint-order tie-breaking instead
+    of an explicit value is fragile the moment someone reorders markup. */
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-blob {
+    display: none;
+  }
+}
+
+/* -----------------------------------------------------------------------
+  PORTFOLIO — two pairs of bouncing balls in the section's left/right
+  gutters (outside the 1200px content container, inside the section's
+  own boundary). CSS-only fake gravity: no physics JS, per the project's
+  existing "hand-rolled over dependency" philosophy. Each pair is exactly
+  out of phase via a negative animation-delay of half the duration, so
+  when one ball is at the floor the other is at the ceiling.
+----------------------------------------------------------------------- */
+.portfolio-decor {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.p-ball {
+  position: absolute;
+  border-radius: 50%;
+  animation-name: ballBounce;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.p-ball--primary {
+  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.55), rgba(var(--color-primary-rgb), 0.9) 60%);
+  box-shadow: 0 8px 18px rgba(var(--color-primary-rgb), 0.35);
+}
+
+.p-ball--secondary {
+  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.5), rgba(var(--color-secondary-rgb), 0.9) 60%);
+  box-shadow: 0 8px 18px rgba(var(--color-secondary-rgb), 0.35);
+}
+
+.p-ball--1 {
+  left: 4%;
+  width: 22px;
+  height: 22px;
+  animation-duration: 4.2s;
+  animation-delay: 0s;
+}
+
+.p-ball--2 {
+  left: 9%;
+  width: 14px;
+  height: 14px;
+  animation-duration: 4.2s;
+  animation-delay: -2.1s;
+}
+
+/* exactly out of phase with #1 */
+.p-ball--3 {
+  right: 4%;
+  width: 20px;
+  height: 20px;
+  animation-duration: 5s;
+  animation-delay: -1.2s;
+}
+
+.p-ball--4 {
+  right: 9%;
+  width: 13px;
+  height: 13px;
+  animation-duration: 5s;
+  animation-delay: -3.7s;
+}
+
+/* exactly out of phase with #3 */
+
+@keyframes ballBounce {
+  0% {
+    top: 6%;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.9, 0.55);
+  }
+
+  48% {
+    top: 90%;
+    animation-timing-function: cubic-bezier(0.1, 0.5, 0.55, 1);
+  }
+
+  50% {
+    top: 91%;
+  }
+
+  52% {
+    top: 90%;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.9, 0.55);
+  }
+
+  100% {
+    top: 6%;
+  }
+}
+
+/* -----------------------------------------------------------------------
+  EXPERIENCE — rising glass bubbles in the gutters, styled to match the
+  site's own .glass language (translucent fill + light top rim) rather
+  than looking like a foreign decorative element. Fades in/out at the
+  top and bottom of the loop so the reset-to-bottom is invisible instead
+  of an abrupt teleport-and-pop.
+----------------------------------------------------------------------- */
+.experience-decor {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.exp-bubble {
+  position: absolute;
+  bottom: -60px;
+  border-radius: 50%;
+  border: 1px solid var(--border-glass);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  animation-name: bubbleRise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.exp-bubble--primary {
+  background: rgba(var(--color-primary-rgb), 0.16);
+}
+
+.exp-bubble--secondary {
+  background: rgba(var(--color-secondary-rgb), 0.16);
+}
+
+.exp-bubble--1 {
+  left: 3%;
+  width: 26px;
+  height: 26px;
+  animation-duration: 11s;
+  animation-delay: 0s;
+}
+
+.exp-bubble--2 {
+  left: 8%;
+  width: 16px;
+  height: 16px;
+  animation-duration: 14s;
+  animation-delay: -6s;
+}
+
+.exp-bubble--3 {
+  left: 5.5%;
+  width: 20px;
+  height: 20px;
+  animation-duration: 9s;
+  animation-delay: -3s;
+}
+
+.exp-bubble--4 {
+  right: 3%;
+  width: 24px;
+  height: 24px;
+  animation-duration: 12.5s;
+  animation-delay: -4s;
+}
+
+.exp-bubble--5 {
+  right: 8%;
+  width: 15px;
+  height: 15px;
+  animation-duration: 10s;
+  animation-delay: -7s;
+}
+
+.exp-bubble--6 {
+  right: 5.5%;
+  width: 19px;
+  height: 19px;
+  animation-duration: 15s;
+  animation-delay: -1s;
+}
+
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(0) scale(0.85);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  82% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(-640px) scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* -----------------------------------------------------------------------
+  SOCIAL — a "snake" of light chasing the inside boundary of the section,
+  reusing the exact conic-gradient + inset-mask technique already
+  established by .logo-container in sections.css. Deliberately NOT a new
+  visual idiom — it's the site's own brand mark language, scaled up.
+----------------------------------------------------------------------- */
+.social-decor-frame {
+  position: absolute;
+  inset: clamp(16px, 4vw, 40px);
+  border-radius: 32px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.social-decor-frame::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(transparent 0deg,
+      transparent 250deg,
+      var(--color-secondary) 295deg,
+      var(--color-primary) 325deg,
+      transparent 360deg);
+  animation: snakeSpin 7s linear infinite;
+}
+
+.social-decor-frame::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: var(--bg-base);
+  border-radius: 28px;
+}
+
+@keyframes snakeSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* -----------------------------------------------------------------------
+  CONTACT & FOOTER — static gradient glow, zero motion by design. A
+  contact section's job is a clear call to action; ambient motion here
+  would compete with it rather than support it.
+----------------------------------------------------------------------- */
+#contact::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 720px;
+  height: 720px;
+  max-width: 140vw;
+  background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.14), transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  bottom: -15%;
+  right: 8%;
+  width: 520px;
+  height: 520px;
+  max-width: 120vw;
+  background: radial-gradient(circle, rgba(var(--color-secondary-rgb), 0.14), transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: 0;
+}

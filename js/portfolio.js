@@ -210,6 +210,25 @@ export function initPortfolio() {
     // Filter projects based on the selected category
     const filtered = currentFilter === "All" ? portfolioData : portfolioData.filter(p => p.category.includes(currentFilter));
 
+    // FIX: some filter buttons in index.html (React.js/Next.js, PHP/SQL) don't
+    // have any matching projects yet. Previously this silently rendered an
+    // empty grid with no explanation — indistinguishable from a broken page.
+    // Root-caused instead of patched around: this handles ANY filter with
+    // zero results, present or future, rather than requiring index.html's
+    // buttons to be kept in sync with portfolioData by hand.
+    if (filtered.length === 0) {
+      if (showMoreBtn) showMoreBtn.style.display = "none";
+      const emptyState = document.createElement("div");
+      emptyState.className = "portfolio-empty-state reveal active";
+      emptyState.innerHTML = `
+        <p style="text-align:center; grid-column: 1 / -1; padding: 2rem 0; color: var(--text-secondary);">
+          No projects in this category yet — check back soon, or explore another filter above.
+        </p>
+      `;
+      grid.appendChild(emptyState);
+      return;
+    }
+
     // Determine how many projects to show
     const limit = showingAll ? filtered.length : Math.min(filtered.length, 6);
 
@@ -233,7 +252,7 @@ export function initPortfolio() {
       card.setAttribute("data-tilt", "");
       card.innerHTML = `
         <div class="portfolio-thumb">
-          <img src="${proj.thumb}" alt="${proj.title}" loading="lazy">
+          <img src="${proj.thumb}" alt="${proj.title}" loading="lazy" decoding="async">
         </div>
         <div class="portfolio-info">
           <h3>${proj.title}</h3>

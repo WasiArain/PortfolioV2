@@ -208,12 +208,6 @@ nav a:hover::after {
   letter-spacing: 1px;
 }
 
-/*
-.hero-title {
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
-}
-*/
 .typewriter-container {
   color: var(--text-secondary);
 }
@@ -252,9 +246,6 @@ nav a:hover::after {
 .about-card,
 .skills-card {
   padding: 2.5rem;
-  /* 
-  style="flex: 1 1 300px; display: flex; flex-direction: column;"
-  */
 }
 
 .skill-group {
@@ -292,26 +283,124 @@ nav a:hover::after {
   transform: translateY(-2px);
 }
 
-/* Floating Glyphs */
+/*
+ * Floating Glyphs — refined
+ * ---------------------------------------------------------------------------
+ * Original bug: font-family referenced var(--font-mono), a token that was
+ * never declared in variables.css, so every glyph silently rendered in the
+ * inherited body font instead of monospace. Fixed below.
+ *
+ * Original animation: all 8 glyphs shared one `float` keyframe with identical
+ * timing, so they all swung in perfect lockstep — reads as robotic, not
+ * organic. Refactored into a single parameterized keyframe (`codeDrift`)
+ * driven by per-element custom properties (--fx / --fy / --frot / --fdur /
+ * --fdelay), with each glyph getting its own drift vector, duration, and a
+ * NEGATIVE animation-delay. Negative delays make the animation act as if it
+ * had already been running for that long — so on first paint, all 8 glyphs
+ * are already mid-flight at different points in their cycle instead of all
+ * starting from the same pose in sync. That one trick is what sells the
+ * "ambient, alive" feel instead of "8 clones swinging together."
+ */
 .code-glyph {
   position: absolute;
-  font-family: var(--font-mono);
+  font-family: var(--font-jetbrains-mono);
   color: var(--color-primary);
-  opacity: 0.85;
   font-size: 1rem;
   pointer-events: none;
-  animation: float 8s ease-in-out infinite alternate;
   z-index: 1;
+  will-change: transform, opacity;
+  --fx: 12px;
+  --fy: -14px;
+  --frot: 10deg;
+  animation: codeDrift var(--fdur, 9s) ease-in-out var(--fdelay, 0s) infinite alternate;
 }
 
-@keyframes float {
+@keyframes codeDrift {
   0% {
-    transform: translate(-10px, -10px) rotate(-30deg);
+    transform: translate(calc(var(--fx) * -1), calc(var(--fy) * -1)) rotate(calc(var(--frot) * -1)) scale(0.94);
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.95;
   }
 
   100% {
-    transform: translate(10px, -10px) rotate(30deg);
+    transform: translate(var(--fx), var(--fy)) rotate(var(--frot)) scale(1.05);
+    opacity: 0.55;
   }
+}
+
+.code-glyph:nth-of-type(1) {
+  --fx: 14px;
+  --fy: -18px;
+  --frot: 12deg;
+  --fdur: 9s;
+  --fdelay: 0s;
+}
+
+.code-glyph:nth-of-type(2) {
+  --fx: -16px;
+  --fy: -12px;
+  --frot: -14deg;
+  --fdur: 11s;
+  --fdelay: -2s;
+  filter: blur(0.4px);
+  font-size: 0.9rem;
+}
+
+.code-glyph:nth-of-type(3) {
+  --fx: 10px;
+  --fy: 16px;
+  --frot: 8deg;
+  --fdur: 8s;
+  --fdelay: -4s;
+}
+
+.code-glyph:nth-of-type(4) {
+  --fx: -12px;
+  --fy: 14px;
+  --frot: -10deg;
+  --fdur: 10s;
+  --fdelay: -1s;
+  filter: blur(0.4px);
+  font-size: 0.85rem;
+}
+
+.code-glyph:nth-of-type(5) {
+  --fx: 16px;
+  --fy: -10px;
+  --frot: 16deg;
+  --fdur: 9.5s;
+  --fdelay: -3s;
+}
+
+.code-glyph:nth-of-type(6) {
+  --fx: -14px;
+  --fy: -16px;
+  --frot: -12deg;
+  --fdur: 12s;
+  --fdelay: -5s;
+  filter: blur(0.5px);
+  font-size: 0.9rem;
+}
+
+.code-glyph:nth-of-type(7) {
+  --fx: 12px;
+  --fy: 12px;
+  --frot: 10deg;
+  --fdur: 8.5s;
+  --fdelay: -2.5s;
+}
+
+.code-glyph:nth-of-type(8) {
+  --fx: -10px;
+  --fy: 18px;
+  --frot: -8deg;
+  --fdur: 10.5s;
+  --fdelay: -4.5s;
+  filter: blur(0.4px);
+  font-size: 0.85rem;
 }
 
 /* Services Carousel */
@@ -414,30 +503,14 @@ nav a:hover::after {
   position: relative;
 }
 
-.portfolio-blob {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: var(--gradient-brand);
-  opacity: 0.25;
-  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-  animation: blobMorph 15s ease-in-out infinite alternate;
-  z-index: 0;
-  pointer-events: none;
-}
-
-@keyframes blobMorph {
-  0% {
-    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-  }
-
-  100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
-}
+/*
+ * NOTE: the old .portfolio-blob (CSS border-radius morph, centered behind
+ * the grid) has been removed entirely — it was invisible under the cards
+ * 99% of the time, which was the exact complaint that kicked off this pass.
+ * Its replacement (.portfolio-decor, corner/gutter bouncing balls) lives in
+ * the deferred animations.css and is positioned in the section's actual
+ * empty space instead of behind the content.
+ */
 
 .portfolio-filters {
   position: relative;
@@ -610,7 +683,6 @@ nav a:hover::after {
   visibility: hidden;
   transition: all 0.3s;
   overflow-y: auto;
-  /* -webkit-overflow-scrolling removed for broader compatibility */
   display: flex;
   justify-content: center;
 }
@@ -666,6 +738,17 @@ nav a:hover::after {
 }
 
 /* Experience & Testimonials */
+#experience .container {
+  /* Stacking guard: .experience-decor (bubbles, added below section content
+    in the DOM but position:absolute) needs an explicit lower z-index than
+    the real content. Without this, an unpositioned .container paints in
+    the "in-flow" stacking layer, which — perhaps counter-intuitively —
+    sits BEHIND any positioned sibling with z-index:auto, so the bubbles
+    would render on top of the testimonial/experience cards. */
+  position: relative;
+  z-index: 1;
+}
+
 .experience-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -729,6 +812,13 @@ nav a:hover::after {
 }
 
 /* Social */
+#social .container {
+  /* Same stacking guard as #experience — required so .social-decor-frame
+     (the rotating "snake" light) sits behind the capsule row, not over it. */
+  position: relative;
+  z-index: 1;
+}
+
 .social-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -776,7 +866,6 @@ nav a:hover::after {
 }
 
 .social-capsule:hover .social-circle {
-  /* background: transparent; */
   transform: scale(1.1);
 }
 
@@ -785,6 +874,13 @@ nav a:hover::after {
 }
 
 /* Contact */
+#contact .container {
+  /* Same stacking guard — keeps the contact cards above the static glow
+     added in animations.css. */
+  position: relative;
+  z-index: 1;
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -828,11 +924,19 @@ nav a:hover::after {
 
 /* Footer */
 footer {
+  position: relative;
+  overflow: hidden;
   padding: 4rem 0 2rem;
   margin-top: 4rem;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom: none;
+}
+
+footer .container {
+  /* Stacking guard for the same reason as the sections above. */
+  position: relative;
+  z-index: 1;
 }
 
 .footer-grid {
@@ -921,6 +1025,30 @@ footer {
 
 .reveal.active[data-reveal] {
   transform: translate(0) scale(1);
+}
+
+/*
+ * Decor-layer FOUC guard
+ * ---------------------------------------------------------------------------
+ * animations.css (Services blobs, Portfolio balls, Experience bubbles,
+ * Social snake frame) is loaded non-render-blocking via preload+swap, which
+ * means for a brief window after first paint it hasn't arrived yet. Without
+ * this rule, the plain <div>/<svg> decor markup would flash as unstyled,
+ * default-positioned elements before animations.css applies real positioning
+ * and opacity. This single rule keeps them invisible until that stylesheet
+ * loads and overrides it — zero flash, and it costs nothing on the critical
+ * path since it's a single trivial selector.
+ *
+ * Deliberately only targets the OUTER .decor-layer element, not `.decor-layer *`.
+ * opacity is not an inherited property, but it IS compositing: a parent at
+ * opacity:0 renders its entire subtree invisible regardless of any opacity
+ * a descendant sets on itself. Zeroing every descendant individually would
+ * mean animations.css would need to re-override each one by name (fragile,
+ * easy to miss one — e.g. an SVG <path> with no class of its own would stay
+ * invisible forever). One rule on the parent is enough and can't drift.
+ */
+.decor-layer {
+  opacity: 0;
 }
 
 @media (max-width: 992px) {
@@ -1062,11 +1190,6 @@ footer {
     padding: 1.5rem;
   }
 
-  .portfolio-blob {
-    width: 300px;
-    height: 300px;
-  }
-
   .social-circle {
     width: 35px;
     height: 35px;
@@ -1080,7 +1203,7 @@ footer {
   }
 }
 
--e .about-content {
+.about-content {
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
