@@ -1,3 +1,128 @@
+/*
+ * Preloader — rising bubbles
+ * ---------------------------------------------------------------------------
+ * Same visual language as the Experience section's glass bubbles, but this
+ * copy lives here in sections.css (not the deferred animations.css) so it's
+ * guaranteed to be present the instant the preloader itself paints — the
+ * preloader is the very first thing a visitor sees, so it can't be waiting
+ * on anything.
+ *
+ * #preloader is a flex container, and per the Flexbox spec flex items paint
+ * as if they were positioned with z-index:auto regardless of their actual
+ * `position` value — so .preloader-decor (placed first in the DOM, in
+ * index.html) naturally paints behind .loader-blob and the progress bar
+ * without needing z-index gymnastics. The explicit z-index below is just
+ * belt-and-suspenders so this doesn't silently break if someone reorders
+ * the markup later.
+ *
+ * bubbleRise is defined once here (rather than duplicated) because it's
+ * also used by the Experience section's bubbles in animations.css — CSS
+ * keyframes are global, so a rule in one stylesheet can reference a
+ * @keyframes block defined in another without any import machinery, as
+ * long as both are eventually part of the page's CSSOM, which they always
+ * are here (base/sections load unconditionally, animations.css always
+ * follows once its preload swap fires).
+ *
+ * #preloader's own overflow:hidden (needed so rising bubbles don't cause
+ * a stray scrollbar edge-case) lives with its main rule block in base.css,
+ * not forked into a second file just because this comment is here.
+ */
+.preloader-decor {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.preloader-bubble {
+  position: absolute;
+  bottom: -60px;
+  border-radius: 50%;
+  border: 1px solid var(--border-glass);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  animation-name: bubbleRise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.preloader-bubble--primary {
+  background: rgba(var(--color-primary-rgb), 0.3);
+}
+
+.preloader-bubble--secondary {
+  background: rgba(var(--color-secondary-rgb), 0.3);
+}
+
+.preloader-bubble--1 {
+  left: 8%;
+  width: 22px;
+  height: 22px;
+  animation-duration: 9s;
+  animation-delay: 0s;
+}
+
+.preloader-bubble--2 {
+  left: 20%;
+  width: 14px;
+  height: 14px;
+  animation-duration: 12s;
+  animation-delay: -5s;
+}
+
+.preloader-bubble--3 {
+  left: 35%;
+  width: 18px;
+  height: 18px;
+  animation-duration: 8s;
+  animation-delay: -2s;
+}
+
+.preloader-bubble--4 {
+  right: 35%;
+  width: 16px;
+  height: 16px;
+  animation-duration: 10s;
+  animation-delay: -6s;
+}
+
+.preloader-bubble--5 {
+  right: 20%;
+  width: 24px;
+  height: 24px;
+  animation-duration: 11s;
+  animation-delay: -3s;
+}
+
+.preloader-bubble--6 {
+  right: 8%;
+  width: 15px;
+  height: 15px;
+  animation-duration: 9.5s;
+  animation-delay: -7s;
+}
+
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(0) scale(0.85);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.95;
+  }
+
+  82% {
+    opacity: 0.78;
+  }
+
+  100% {
+    transform: translateY(-640px) scale(1.1);
+    opacity: 0;
+  }
+}
+
 /* Header & Nav */
 header {
   position: fixed;

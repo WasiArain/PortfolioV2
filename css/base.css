@@ -235,6 +235,8 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  /* contains the rising bubbles added in sections.css */
   transition:
     opacity 0.5s ease,
     visibility 0.5s ease;
@@ -252,6 +254,10 @@ section {
   justify-content: center;
   box-shadow: 0 0 30px rgba(var(--color-primary-rgb), 0.5);
   margin-bottom: 2rem;
+  /* Explicit stacking guard against .preloader-decor (z-index:0, added in
+    sections.css) — see that file's comment for why this is belt-and-
+    suspenders rather than strictly required. */
+  z-index: 1;
 }
 
 .loader-blob span {
@@ -264,6 +270,8 @@ section {
 }
 
 .progress-container {
+  position: relative;
+  z-index: 1;
   width: 200px;
   height: 4px;
   background: var(--border-glass);
@@ -279,11 +287,13 @@ section {
 }
 
 /* NOTE: was var(--font-mono) inline in index.html, a token that was never
-   defined anywhere in variables.css — silently fell back to the body font.
-   Moved here (presentation belongs in CSS, not inline attributes) and fixed
-   to the real token so the preloader percentage renders in the intended
-   monospace face. */
+  defined anywhere in variables.css — silently fell back to the body font.
+  Moved here (presentation belongs in CSS, not inline attributes) and fixed
+  to the real token so the preloader percentage renders in the intended
+  monospace face. */
 #progress-text {
+  position: relative;
+  z-index: 1;
   font-family: var(--font-jetbrains-mono);
   color: var(--text-primary);
   font-size: 1.2rem;

@@ -12,6 +12,7 @@
 
   <link rel="icon" href="https://wasiarain.github.io/PortfolioV2/assets/images/developer.png" type="image/png" sizes="16x16" />
   <link rel="apple-touch-icon" href="https://wasiarain.github.io/PortfolioV2/assets/images/developer.png" />
+
   <!-- Open Graph / SEO -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Wasi Ullah | Front-End Web Developer">
@@ -94,6 +95,17 @@
 
   <!-- Preloader -->
   <div id="preloader">
+    <!-- Decorative: same rising-bubble language as the Experience section,
+        styled directly in sections.css (not the deferred animations.css)
+        so it's guaranteed present the instant the preloader itself paints. -->
+    <div class="preloader-decor" aria-hidden="true">
+      <span class="preloader-bubble preloader-bubble--primary preloader-bubble--1"></span>
+      <span class="preloader-bubble preloader-bubble--secondary preloader-bubble--2"></span>
+      <span class="preloader-bubble preloader-bubble--primary preloader-bubble--3"></span>
+      <span class="preloader-bubble preloader-bubble--secondary preloader-bubble--4"></span>
+      <span class="preloader-bubble preloader-bubble--primary preloader-bubble--5"></span>
+      <span class="preloader-bubble preloader-bubble--secondary preloader-bubble--6"></span>
+    </div>
     <div class="loader-blob">
       <span>&lt;/WASI&gt;</span>
     </div>
@@ -258,9 +270,9 @@
 
       <div class="services-carousel-wrapper reveal">
         <!-- Decorative: slow SVG path-morph blobs (SMIL <animate>, not a
-             border-radius trick) anchored in the wrapper's own corners.
-             Styling/positioning lives in css/animations.css; the shape data
-             has to live here because SMIL animates the <path> markup itself. -->
+            border-radius trick) anchored in the wrapper's own corners.
+            Styling/positioning lives in css/animations.css; the shape data
+            has to live here because SMIL animates the <path> markup itself. -->
         <div class="services-decor decor-layer" aria-hidden="true">
           <svg class="service-blob service-blob--a" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -333,9 +345,9 @@
     <!-- Portfolio Section -->
     <section id="portfolio">
       <!-- Decorative: two out-of-phase pairs of bouncing balls in the
-           section's left/right gutters. Replaces the old .portfolio-blob,
-           which sat centered behind the grid and was invisible under the
-           content 99% of the time. -->
+          section's left/right gutters. Replaces the old .portfolio-blob,
+          which sat centered behind the grid and was invisible under the
+          content 99% of the time. -->
       <div class="portfolio-decor decor-layer" aria-hidden="true">
         <span class="p-ball p-ball--primary p-ball--1"></span>
         <span class="p-ball p-ball--primary p-ball--2"></span>
@@ -369,7 +381,7 @@
     <!-- Experience & Testimonials -->
     <section id="experience">
       <!-- Decorative: rising glass bubbles in the gutters, styled to match
-           the site's own .glass language rather than looking bolted-on. -->
+          the site's own .glass language rather than looking bolted-on. -->
       <div class="experience-decor decor-layer" aria-hidden="true">
         <span class="exp-bubble exp-bubble--primary exp-bubble--1"></span>
         <span class="exp-bubble exp-bubble--primary exp-bubble--2"></span>
@@ -442,8 +454,8 @@
     <!-- Social Section -->
     <section id="social">
       <!-- Decorative: a "snake" of light chasing the section's inner
-           boundary — reuses the exact conic-gradient technique already
-           established by the header logo (.logo-container), just scaled up. -->
+          boundary — reuses the exact conic-gradient technique already
+          established by the header logo (.logo-container), just scaled up. -->
       <div class="social-decor-frame decor-layer" aria-hidden="true"></div>
 
       <div class="container">

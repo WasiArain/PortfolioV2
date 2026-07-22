@@ -2,9 +2,10 @@
   ANIMATIONS.CSS — Non-critical decorative layer
   =============================================================================
   Everything in this file is PURELY decorative (aria-hidden, pointer-events:
-  none, zero effect on layout or content). Hero (Three.js canvas) and About
-  (code-glyph float) are NOT here — they're load-bearing / already tuned and
-  live in sections.css so they render with the critical path.
+  none, zero effect on layout or content). Hero (Three.js canvas), About
+  (code-glyph float), and the Preloader's rising bubbles are NOT here — all
+  three are load-bearing or need to render before this file has a chance to
+  arrive, so they live in sections.css on the critical path instead.
 
   This file is loaded via a preload+swap pattern in index.html:
     <link rel="preload" href="css/animations.css" as="style" onload="this.rel='stylesheet'">
@@ -20,24 +21,30 @@
 
   All motion respects prefers-reduced-motion (see base.css's global
   `*` rule for CSS animations, plus the explicit `display:none` block near
-  the bottom of this file for the one bit of SVG SMIL animation that the
-  global CSS rule can't reach).
+  the bottom of the Services block for the one bit of SVG SMIL animation
+  that the global CSS rule can't reach).
 
-  All decorative layers are hidden below 992px — same breakpoint pattern
-  hero-bg.js already uses to skip Three.js on mobile. Small viewports have
-  no real gutter/whitespace for this content to live in anyway, and it's a
-  free paint-cost saving on the devices that need it most.
+  RESPONSIVENESS: every layer here stays ON at every viewport width —
+  nothing is display:none'd below a breakpoint. Instead, each layer is
+  positioned and sized to remain correct at any width:
+    - Portfolio balls / Experience bubbles use small FIXED pixel offsets
+      (not percentages) that live inside the .container's own 2rem (32px)
+      padding gutter — the one strip of empty space that's genuinely
+      constant at every breakpoint, from a 320px phone up to a 4K monitor.
+      Percentages of the full section width looked fine on a wide desktop
+      but landed 80-160px deep — well inside the actual card content —
+      on anything narrower, which was a real bug, not just a mobile
+      cosmetic issue.
+    - Services blobs and their corner-bleed offset scale down together at
+      each breakpoint so the "amount of corner peeking through" stays
+      proportional instead of a fixed-size blob swallowing a phone screen.
+    - Social's frame and the Contact/footer glow were already responsive
+      (clamp() / aspect-ratio-driven) and needed no changes here.
 ============================================================================= */
 
 .decor-layer {
   opacity: 1;
   /* overrides the sections.css guard now that this file has loaded */
-}
-
-@media (max-width: 992px) {
-  .decor-layer {
-    display: none;
-  }
 }
 
 /* -----------------------------------------------------------------------
@@ -65,7 +72,8 @@
   left: -120px;
   width: 380px;
   height: 380px;
-  opacity: 0.16;
+  opacity: 0.32;
+  /* was 0.16 — too faint to register at a glance */
 }
 
 .service-blob--b {
@@ -73,7 +81,8 @@
   right: -110px;
   width: 320px;
   height: 320px;
-  opacity: 0.13;
+  opacity: 0.28;
+  /* was 0.13 */
 }
 
 .grad-stop-primary {
@@ -92,6 +101,57 @@
   z-index: 1;
 }
 
+/* Blob size + corner-bleed offset scale down together so smaller viewports
+  get a proportionally smaller "amount of glow peeking in," never a blob
+  that swallows the whole card. */
+@media (max-width: 992px) {
+  .service-blob--a {
+    top: -90px;
+    left: -95px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .service-blob--b {
+    bottom: -100px;
+    right: -90px;
+    width: 260px;
+    height: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-blob--a {
+    top: -70px;
+    left: -75px;
+    width: 240px;
+    height: 240px;
+  }
+
+  .service-blob--b {
+    bottom: -80px;
+    right: -70px;
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-blob--a {
+    top: -55px;
+    left: -58px;
+    width: 180px;
+    height: 180px;
+  }
+
+  .service-blob--b {
+    bottom: -60px;
+    right: -55px;
+    width: 160px;
+    height: 160px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .service-blob {
     display: none;
@@ -99,9 +159,9 @@
 }
 
 /* -----------------------------------------------------------------------
-  PORTFOLIO — two pairs of bouncing balls in the section's left/right
-  gutters (outside the 1200px content container, inside the section's
-  own boundary). CSS-only fake gravity: no physics JS, per the project's
+  PORTFOLIO — two pairs of bouncing balls living inside the .container's
+  own 2rem side padding (see the file-header note on why fixed px instead
+  of percentages). CSS-only fake gravity: no physics JS, per the project's
   existing "hand-rolled over dependency" philosophy. Each pair is exactly
   out of phase via a negative animation-delay of half the duration, so
   when one ball is at the floor the other is at the ceiling.
@@ -132,35 +192,38 @@
   box-shadow: 0 8px 18px rgba(var(--color-secondary-rgb), 0.35);
 }
 
+/* Fixed-px positions, all safely inside the 32px container gutter at every
+  breakpoint — no media query needed for placement, it's correct by
+  construction from a 320px phone up. */
 .p-ball--1 {
-  left: 4%;
-  width: 22px;
-  height: 22px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
   animation-duration: 4.2s;
   animation-delay: 0s;
 }
 
 .p-ball--2 {
-  left: 9%;
-  width: 14px;
-  height: 14px;
+  left: 20px;
+  width: 10px;
+  height: 10px;
   animation-duration: 4.2s;
   animation-delay: -2.1s;
 }
 
 /* exactly out of phase with #1 */
 .p-ball--3 {
-  right: 4%;
-  width: 20px;
-  height: 20px;
+  right: 3px;
+  width: 15px;
+  height: 15px;
   animation-duration: 5s;
   animation-delay: -1.2s;
 }
 
 .p-ball--4 {
-  right: 9%;
-  width: 13px;
-  height: 13px;
+  right: 20px;
+  width: 9px;
+  height: 9px;
   animation-duration: 5s;
   animation-delay: -3.7s;
 }
@@ -192,12 +255,70 @@
   }
 }
 
+/* A touch smaller on very narrow phones purely for visual proportion — the
+   gutter itself doesn't shrink (still 32px), this is polish, not a fix. */
+@media (max-width: 480px) {
+  .p-ball--1 {
+    width: 13px;
+    height: 13px;
+  }
+
+  .p-ball--2 {
+    width: 8px;
+    height: 8px;
+  }
+
+  .p-ball--3 {
+    width: 12px;
+    height: 12px;
+  }
+
+  .p-ball--4 {
+    width: 7px;
+    height: 7px;
+  }
+}
+
+/* Duration correction, not decoration: `top` in ballBounce is a percentage
+  of .portfolio-decor's own height, which equals the FULL #portfolio
+  section height. That section gets roughly 2.2x taller on mobile once
+  .portfolio-grid collapses from 3 columns to 1 (six stacked cards instead
+  of two rows of three) — same keyframe, same duration, ~2.2x more pixels
+  to cover, so without this the balls would visibly speed up on mobile
+  instead of feeling consistent with desktop.
+  Multiplying BOTH duration and delay by the same factor is what makes
+  this safe: the phase-opposition math (delay diff == duration / 2) is
+  preserved exactly for any scale factor, no re-deriving needed. */
+@media (max-width: 768px) {
+  .p-ball--1 {
+    animation-duration: 9.24s;
+    animation-delay: 0s;
+  }
+
+  .p-ball--2 {
+    animation-duration: 9.24s;
+    animation-delay: -4.62s;
+  }
+
+  .p-ball--3 {
+    animation-duration: 11s;
+    animation-delay: -2.64s;
+  }
+
+  .p-ball--4 {
+    animation-duration: 11s;
+    animation-delay: -8.14s;
+  }
+}
+
 /* -----------------------------------------------------------------------
-  EXPERIENCE — rising glass bubbles in the gutters, styled to match the
-  site's own .glass language (translucent fill + light top rim) rather
-  than looking like a foreign decorative element. Fades in/out at the
-  top and bottom of the loop so the reset-to-bottom is invisible instead
-  of an abrupt teleport-and-pop.
+  EXPERIENCE — rising glass bubbles, same gutter-anchoring logic as the
+  Portfolio balls above. Styled to match the site's own .glass language
+  (translucent fill + light top rim) rather than looking like a foreign
+  decorative element. Fades in/out at the top and bottom of the loop so
+  the reset-to-bottom is invisible instead of an abrupt teleport-and-pop.
+  The bubbleRise keyframe itself is defined once in sections.css (it's
+  needed early for the preloader's own bubbles), and referenced from here.
 ----------------------------------------------------------------------- */
 .experience-decor {
   position: absolute;
@@ -220,78 +341,98 @@
 }
 
 .exp-bubble--primary {
-  background: rgba(var(--color-primary-rgb), 0.16);
+  background: rgba(var(--color-primary-rgb), 0.3);
 }
 
+/* was 0.16 — too faint to register */
 .exp-bubble--secondary {
-  background: rgba(var(--color-secondary-rgb), 0.16);
+  background: rgba(var(--color-secondary-rgb), 0.3);
 }
 
 .exp-bubble--1 {
-  left: 3%;
-  width: 26px;
-  height: 26px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
   animation-duration: 11s;
   animation-delay: 0s;
 }
 
 .exp-bubble--2 {
-  left: 8%;
-  width: 16px;
-  height: 16px;
+  left: 14px;
+  width: 11px;
+  height: 11px;
   animation-duration: 14s;
   animation-delay: -6s;
 }
 
 .exp-bubble--3 {
-  left: 5.5%;
-  width: 20px;
-  height: 20px;
+  left: 23px;
+  width: 8px;
+  height: 8px;
   animation-duration: 9s;
   animation-delay: -3s;
 }
 
 .exp-bubble--4 {
-  right: 3%;
-  width: 24px;
-  height: 24px;
+  right: 2px;
+  width: 17px;
+  height: 17px;
   animation-duration: 12.5s;
   animation-delay: -4s;
 }
 
 .exp-bubble--5 {
-  right: 8%;
-  width: 15px;
-  height: 15px;
+  right: 14px;
+  width: 12px;
+  height: 12px;
   animation-duration: 10s;
   animation-delay: -7s;
 }
 
 .exp-bubble--6 {
-  right: 5.5%;
-  width: 19px;
-  height: 19px;
+  right: 23px;
+  width: 8px;
+  height: 8px;
   animation-duration: 15s;
   animation-delay: -1s;
 }
 
-@keyframes bubbleRise {
-  0% {
-    transform: translateY(0) scale(0.85);
-    opacity: 0;
+/* Same root cause and same fix as the Portfolio balls above: .experience-grid
+  collapses from 3 columns to 1 on mobile, making the section roughly 2x
+  taller, so the bubbles' percentage-based rise would otherwise cover that
+  distance in the same fixed duration and visibly speed up. Duration and
+  delay are scaled by the same factor (2x) so each bubble's relative
+  position in its own cycle — not just its raw timing — stays identical to
+  desktop; only the perceived speed is corrected. */
+@media (max-width: 768px) {
+  .exp-bubble--1 {
+    animation-duration: 22s;
+    animation-delay: 0s;
   }
 
-  12% {
-    opacity: 0.9;
+  .exp-bubble--2 {
+    animation-duration: 28s;
+    animation-delay: -12s;
   }
 
-  82% {
-    opacity: 0.7;
+  .exp-bubble--3 {
+    animation-duration: 18s;
+    animation-delay: -6s;
   }
 
-  100% {
-    transform: translateY(-640px) scale(1.1);
-    opacity: 0;
+  .exp-bubble--4 {
+    animation-duration: 25s;
+    animation-delay: -8s;
+  }
+
+  .exp-bubble--5 {
+    animation-duration: 20s;
+    animation-delay: -14s;
+  }
+
+  .exp-bubble--6 {
+    animation-duration: 30s;
+    animation-delay: -2s;
   }
 }
 
@@ -300,6 +441,7 @@
   reusing the exact conic-gradient + inset-mask technique already
   established by .logo-container in sections.css. Deliberately NOT a new
   visual idiom — it's the site's own brand mark language, scaled up.
+  Already fully responsive via clamp(); no changes needed here.
 ----------------------------------------------------------------------- */
 .social-decor-frame {
   position: absolute;
@@ -343,6 +485,13 @@
   CONTACT & FOOTER — static gradient glow, zero motion by design. A
   contact section's job is a clear call to action; ambient motion here
   would compete with it rather than support it.
+
+  Sizing switched from fixed width+height (with only a max-width safety
+  net) to aspect-ratio + clamp(). The old version had a real responsive
+  bug: max-width would shrink the box on narrow viewports but nothing
+  constrained height, so the "circle" quietly turned into a tall oval on
+  portrait phones. aspect-ratio: 1/1 plus a single clamped width fixes
+  that structurally instead of patching it with a max-height guess.
 ----------------------------------------------------------------------- */
 #contact::before {
   content: '';
@@ -350,11 +499,10 @@
   top: 15%;
   left: 50%;
   transform: translateX(-50%);
-  width: 720px;
-  height: 720px;
-  max-width: 140vw;
-  background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.14), transparent 70%);
-  filter: blur(20px);
+  width: clamp(360px, 60vw, 720px);
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.24), transparent 70%);
+  filter: blur(14px);
   pointer-events: none;
   z-index: 0;
 }
@@ -364,11 +512,10 @@ footer::before {
   position: absolute;
   bottom: -15%;
   right: 8%;
-  width: 520px;
-  height: 520px;
-  max-width: 120vw;
-  background: radial-gradient(circle, rgba(var(--color-secondary-rgb), 0.14), transparent 70%);
-  filter: blur(20px);
+  width: clamp(260px, 45vw, 520px);
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(circle, rgba(var(--color-secondary-rgb), 0.24), transparent 70%);
+  filter: blur(14px);
   pointer-events: none;
   z-index: 0;
 }
