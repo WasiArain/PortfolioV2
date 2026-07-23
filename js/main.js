@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const twEl = document.querySelector('.typewriter');
     if (twEl) {
       new TypeLoop(twEl, [
-        "Building Fast, Beautiful\nWeb Experiences",
-        "Crafting High-Converting\nE-Commerce Stores",
-        "Developing Scalable\nCMS Architecture"
+        "Crafting Pixel-Perfect\nUI & CSS Animations",
+        "Building High-Converting\nE-Commerce Stores",
+        "Designing Custom\nElementor Experiences"
       ]);
     }
 

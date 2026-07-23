@@ -28,7 +28,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-why-hire-us.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-faqs.png'
       ],
-      description: 'A bespoke Wikipedia page and profile creation service featuring a modern, user-friendly interface built with custom HTML, CSS, and vanilla JavaScript.'
+      description: 'A bespoke Wikipedia page and profile creation service, designed with a clean, modern interface and built entirely with custom HTML, CSS, and vanilla JavaScript — no page builder, no shortcuts.'
     },
     {
       id: 'proj-2',
@@ -42,7 +42,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/StepTech/StepTech-Services.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/StepTech/StepTech-Contact-Us.png'
       ],
-      description: 'A comprehensive corporate website designed and developed for StepTech Solutions utilizing WordPress for scalable content management.'
+      description: 'A comprehensive corporate website for StepTech Solutions, built on WordPress for scalable, easy-to-manage content — without sacrificing a polished, professional front-end.'
     },
     {
       id: 'proj-3',
@@ -58,7 +58,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Jaries_Pet_Shop/jariespetshop-home.jpeg',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Jaries_Pet_Shop/jariespetshop-logo.jpeg'
       ],
-      description: 'A vibrant and engaging e-commerce platform for Jaries Pet Shop, built with Wix to streamline the shopping experience.'
+      description: 'A vibrant, engaging Wix e-commerce platform for Jaries Pet Shop, designed to make browsing and buying feel effortless for pet owners.'
     },
     {
       id: 'proj-4',
@@ -75,7 +75,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Timeless_Media/TimelessMedia-home-category-wedding.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Timeless_Media/TimelessMedia-home-category-portrait.png'
       ],
-      description: 'A sleek, highly interactive portfolio and booking platform for Timeless Media, crafted entirely with custom HTML, CSS, and JavaScript.'
+      description: 'A sleek, highly interactive portfolio and booking platform for Timeless Media, hand-built with custom HTML, CSS, and JavaScript — including smooth category transitions and a booking flow designed to convert visitors into clients.'
     },
     {
       id: 'proj-5',
@@ -87,7 +87,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/KDar/KDar-Home.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/KDar/KDar-About-Us.png'
       ],
-      description: 'A fast and responsive corporate landing page for KDar, developed using a custom HTML/CSS/JS architecture for optimal performance.'
+      description: 'A fast, fully responsive corporate landing page for KDar, hand-coded with a custom HTML/CSS/JS architecture for maximum performance and zero bloat.'
     },
     {
       id: 'proj-6',
@@ -100,7 +100,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Muza_Capital/MuzaCapital-SignIn.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Muza_Capital/MuzaCapital-SignUp.png'
       ],
-      description: 'A secure, visually refined digital presence and client portal interface for Muza Capital, built with pure web technologies.'
+      description: 'A secure, visually refined digital presence and client portal for Muza Capital, built with pure web technologies to keep it fast, lightweight, and trustworthy.'
     },
     {
       id: 'proj-7',
@@ -116,7 +116,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/MonkiNYC/monkinyc-contact-us.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/MonkiNYC/monkinyc-book-appointment.png'
       ],
-      description: 'A sophisticated, high-end agency portfolio for Monki NYC, powered by a customized WordPress architecture.'
+      description: 'A sophisticated, high-end agency portfolio for Monki NYC, powered by a fully customized WordPress build tailored to their premium brand identity.'
     },
     {
       id: 'proj-8',
@@ -131,7 +131,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Checkout.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-About-Us.png'
       ],
-      description: 'A premium e-commerce storefront for CNB Leather Goods, seamlessly integrating shopping functionality within a tailored WordPress environment.'
+      description: 'A premium e-commerce storefront for CNB Leather Goods, with shopping functionality seamlessly woven into a custom-tailored WordPress environment.'
     },
     {
       id: 'proj-9',
@@ -144,7 +144,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Tenwickets/Tenwickets-Livestream.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Tenwickets/Tenwickets-News.png'
       ],
-      description: 'A dynamic sports news and live-streaming hub for Tenwickets, utilizing WordPress to handle frequent updates and rich media content.'
+      description: 'A dynamic sports news and live-streaming hub for Tenwickets, built on WordPress to handle frequent updates and rich media without breaking a sweat.'
     },
     {
       id: 'proj-10',
@@ -158,7 +158,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-contact-us.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-blog.png'
       ],
-      description: 'An elegant, conversion-optimized Shopify storefront for Masquerade Candle Shop, featuring custom theme modifications.'
+      description: "An elegant, conversion-optimized Shopify storefront for Masquerade Candle Shop, featuring custom theme modifications built to match their brand's aesthetic."
     },
     {
       id: 'proj-11',
@@ -170,7 +170,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Unique_Kennels/uniquekennels-org-landing-page.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Unique_Kennels/uniquekennels-org.png'
       ],
-      description: 'A dedicated Shopify e-commerce solution for Unique Kennels, designed to provide a seamless browsing and purchasing experience.'
+      description: 'A dedicated Shopify e-commerce build for Unique Kennels, designed for a seamless, frustration-free browsing and purchasing experience.'
     },
     {
       id: 'proj-12',
@@ -182,7 +182,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Black_Travel_Events/blacktravelevents-home-2.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Black_Travel_Events/blacktravelevents-home-3.png'
       ],
-      description: 'An engaging event directory and booking platform for Black Travel Events, built on a robust WordPress foundation.'
+      description: 'An engaging event directory and booking platform for Black Travel Events, built on a robust, fully customized WordPress foundation.'
     },
     {
       id: 'proj-13',
@@ -193,7 +193,7 @@ export function initPortfolio() {
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wasi_-_Developers_Portfolio_Old/Wasi-Portfolio-thumbnail.png',
         'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wasi_-_Developers_Portfolio_Old/Wasi-Portfolio.png'
       ],
-      description: 'My previous personal portfolio iteration, showcasing early design concepts and vanilla JavaScript animations.'
+      description: 'My previous portfolio iteration — a look back at earlier design concepts and vanilla JavaScript animation work, kept here to show the growth.'
     }
   ];
 

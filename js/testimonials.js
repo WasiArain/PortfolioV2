@@ -6,14 +6,14 @@ export function initTestimonials() {
   // Array containing testimonial data
   const testimonials = [
     {
-      name: "[Placeholder Client]",
+      name: "[Placeholder Client Name]",
       role: "CEO, E-Commerce Brand",
-      text: "<!-- PASTE REAL TESTIMONIAL HERE --> Wasi is an exceptional frontend developer. He transformed our Shopify store into a lightning-fast experience."
+      text: "<!-- PASTE REAL TESTIMONIAL HERE --> Wasi is an exceptional front-end developer — he transformed our Shopify store into a fast, beautifully animated experience our customers actually enjoy shopping on."
     },
     {
-      name: "[Placeholder Client 2]",
+      name: "[Placeholder Client Name 2]",
       role: "Agency Director",
-      text: "<!-- PASTE REAL TESTIMONIAL HERE --> A highly skilled professional. Delivered the WordPress custom theme ahead of schedule with perfect Core Web Vitals."
+      text: "<!-- PASTE REAL TESTIMONIAL HERE --> A true professional. He delivered our custom WordPress theme ahead of schedule, with pixel-perfect design and near-perfect Core Web Vitals scores."
     }
   ];
 
