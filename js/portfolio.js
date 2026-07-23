@@ -203,6 +203,13 @@ export function initPortfolio() {
   let activeProj = null;
   let activeSlideIndex = 0;
 
+  // Generates a unique, descriptive alt string per screenshot instead of
+  // reusing the same generic project title on every image — screen readers
+  // and image search both benefit from knowing *which* screenshot this is.
+  function getScreenshotAlt(proj, index) {
+    return `${proj.title} — ${proj.category.join(', ')} project, screenshot ${index + 1} of ${proj.screenshots.length}`;
+  }
+
   // Function to render the portfolio grid based on active filters
   function renderGrid() {
     grid.innerHTML = "";
@@ -252,7 +259,7 @@ export function initPortfolio() {
       card.setAttribute("data-tilt", "");
       card.innerHTML = `
         <div class="portfolio-thumb">
-          <img src="${proj.thumb}" alt="${proj.title}" loading="lazy" decoding="async">
+          <img src="${proj.thumb}" alt="${proj.title} — ${proj.category.join(', ')} website project by Wasi Ullah" loading="lazy" decoding="async">
         </div>
         <div class="portfolio-info">
           <h3>${proj.title}</h3>
@@ -311,7 +318,7 @@ export function initPortfolio() {
           <button id="t1-prev" style="pointer-events:auto; background:rgba(0,0,0,0.5); color:#fff; border:none; border-radius:50%; width:40px; height:40px; cursor:pointer; margin-left:10px;"><ion-icon name="chevron-back-outline"></ion-icon></button>
           <button id="t1-next" style="pointer-events:auto; background:rgba(0,0,0,0.5); color:#fff; border:none; border-radius:50%; width:40px; height:40px; cursor:pointer; margin-right:10px;"><ion-icon name="chevron-forward-outline"></ion-icon></button>
         </div>
-        <img id="tier1-img" src="${proj.screenshots[activeSlideIndex]}" class="active" alt="${proj.title}" style="cursor:zoom-in;">
+        <img id="tier1-img" src="${proj.screenshots[activeSlideIndex]}" class="active" alt="${getScreenshotAlt(proj, activeSlideIndex)}" style="cursor:zoom-in;">
       </div>
       <div class="carousel-bullets" id="t1-bullets" style="margin-top: -10px; margin-bottom: 20px;">
         ${proj.screenshots.map((s, i) => `<div class="carousel-bullet ${i === 0 ? 'active' : ''}" data-index="${i}"></div>`).join('')}
@@ -358,6 +365,7 @@ export function initPortfolio() {
       imgEl.style.opacity = 0;
       setTimeout(() => {
         imgEl.src = activeProj.screenshots[activeSlideIndex];
+        imgEl.alt = getScreenshotAlt(activeProj, activeSlideIndex);
         imgEl.style.opacity = 1;
       }, 200);
     }
@@ -372,6 +380,7 @@ export function initPortfolio() {
       fsImg.style.opacity = 0;
       setTimeout(() => {
         fsImg.src = activeProj.screenshots[activeSlideIndex];
+        fsImg.alt = getScreenshotAlt(activeProj, activeSlideIndex);
         fsImg.style.opacity = 1;
       }, 200);
     }
@@ -383,6 +392,7 @@ export function initPortfolio() {
     const fsImg = fsViewer.querySelector("img");
     fsImg.style.transition = "opacity 0.2s";
     fsImg.src = activeProj.screenshots[activeSlideIndex];
+    fsImg.alt = getScreenshotAlt(activeProj, activeSlideIndex);
     fsImg.style.opacity = 1;
     fsViewer.classList.add("active");
   }
