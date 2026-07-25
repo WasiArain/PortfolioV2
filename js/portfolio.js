@@ -377,11 +377,22 @@ export function initPortfolio() {
     // If fullscreen viewer is active, sync its image as well
     if (fsViewer && fsViewer.classList.contains('active')) {
       const fsImg = fsViewer.querySelector("img");
+      const fsContent = fsViewer.querySelector(".fullscreen-content");
       fsImg.style.opacity = 0;
       setTimeout(() => {
         fsImg.src = activeProj.screenshots[activeSlideIndex];
         fsImg.alt = getScreenshotAlt(activeProj, activeSlideIndex);
         fsImg.style.opacity = 1;
+        // Next/prev can land on an image with a very different aspect
+        // ratio (and therefore scrollable height), so scroll position and
+        // the hint's visibility both need re-evaluating, not just carried
+        // over from the previous slide.
+        if (fsContent) fsContent.scrollTop = 0;
+        if (fsImg.complete) {
+          updateFsScrollHint();
+        } else {
+          fsImg.addEventListener("load", updateFsScrollHint, { once: true });
+        }
       }, 200);
     }
   }
@@ -390,11 +401,42 @@ export function initPortfolio() {
   function openTier2Modal() {
     if (!fsViewer || !activeProj) return;
     const fsImg = fsViewer.querySelector("img");
+    const fsContent = fsViewer.querySelector(".fullscreen-content");
     fsImg.style.transition = "opacity 0.2s";
     fsImg.src = activeProj.screenshots[activeSlideIndex];
     fsImg.alt = getScreenshotAlt(activeProj, activeSlideIndex);
     fsImg.style.opacity = 1;
     fsViewer.classList.add("active");
+
+    // Reset to the top of the image on every open — otherwise a viewer left
+    // scrolled to the bottom from a previous image would open the next one
+    // already scrolled down, which reads as broken.
+    if (fsContent) fsContent.scrollTop = 0;
+
+    // scrollHeight is unreliable (often 0, or stale from the previous image)
+    // until the new image has actually decoded and laid out, so the hint's
+    // visibility is only (re)computed once `load` fires — or immediately if
+    // the browser already has it cached and `.complete` is true.
+    if (fsImg.complete) {
+      updateFsScrollHint();
+    } else {
+      fsImg.addEventListener("load", updateFsScrollHint, { once: true });
+    }
+  }
+
+  // Shows/hides the "keep scrolling" hint based on whether there's any
+  // image left below the current scroll position — the exact same
+  // "reached the end" math .scroll-up-btn uses, just measured against the
+  // bottom of .fullscreen-content instead of window.scrollY. A small 4px
+  // tolerance absorbs subpixel rounding right at the true bottom so the
+  // hint doesn't flicker on/off there.
+  function updateFsScrollHint() {
+    if (!fsViewer) return;
+    const content = fsViewer.querySelector(".fullscreen-content");
+    const hint = fsViewer.querySelector(".fs-scroll-hint");
+    if (!content || !hint) return;
+    const hasMoreToScroll = content.scrollHeight - content.scrollTop - content.clientHeight > 4;
+    hint.classList.toggle("hidden", !hasMoreToScroll);
   }
 
   // Handle closing of the primary modal via close button
@@ -422,10 +464,24 @@ export function initPortfolio() {
     const fsClose = fsViewer.querySelector(".fs-close");
     const fsPrev = fsViewer.querySelector(".fs-prev");
     const fsNext = fsViewer.querySelector(".fs-next");
+    const fsContent = fsViewer.querySelector(".fullscreen-content");
 
     if (fsClose) fsClose.addEventListener("click", () => fsViewer.classList.remove("active"));
     if (fsPrev) fsPrev.addEventListener("click", () => updateSlide(-1));
     if (fsNext) fsNext.addEventListener("click", () => updateSlide(1));
+
+    // The scroll-down hint listens on .fullscreen-content specifically —
+    // that's the element that actually scrolls now (see the CSS notes on
+    // why .fullscreen-viewer itself no longer does). Passive since this
+    // handler only reads scroll position, never blocks the scroll itself.
+    if (fsContent) {
+      fsContent.addEventListener("scroll", updateFsScrollHint, { passive: true });
+    }
+
+    // A viewport resize/orientation-change can change whether the image
+    // still overflows its container (e.g. rotating a phone from portrait
+    // to landscape), so the hint needs re-evaluating there too.
+    window.addEventListener("resize", updateFsScrollHint);
   }
 
   // Initial render of the grid on load

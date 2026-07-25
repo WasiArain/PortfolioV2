@@ -366,15 +366,25 @@
 
     <!-- Portfolio Section -->
     <section id="portfolio">
-      <!-- Decorative: two out-of-phase pairs of bouncing balls in the
-          section's left/right gutters. Replaces the old .portfolio-blob,
-          which sat centered behind the grid and was invisible under the
-          content 99% of the time. -->
+      <!-- Decorative: bubbles rising inward from both side walls toward the
+          center, fading out before they converge. Replaces the old
+          .portfolio-blob / bouncing-ball decor, which sat centered behind
+          the grid (invisible under the content) or read as too playful for
+          the site's premium tone. Reuses the same bubble visual language as
+          the Preloader and Experience section instead of a third idiom. -->
       <div class="portfolio-decor decor-layer" aria-hidden="true">
-        <span class="p-ball p-ball--primary p-ball--1"></span>
-        <span class="p-ball p-ball--primary p-ball--2"></span>
-        <span class="p-ball p-ball--secondary p-ball--3"></span>
-        <span class="p-ball p-ball--secondary p-ball--4"></span>
+        <span class="pf-bubble pf-bubble--left pf-bubble--primary pf-bubble--l1"></span>
+        <span class="pf-bubble pf-bubble--left pf-bubble--secondary pf-bubble--l2"></span>
+        <span class="pf-bubble pf-bubble--left pf-bubble--primary pf-bubble--l3"></span>
+        <span class="pf-bubble pf-bubble--left pf-bubble--secondary pf-bubble--l4"></span>
+        <span class="pf-bubble pf-bubble--left pf-bubble--primary pf-bubble--l5"></span>
+        <span class="pf-bubble pf-bubble--left pf-bubble--secondary pf-bubble--l6"></span>
+        <span class="pf-bubble pf-bubble--right pf-bubble--secondary pf-bubble--r1"></span>
+        <span class="pf-bubble pf-bubble--right pf-bubble--primary pf-bubble--r2"></span>
+        <span class="pf-bubble pf-bubble--right pf-bubble--secondary pf-bubble--r3"></span>
+        <span class="pf-bubble pf-bubble--right pf-bubble--primary pf-bubble--r4"></span>
+        <span class="pf-bubble pf-bubble--right pf-bubble--secondary pf-bubble--r5"></span>
+        <span class="pf-bubble pf-bubble--right pf-bubble--primary pf-bubble--r6"></span>
       </div>
 
       <div class="container">
@@ -608,6 +618,15 @@
     <button type="button" class="fs-next" aria-label="Next image"><ion-icon name="chevron-forward-outline"></ion-icon></button>
     <div class="fullscreen-content">
       <img src="" alt="Full Screen View">
+    </div>
+    <!-- Non-interactive nudge telling the visitor the image scrolls — see
+        js/portfolio.js for the logic that shows/hides this based on scroll
+        position (same "reached the end" check as .scroll-up-btn, just
+        measured against the bottom of .fullscreen-content instead of the
+        top of the page). pointer-events:none in CSS keeps it from ever
+        intercepting a click meant for the image or buttons around it. -->
+    <div class="fs-scroll-hint" aria-hidden="true">
+      <ion-icon name="chevron-down-outline"></ion-icon>
     </div>
   </div>
 

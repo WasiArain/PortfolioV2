@@ -27,14 +27,12 @@
   RESPONSIVENESS: every layer here stays ON at every viewport width —
   nothing is display:none'd below a breakpoint. Instead, each layer is
   positioned and sized to remain correct at any width:
-    - Portfolio balls / Experience bubbles use small FIXED pixel offsets
-      (not percentages) that live inside the .container's own 2rem (32px)
-      padding gutter — the one strip of empty space that's genuinely
-      constant at every breakpoint, from a 320px phone up to a 4K monitor.
-      Percentages of the full section width looked fine on a wide desktop
-      but landed 80-160px deep — well inside the actual card content —
-      on anything narrower, which was a real bug, not just a mobile
-      cosmetic issue.
+    - Portfolio bubbles rise horizontally from each side wall using %-based
+      `left`/`right` keyframes, and Experience bubbles rise vertically using
+      %-based `left`/`right` starting positions across the FULL width of
+      their section (not just the gutters) — both percentages resolve
+      against their own container's box, so they scale automatically at
+      every breakpoint with zero hand-maintained per-breakpoint offsets.
     - Services blobs and their corner-bleed offset scale down together at
       each breakpoint so the "amount of corner peeking through" stays
       proportional instead of a fixed-size blob swallowing a phone screen.
@@ -159,12 +157,32 @@
 }
 
 /* -----------------------------------------------------------------------
-  PORTFOLIO — two pairs of bouncing balls living inside the .container's
-  own 2rem side padding (see the file-header note on why fixed px instead
-  of percentages). CSS-only fake gravity: no physics JS, per the project's
-  existing "hand-rolled over dependency" philosophy. Each pair is exactly
-  out of phase via a negative animation-delay of half the duration, so
-  when one ball is at the floor the other is at the ceiling.
+  PORTFOLIO — bubbles rising inward from BOTH side walls, converging toward
+  the section's center and fading out before they get there. Replaces the
+  old bouncing-ball pair, which read as playful/"cute" rather than premium
+  and didn't fit the rest of the site's decorative language. Bubbles are
+  already established elsewhere (preloader, Experience below) — reusing
+  that same visual family here keeps the site consistent instead of
+  introducing a third decorative idiom.
+
+  Mechanically this is the exact same rising-bubble idea used by the
+  Preloader and Experience section, just rotated 90°: instead of animating
+  `bottom` → up (a vertical rise), each bubble animates its `left` (or
+  `right`) offset outward from its wall toward the center (a horizontal
+  rise).
+
+  Deliberate choice: travel distance is expressed in %, not px. `left`/
+  `right` percentages resolve against the CONTAINING BLOCK'S width
+  (.portfolio-decor, `inset:0` on the full section) — so as the section
+  narrows at each breakpoint, every bubble's travel distance shrinks by
+  the exact same proportion automatically. The vertical bubbles elsewhere
+  in this file use a fixed-px `transform: translateY()` and therefore need
+  hand-maintained duration corrections at the 768px breakpoint (see the
+  Experience block below) to avoid visibly speeding up when the section's
+  HEIGHT changes with the grid's column count. Using % for a HORIZONTAL
+  rise sidesteps that entire class of bug — .portfolio-grid's column count
+  doesn't change the section's WIDTH, only its height, so no breakpoint
+  hack is needed here at all.
 ----------------------------------------------------------------------- */
 .portfolio-decor {
   position: absolute;
@@ -174,151 +192,239 @@
   z-index: 0;
 }
 
-.p-ball {
+.pf-bubble {
   position: absolute;
   border-radius: 50%;
-  animation-name: ballBounce;
+  border: 1px solid var(--border-glass);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
-.p-ball--primary {
-  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.55), rgba(var(--color-primary-rgb), 0.9) 60%);
-  box-shadow: 0 8px 18px rgba(var(--color-primary-rgb), 0.35);
+.pf-bubble--primary {
+  background: rgba(var(--color-primary-rgb), 0.3);
 }
 
-.p-ball--secondary {
-  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.5), rgba(var(--color-secondary-rgb), 0.9) 60%);
-  box-shadow: 0 8px 18px rgba(var(--color-secondary-rgb), 0.35);
+.pf-bubble--secondary {
+  background: rgba(var(--color-secondary-rgb), 0.3);
 }
 
-/* Fixed-px positions, all safely inside the 32px container gutter at every
-  breakpoint — no media query needed for placement, it's correct by
-  construction from a 320px phone up. */
-.p-ball--1 {
-  left: 3px;
-  width: 16px;
-  height: 16px;
-  animation-duration: 4.2s;
+/* LEFT WALL — starts just off-screen past the left edge, animates its
+  `left` offset inward. */
+.pf-bubble--left {
+  left: -18px;
+  animation-name: pfBubbleFromLeft;
+}
+
+/* RIGHT WALL — mirror image, animates `right` inward from the right edge. */
+.pf-bubble--right {
+  right: -18px;
+  animation-name: pfBubbleFromRight;
+}
+
+/* 6 bubbles per wall (12 total — "medium" density, matching the site's
+  established preloader/experience bubble count of 6). Left-wall bubbles
+  sit at 4/20/36/52/68/84% and right-wall at 12/28/44/60/76/92%, so the two
+  sets interleave at ~8% spacing across the full 0–100% height — every band
+  of the section has a bubble passing through it somewhere in the loop,
+  with no dead vertical zones, while staggered negative delays keep them
+  from ever firing in lockstep. */
+.pf-bubble--l1 {
+  top: 4%;
+  width: 14px;
+  height: 14px;
+  animation-duration: 10s;
   animation-delay: 0s;
 }
 
-.p-ball--2 {
-  left: 20px;
-  width: 10px;
-  height: 10px;
-  animation-duration: 4.2s;
-  animation-delay: -2.1s;
-}
-
-/* exactly out of phase with #1 */
-.p-ball--3 {
-  right: 3px;
-  width: 15px;
-  height: 15px;
-  animation-duration: 5s;
-  animation-delay: -1.2s;
-}
-
-.p-ball--4 {
-  right: 20px;
+.pf-bubble--l2 {
+  top: 20%;
   width: 9px;
   height: 9px;
-  animation-duration: 5s;
-  animation-delay: -3.7s;
+  animation-duration: 8.5s;
+  animation-delay: -5s;
 }
 
-/* exactly out of phase with #3 */
+.pf-bubble--l3 {
+  top: 36%;
+  width: 18px;
+  height: 18px;
+  animation-duration: 12s;
+  animation-delay: -3s;
+}
 
-@keyframes ballBounce {
+.pf-bubble--l4 {
+  top: 52%;
+  width: 11px;
+  height: 11px;
+  animation-duration: 9.5s;
+  animation-delay: -7s;
+}
+
+.pf-bubble--l5 {
+  top: 68%;
+  width: 16px;
+  height: 16px;
+  animation-duration: 11s;
+  animation-delay: -1.5s;
+}
+
+.pf-bubble--l6 {
+  top: 84%;
+  width: 10px;
+  height: 10px;
+  animation-duration: 13s;
+  animation-delay: -9s;
+}
+
+.pf-bubble--r1 {
+  top: 12%;
+  width: 12px;
+  height: 12px;
+  animation-duration: 11.5s;
+  animation-delay: -6s;
+}
+
+.pf-bubble--r2 {
+  top: 28%;
+  width: 17px;
+  height: 17px;
+  animation-duration: 9s;
+  animation-delay: -2s;
+}
+
+.pf-bubble--r3 {
+  top: 44%;
+  width: 10px;
+  height: 10px;
+  animation-duration: 13.5s;
+  animation-delay: -8.5s;
+}
+
+.pf-bubble--r4 {
+  top: 60%;
+  width: 15px;
+  height: 15px;
+  animation-duration: 10s;
+  animation-delay: -4s;
+}
+
+.pf-bubble--r5 {
+  top: 76%;
+  width: 9px;
+  height: 9px;
+  animation-duration: 8s;
+  animation-delay: -0.5s;
+}
+
+.pf-bubble--r6 {
+  top: 92%;
+  width: 19px;
+  height: 19px;
+  animation-duration: 12.5s;
+  animation-delay: -10s;
+}
+
+/* Each bubble travels 44% of the section's own width inward from its wall
+  — close enough to read as "converging on the center" without the two
+  streams ever actually meeting past the midpoint. Per spec, opacity fades
+  CONTINUOUSLY across the whole trip rather than staying bright until a
+  sudden drop near the end: faintest right as it leaves the wall, peaks
+  briefly mid-journey, then eases back down to nothing well before it
+  would reach center. */
+@keyframes pfBubbleFromLeft {
   0% {
-    top: 6%;
-    animation-timing-function: cubic-bezier(0.45, 0, 0.9, 0.55);
+    left: -18px;
+    opacity: 0;
+    transform: scale(0.85);
   }
 
-  48% {
-    top: 90%;
-    animation-timing-function: cubic-bezier(0.1, 0.5, 0.55, 1);
+  10% {
+    opacity: 0.85;
   }
 
-  50% {
-    top: 91%;
-  }
-
-  52% {
-    top: 90%;
-    animation-timing-function: cubic-bezier(0.45, 0, 0.9, 0.55);
+  45% {
+    opacity: 0.6;
   }
 
   100% {
-    top: 6%;
+    left: 44%;
+    opacity: 0;
+    transform: scale(1.05);
   }
 }
 
-/* A touch smaller on very narrow phones purely for visual proportion — the
-   gutter itself doesn't shrink (still 32px), this is polish, not a fix. */
+@keyframes pfBubbleFromRight {
+  0% {
+    right: -18px;
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  10% {
+    opacity: 0.85;
+  }
+
+  45% {
+    opacity: 0.6;
+  }
+
+  100% {
+    right: 44%;
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-bubble {
+    display: none;
+  }
+}
+
+/* A touch smaller on very narrow phones purely for visual proportion —
+  travel distance is already %-based so it scales correctly on its own;
+  this is polish, not a fix (same rationale as the Services blobs above). */
 @media (max-width: 480px) {
-  .p-ball--1 {
-    width: 13px;
-    height: 13px;
+
+  .pf-bubble--l1,
+  .pf-bubble--l3,
+  .pf-bubble--l5,
+  .pf-bubble--r2,
+  .pf-bubble--r4,
+  .pf-bubble--r6 {
+    width: 11px;
+    height: 11px;
   }
 
-  .p-ball--2 {
-    width: 8px;
-    height: 8px;
-  }
-
-  .p-ball--3 {
-    width: 12px;
-    height: 12px;
-  }
-
-  .p-ball--4 {
+  .pf-bubble--l2,
+  .pf-bubble--l4,
+  .pf-bubble--l6,
+  .pf-bubble--r1,
+  .pf-bubble--r3,
+  .pf-bubble--r5 {
     width: 7px;
     height: 7px;
   }
 }
 
-/* Duration correction, not decoration: `top` in ballBounce is a percentage
-  of .portfolio-decor's own height, which equals the FULL #portfolio
-  section height. That section gets roughly 2.2x taller on mobile once
-  .portfolio-grid collapses from 3 columns to 1 (six stacked cards instead
-  of two rows of three) — same keyframe, same duration, ~2.2x more pixels
-  to cover, so without this the balls would visibly speed up on mobile
-  instead of feeling consistent with desktop.
-  Multiplying BOTH duration and delay by the same factor is what makes
-  this safe: the phase-opposition math (delay diff == duration / 2) is
-  preserved exactly for any scale factor, no re-deriving needed. */
-@media (max-width: 768px) {
-  .p-ball--1 {
-    animation-duration: 9.24s;
-    animation-delay: 0s;
-  }
-
-  .p-ball--2 {
-    animation-duration: 9.24s;
-    animation-delay: -4.62s;
-  }
-
-  .p-ball--3 {
-    animation-duration: 11s;
-    animation-delay: -2.64s;
-  }
-
-  .p-ball--4 {
-    animation-duration: 11s;
-    animation-delay: -8.14s;
-  }
-}
-
 /* -----------------------------------------------------------------------
-  EXPERIENCE — rising glass bubbles, same gutter-anchoring logic as the
-  Portfolio balls above. Styled to match the site's own .glass language
-  (translucent fill + light top rim) rather than looking like a foreign
-  decorative element. Fades in/out at the top and bottom of the loop so
-  the reset-to-bottom is invisible instead of an abrupt teleport-and-pop.
-  The bubbleRise keyframe itself is defined once in sections.css (it's
-  needed early for the preloader's own bubbles), and referenced from here.
+  EXPERIENCE — rising glass bubbles spanning the FULL WIDTH of the section
+  base (left: 8/20/35%, right: 35/20/8% — the exact same spread as the
+  Preloader's own bubbles in sections.css), not just the side gutters.
+  Previously these sat at fixed px offsets tucked into the left/right
+  edges only, leaving the whole center of the section's base with no
+  bubbles rising through it at all — a visible dead zone. Switching the
+  anchor points from small fixed px to %, spread across the full width,
+  closes that gap while keeping the same "medium" 6-bubble count already
+  established as this site's standard (see Preloader).
+  Styled to match the site's own .glass language (translucent fill + light
+  top rim) rather than looking like a foreign decorative element. Fades
+  in/out at the top and bottom of the loop so the reset-to-bottom is
+  invisible instead of an abrupt teleport-and-pop. The bubbleRise keyframe
+  itself is defined once in sections.css (it's needed early for the
+  preloader's own bubbles), and referenced from here.
 ----------------------------------------------------------------------- */
 .experience-decor {
   position: absolute;
@@ -349,8 +455,11 @@
   background: rgba(var(--color-secondary-rgb), 0.3);
 }
 
+/* %-based anchors resolve against .experience-decor's own width (the full
+  section), so unlike the old px gutter offsets, these scale correctly and
+  stay evenly spread across the base at every viewport width automatically. */
 .exp-bubble--1 {
-  left: 2px;
+  left: 8%;
   width: 18px;
   height: 18px;
   animation-duration: 11s;
@@ -358,7 +467,7 @@
 }
 
 .exp-bubble--2 {
-  left: 14px;
+  left: 20%;
   width: 11px;
   height: 11px;
   animation-duration: 14s;
@@ -366,7 +475,7 @@
 }
 
 .exp-bubble--3 {
-  left: 23px;
+  left: 35%;
   width: 8px;
   height: 8px;
   animation-duration: 9s;
@@ -374,7 +483,7 @@
 }
 
 .exp-bubble--4 {
-  right: 2px;
+  right: 35%;
   width: 17px;
   height: 17px;
   animation-duration: 12.5s;
@@ -382,7 +491,7 @@
 }
 
 .exp-bubble--5 {
-  right: 14px;
+  right: 20%;
   width: 12px;
   height: 12px;
   animation-duration: 10s;
@@ -390,7 +499,7 @@
 }
 
 .exp-bubble--6 {
-  right: 23px;
+  right: 8%;
   width: 8px;
   height: 8px;
   animation-duration: 15s;
@@ -482,40 +591,97 @@
 }
 
 /* -----------------------------------------------------------------------
-  CONTACT & FOOTER — static gradient glow, zero motion by design. A
-  contact section's job is a clear call to action; ambient motion here
-  would compete with it rather than support it.
+  CONTACT & FOOTER — pulsing gradient glow (breathing opacity + scale),
+  now actually animated per design update (previously static/zero-motion
+  by design — that call has been revisited: a slow, subtle pulse reads as
+  "alive" without competing with the CTA the way a fast or large-amplitude
+  animation would).
 
-  Sizing switched from fixed width+height (with only a max-width safety
-  net) to aspect-ratio + clamp(). The old version had a real responsive
-  bug: max-width would shrink the box on narrow viewports but nothing
-  constrained height, so the "circle" quietly turned into a tall oval on
-  portrait phones. aspect-ratio: 1/1 plus a single clamped width fixes
-  that structurally instead of patching it with a max-height guess.
+  Positioning fixes:
+  - Contact's glow was only centered on the X axis (`left:50%` + a matching
+    translateX) with a `top:15%` guess for vertical placement — it visibly
+    drifted off-center vertically depending on how tall the section's
+    content was. Now centered on BOTH axes with `top:50%; left:50%;
+    transform: translate(-50%,-50%)`, so it's always dead-center in the
+    section regardless of content height or viewport size.
+  - Footer's glow was anchored with `right:8%`, offsetting it toward the
+    right edge instead of the center. Switched to `left:50%` + a matching
+    translateX so it's horizontally centered while staying near the
+    bottom via the existing `bottom` offset.
+
+  Sizing stays aspect-ratio + clamp() (see prior note: fixed width+height
+  with only a max-width safety net let the "circle" quietly become a tall
+  oval on narrow viewports since nothing constrained height — aspect-ratio
+  fixes that structurally instead of patching it with a max-height guess).
 ----------------------------------------------------------------------- */
 #contact::before {
   content: '';
   position: absolute;
-  top: 15%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
   width: clamp(360px, 60vw, 720px);
   aspect-ratio: 1 / 1;
   background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.24), transparent 70%);
   filter: blur(14px);
   pointer-events: none;
   z-index: 0;
+  animation: glowPulseCentered 6s ease-in-out infinite;
 }
 
 footer::before {
   content: '';
   position: absolute;
   bottom: -15%;
-  right: 8%;
+  left: 50%;
   width: clamp(260px, 45vw, 520px);
   aspect-ratio: 1 / 1;
   background: radial-gradient(circle, rgba(var(--color-secondary-rgb), 0.24), transparent 70%);
   filter: blur(14px);
   pointer-events: none;
   z-index: 0;
+  animation: glowPulseBottom 7s ease-in-out infinite;
+  animation-delay: -2s;
+  /* desyncs it from the Contact glow's pulse so the two don't breathe in lockstep */
+}
+
+/* Transform is baked into every keyframe step (not just the base rule)
+  because the centering translate and the breathing scale both need to
+  apply simultaneously — a keyframe `transform` always REPLACES the
+  computed value rather than composing with the static rule's transform,
+  so omitting the translate from these steps would snap the glow off-center
+  the instant the animation starts. */
+@keyframes glowPulseCentered {
+
+  0%,
+  100% {
+    opacity: 0.65;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+@keyframes glowPulseBottom {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  #contact::before,
+  footer::before {
+    animation: none;
+  }
 }

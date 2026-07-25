@@ -1,8 +1,14 @@
 export function initHeroBg() {
-  // Disable animation on mobile devices or if the user prefers reduced motion for performance
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
-    window.matchMedia('(max-width: 768px)').matches) {
-    return; // Skip on mobile or reduced motion for perf
+  // Reduced-motion is now the ONLY hard opt-out. Every other decorative
+  // layer on this site (services blobs, portfolio/experience bubbles, the
+  // social snake frame) stays active at every viewport width instead of
+  // being switched off below a breakpoint — the hero background was the
+  // one inconsistent exception, and that's the bug being fixed here, not
+  // a deliberate design choice. Perf on mobile is instead handled below by
+  // tiering particle count and capping the renderer's pixel ratio harder
+  // on narrow screens, rather than skipping the whole effect.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return; // Skip only when the user has explicitly asked for less motion
   }
 
   // Target the canvas element for rendering the WebGL scene
@@ -14,14 +20,19 @@ export function initHeroBg() {
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
 
-  // Set renderer dimensions and scale for high-DPI displays
+  // Set renderer dimensions and scale for high-DPI displays.
+  // Pixel ratio is capped harder below 768px (1.5 instead of 2) — now that
+  // this effect runs on every screen size, that's the perf lever that
+  // matters most on mobile GPUs, cheaper than dropping the effect entirely.
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, window.innerWidth > 768 ? 2 : 1.5));
 
   // Particles Setup
   const particlesGeometry = new THREE.BufferGeometry();
-  // Reduce particle count on smaller screens
-  const particlesCount = window.innerWidth > 1024 ? 600 : 300;
+  // Three-tier particle count: desktop gets the full effect, tablets get a
+  // trimmed version, and phones get the lightest pass — all still clearly
+  // visible, just cheaper to render.
+  const particlesCount = window.innerWidth > 1024 ? 600 : window.innerWidth > 480 ? 300 : 150;
 
   // Arrays to hold particle positions and colors
   const posArray = new Float32Array(particlesCount * 3);
@@ -79,6 +90,17 @@ export function initHeroBg() {
     mouseX = (event.clientX - windowHalfX);
     mouseY = (event.clientY - windowHalfY);
   });
+
+  // Touch equivalent of the mousemove parallax above — mousemove never
+  // fires on touch devices, so without this, phones only ever got the
+  // passive auto-rotation, never the interactive tilt. Passive listener
+  // since we're only reading coordinates, not blocking scroll.
+  document.addEventListener('touchmove', (event) => {
+    if (event.touches.length > 0) {
+      mouseX = (event.touches[0].clientX - windowHalfX);
+      mouseY = (event.touches[0].clientY - windowHalfY);
+    }
+  }, { passive: true });
 
   const clock = new THREE.Clock();
 

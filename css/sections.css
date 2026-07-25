@@ -632,9 +632,9 @@ nav a:hover::after {
  * NOTE: the old .portfolio-blob (CSS border-radius morph, centered behind
  * the grid) has been removed entirely — it was invisible under the cards
  * 99% of the time, which was the exact complaint that kicked off this pass.
- * Its replacement (.portfolio-decor, corner/gutter bouncing balls) lives in
- * the deferred animations.css and is positioned in the section's actual
- * empty space instead of behind the content.
+ * Its replacement (.portfolio-decor, bubbles rising inward from both side
+ * walls) lives in the deferred animations.css and is positioned in the
+ * section's actual empty space instead of behind the content.
  */
 
 .portfolio-filters {
@@ -793,7 +793,26 @@ nav a:hover::after {
   opacity: 1;
 }
 
-/* Tier 2 Modal (Fullscreen viewer) */
+/* Tier 2 Modal (Fullscreen viewer)
+ * ---------------------------------------------------------------------------
+ * ROOT-CAUSE FIX for a real UX bug: scrolling a tall image used to scroll
+ * the ENTIRE .fullscreen-viewer box, taking the "fixed" close/prev/next
+ * buttons along with it — so at the bottom of a tall screenshot, those
+ * controls were off-screen and you had to scroll all the way back up to
+ * use them.
+ *
+ * Why this happened: `backdrop-filter` (like `filter`, `transform`, and
+ * `perspective`) makes an element the CONTAINING BLOCK for any
+ * `position:fixed` descendant, per spec. .fullscreen-viewer has
+ * `backdrop-filter: blur(10px)`, so .fs-close/.fs-prev/.fs-next were never
+ * actually fixed to the viewport — they were fixed relative to
+ * .fullscreen-viewer's own box. That's invisible as long as that box never
+ * moves/scrolls, which is exactly the fix below: .fullscreen-viewer no
+ * longer scrolls at all (`overflow: hidden`), and scrolling is scoped
+ * entirely to .fullscreen-content instead. The buttons' box now never
+ * moves, so their fixed position holds correctly no matter how far the
+ * image inside is scrolled.
+ */
 .fullscreen-viewer {
   position: fixed;
   top: 0;
@@ -807,7 +826,7 @@ nav a:hover::after {
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s;
-  overflow-y: auto;
+  overflow: hidden;
   display: flex;
   justify-content: center;
 }
@@ -819,7 +838,20 @@ nav a:hover::after {
 
 .fullscreen-content {
   width: 90vw;
-  margin: 2rem 0;
+  height: 100vh;
+  padding: 2rem 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  /* Scrollbar hidden cross-browser: the custom .fs-scroll-hint below is the
+    intentional scrollability affordance for this viewer, so a second,
+    native scrollbar track alongside it is visual noise rather than a
+    second source of information. */
+  scrollbar-width: none;
+}
+
+.fullscreen-content::-webkit-scrollbar {
+  display: none;
 }
 
 .fullscreen-content img {
@@ -827,11 +859,14 @@ nav a:hover::after {
   height: auto;
 }
 
+/* Close & scroll-hint share the brand's primary (crimson); prev/next share
+  the secondary (purple) — gives the two button "families" (dismiss vs.
+  navigate) distinct, on-brand identities instead of both defaulting to
+  the same generic black-overlay circle. */
 .fs-close,
 .fs-prev,
 .fs-next {
   position: fixed;
-  background: rgba(0, 0, 0, 0.5);
   border: none;
   color: #fff;
   font-size: 2rem;
@@ -843,23 +878,89 @@ nav a:hover::after {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: filter 0.2s ease;
+}
+
+.fs-close,
+.fs-prev,
+.fs-next {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.fs-close:hover,
+.fs-prev:hover,
+.fs-next:hover {
+  filter: brightness(1.15);
 }
 
 .fs-close {
   top: 1rem;
   right: 1rem;
+  background: rgba(var(--color-primary-rgb), 0.9);
 }
 
 .fs-prev {
   top: 50%;
   left: 1rem;
   transform: translateY(-50%);
+  background: rgba(var(--color-secondary-rgb), 0.9);
 }
 
 .fs-next {
   top: 50%;
   right: 1rem;
   transform: translateY(-50%);
+  background: rgba(var(--color-secondary-rgb), 0.9);
+}
+
+/* Scroll-down hint — a non-interactive nudge telling the visitor the image
+  keeps going below the fold. Positioned fixed at the bottom-center of the
+  viewport (same anchoring pattern as .scroll-up-btn) rather than inside
+  the scrolling content, since it needs to stay put while the image moves
+  under it. `pointer-events: none` keeps it purely advisory: it must never
+  intercept a click meant for the image or the buttons behind/around it.
+  Visibility is toggled by JS (see js/portfolio.js) using the exact same
+  "has the user reached the end of the scrollable area" check that drives
+  .scroll-up-btn's own show/hide, just measured against the bottom instead
+  of the top. */
+.fs-scroll-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  color: var(--color-primary);
+  font-size: 2.25rem;
+  pointer-events: none;
+  z-index: 100002;
+  opacity: 1;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+  transition: opacity 0.3s ease;
+  animation: scrollHintBounce 4s ease-in-out infinite;
+}
+
+.fs-scroll-hint.hidden {
+  opacity: 0;
+}
+
+/* Two quick bounces (0s–1s) then a 3s hold, repeating on a 4s cycle — an
+  intentionally "tap tap... pause" rhythm rather than a continuous bob, so
+  it reads as a deliberate nudge instead of restless background motion. */
+@keyframes scrollHintBounce {
+
+  0%,
+  25%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  6.25%,
+  18.75% {
+    transform: translateX(-50%) translateY(10px);
+  }
+
+  12.5% {
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 /* Experience & Testimonials */
@@ -1000,7 +1101,7 @@ nav a:hover::after {
 
 /* Contact */
 #contact .container {
-  /* Same stacking guard — keeps the contact cards above the static glow
+  /* Same stacking guard — keeps the contact cards above the pulsing glow
      added in animations.css. */
   position: relative;
   z-index: 1;
