@@ -621,17 +621,31 @@
   with only a max-width safety net let the "circle" quietly become a tall
   oval on narrow viewports since nothing constrained height — aspect-ratio
   fixes that structurally instead of patching it with a max-height guess).
+
+  ROOT-CAUSE FIX for the under-480px horizontal-scroll bug: #contact was
+  the one section in the entire site whose glow pseudo-element had no
+  container to be clipped by. `clamp(360px, 60vw, 720px)` has a 360px
+  FLOOR — on a 350-400px phone that's already wider than the viewport
+  before the animation even runs, and #contact never had overflow:hidden
+  (unlike footer, #about, and every decorative layer, which all already
+  had it). Putting `overflow: hidden` directly on the ::before pseudo-
+  elements themselves (an earlier attempt) was a no-op — overflow:hidden
+  clips an element's own children, and a ::before has none; it does
+  nothing to stop the box from overflowing its PARENT, which is the actual
+  problem. The real fix is on #contact itself (see sections.css). The
+  clamp() floors below are also tightened (360px→220px, 260px→160px) as
+  defense-in-depth, so neither glow is oversized to begin with rather than
+  just relying on clipping to hide it — the preferred/max values (60vw/
+  720px, 45vw/520px) are untouched, so desktop/tablet sizing is identical
+  to before.
 ----------------------------------------------------------------------- */
 
-/* NOTE FOR CLAUDE: THIS ENTIRE CODE BELOW OF CONTACT & FOOTER SECTION PULSING GRADIENT GLOW WAS THE CULPRIT THAT WAS CAUSING LAYOUT ISSUES ON SMALLER SCREENS, AS SOON AS I COMMENTED THIS CODE, EVERYTHING WORKED CORRECTLY */
-
-/* #contact::before {
+#contact::before {
   content: '';
   position: absolute;
-  overflow: hidden;
   top: 50%;
   left: 50%;
-  width: clamp(360px, 60vw, 720px);
+  width: clamp(220px, 60vw, 720px);
   aspect-ratio: 1 / 1;
   background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.24), transparent 70%);
   filter: blur(7px);
@@ -643,10 +657,9 @@
 footer::before {
   content: '';
   position: absolute;
-  overflow: hidden;
   bottom: -15%;
   left: 50%;
-  width: clamp(260px, 45vw, 520px);
+  width: clamp(160px, 45vw, 520px);
   aspect-ratio: 1 / 1;
   background: radial-gradient(circle, rgba(var(--color-secondary-rgb), 0.24), transparent 70%);
   filter: blur(7px);
@@ -654,8 +667,8 @@ footer::before {
   z-index: 0;
   animation: glowPulseBottom 7s ease-in-out infinite;
   animation-delay: -2s;
-} */
-/* desyncs it from the Contact glow's pulse so the two don't breathe in lockstep */
+  /* desyncs it from the Contact glow's pulse so the two don't breathe in lockstep */
+}
 
 /* Transform is baked into every keyframe step (not just the base rule)
   because the centering translate and the breathing scale both need to
@@ -663,7 +676,7 @@ footer::before {
   computed value rather than composing with the static rule's transform,
   so omitting the translate from these steps would snap the glow off-center
   the instant the animation starts. */
-/* @keyframes glowPulseCentered {
+@keyframes glowPulseCentered {
 
   0%,
   100% {
@@ -672,7 +685,7 @@ footer::before {
   }
 
   50% {
-    opacity: 1.15;
+    opacity: 1;
     transform: translate(-50%, -50%) scale(1.15);
   }
 }
@@ -686,15 +699,15 @@ footer::before {
   }
 
   50% {
-    opacity: 1.15;
+    opacity: 1;
     transform: translateX(-50%) scale(1.18);
   }
-} */
+}
 
-/* @media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
 
   #contact::before,
   footer::before {
     animation: none;
   }
-} */
+}

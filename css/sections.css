@@ -1138,6 +1138,19 @@ nav a:hover::after {
 }
 
 /* Contact */
+#contact {
+  /* This was the actual root cause of the under-480px horizontal-scroll
+    bug. #contact::before's glow (see animations.css) has a clamp()-based
+    width with a floor that can exceed a narrow phone's viewport width —
+    and unlike every OTHER section in the site (footer, #about, the
+    decorative layers), #contact never had its own overflow:hidden to
+    contain that. footer already had this property, so footer::before was
+    very likely never actually part of the bug; it just got disabled
+    alongside #contact::before during troubleshooting since they're both
+    part of the same visual feature. */
+  overflow: hidden;
+}
+
 #contact .container {
   /* Same stacking guard — keeps the contact cards above the pulsing glow
      added in animations.css. */
