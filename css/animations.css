@@ -62,7 +62,7 @@
 
 .service-blob {
   position: absolute;
-  filter: blur(30px);
+  filter: blur(10px);
 }
 
 .service-blob--a {
@@ -70,7 +70,7 @@
   left: -120px;
   width: 380px;
   height: 380px;
-  opacity: 0.32;
+  opacity: 0.52;
   /* was 0.16 — too faint to register at a glance */
 }
 
@@ -79,7 +79,7 @@
   right: -110px;
   width: 320px;
   height: 320px;
-  opacity: 0.28;
+  opacity: 0.48;
   /* was 0.13 */
 }
 
@@ -150,11 +150,11 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* @media (prefers-reduced-motion: reduce) {
   .service-blob {
     display: none;
   }
-}
+} */
 
 /* -----------------------------------------------------------------------
   PORTFOLIO — bubbles rising inward from BOTH side walls, converging toward
@@ -337,21 +337,25 @@
   0% {
     left: -18px;
     opacity: 0;
-    transform: scale(0.85);
+    transform: scale(0.95);
   }
 
   10% {
-    opacity: 0.85;
+    opacity: 0.95;
   }
 
   45% {
-    opacity: 0.6;
+    opacity: 0.8;
+  }
+
+  75% {
+    opacity: 0.4;
   }
 
   100% {
-    left: 44%;
+    left: 50%;
     opacity: 0;
-    transform: scale(1.05);
+    transform: scale(1.15);
   }
 }
 
@@ -359,29 +363,33 @@
   0% {
     right: -18px;
     opacity: 0;
-    transform: scale(0.85);
+    transform: scale(0.95);
   }
 
   10% {
-    opacity: 0.85;
+    opacity: 0.95;
   }
 
   45% {
-    opacity: 0.6;
+    opacity: 0.8;
+  }
+
+  75% {
+    opacity: 0.4;
   }
 
   100% {
-    right: 44%;
+    right: 50%;
     opacity: 0;
-    transform: scale(1.05);
+    transform: scale(1.15);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* @media (prefers-reduced-motion: reduce) {
   .pf-bubble {
     display: none;
   }
-}
+} */
 
 /* A touch smaller on very narrow phones purely for visual proportion —
   travel distance is already %-based so it scales correctly on its own;
@@ -447,12 +455,12 @@
 }
 
 .exp-bubble--primary {
-  background: rgba(var(--color-primary-rgb), 0.3);
+  background: rgba(var(--color-primary-rgb), 0.9);
 }
 
 /* was 0.16 — too faint to register */
 .exp-bubble--secondary {
-  background: rgba(var(--color-secondary-rgb), 0.3);
+  background: rgba(var(--color-secondary-rgb), 0.9);
 }
 
 /* %-based anchors resolve against .experience-decor's own width (the full
@@ -614,15 +622,19 @@
   oval on narrow viewports since nothing constrained height — aspect-ratio
   fixes that structurally instead of patching it with a max-height guess).
 ----------------------------------------------------------------------- */
-#contact::before {
+
+/* NOTE FOR CLAUDE: THIS ENTIRE CODE BELOW OF CONTACT & FOOTER SECTION PULSING GRADIENT GLOW WAS THE CULPRIT THAT WAS CAUSING LAYOUT ISSUES ON SMALLER SCREENS, AS SOON AS I COMMENTED THIS CODE, EVERYTHING WORKED CORRECTLY */
+
+/* #contact::before {
   content: '';
   position: absolute;
+  overflow: hidden;
   top: 50%;
   left: 50%;
   width: clamp(360px, 60vw, 720px);
   aspect-ratio: 1 / 1;
   background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.24), transparent 70%);
-  filter: blur(14px);
+  filter: blur(7px);
   pointer-events: none;
   z-index: 0;
   animation: glowPulseCentered 6s ease-in-out infinite;
@@ -631,18 +643,19 @@
 footer::before {
   content: '';
   position: absolute;
+  overflow: hidden;
   bottom: -15%;
   left: 50%;
   width: clamp(260px, 45vw, 520px);
   aspect-ratio: 1 / 1;
   background: radial-gradient(circle, rgba(var(--color-secondary-rgb), 0.24), transparent 70%);
-  filter: blur(14px);
+  filter: blur(7px);
   pointer-events: none;
   z-index: 0;
   animation: glowPulseBottom 7s ease-in-out infinite;
   animation-delay: -2s;
-  /* desyncs it from the Contact glow's pulse so the two don't breathe in lockstep */
-}
+} */
+/* desyncs it from the Contact glow's pulse so the two don't breathe in lockstep */
 
 /* Transform is baked into every keyframe step (not just the base rule)
   because the centering translate and the breathing scale both need to
@@ -650,16 +663,16 @@ footer::before {
   computed value rather than composing with the static rule's transform,
   so omitting the translate from these steps would snap the glow off-center
   the instant the animation starts. */
-@keyframes glowPulseCentered {
+/* @keyframes glowPulseCentered {
 
   0%,
   100% {
-    opacity: 0.65;
+    opacity: 0.75;
     transform: translate(-50%, -50%) scale(1);
   }
 
   50% {
-    opacity: 1;
+    opacity: 1.15;
     transform: translate(-50%, -50%) scale(1.15);
   }
 }
@@ -668,20 +681,20 @@ footer::before {
 
   0%,
   100% {
-    opacity: 0.6;
+    opacity: 0.75;
     transform: translateX(-50%) scale(1);
   }
 
   50% {
-    opacity: 1;
+    opacity: 1.15;
     transform: translateX(-50%) scale(1.18);
   }
-}
+} */
 
-@media (prefers-reduced-motion: reduce) {
+/* @media (prefers-reduced-motion: reduce) {
 
   #contact::before,
   footer::before {
     animation: none;
   }
-}
+} */

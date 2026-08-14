@@ -42,9 +42,9 @@
 
   /* ===== Motion ===== */
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
-  --dur-fast: 200ms;
-  --dur-medium: 400ms;
-  --dur-slow: 700ms;
+  --dur-fast: 30ms;
+  --dur-medium: 70ms;
+  --dur-slow: 100ms;
 }
 
 [data-theme="dark"] {

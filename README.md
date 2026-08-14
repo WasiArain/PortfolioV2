@@ -1,5 +1,7 @@
 # Wasi Ullah | Front-End Developer Portfolio v2
 
+**Live site:** [wasiullah.dotblue-digital.com](https://wasiullah.dotblue-digital.com/) — primary deployment (Hostinger, ~3x faster than GitHub Pages). This repository is kept in sync with that deployment and remains available on GitHub Pages as a secondary mirror.
+
 This is the fully vanilla, production-grade personal portfolio website for Wasi Ullah.
 
 ## Architecture

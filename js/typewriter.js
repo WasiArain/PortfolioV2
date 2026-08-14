@@ -11,7 +11,7 @@ export class TypeLoop {
     this.delay = config.delay || 2000; // Pause duration when a full string is completed (ms)
 
     // Accessibility feature: Pause animations if the user prefers reduced motion
-    this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (this.prefersReducedMotion) {
       // Just render the first string statically and skip the loop

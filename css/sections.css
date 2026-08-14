@@ -229,12 +229,8 @@ nav a:hover::after {
   gap: 1rem;
 }
 
-.theme-toggle {
-  display: none;
-}
-
 .theme-toggle-pill {
-  display: flex !important;
+  display: flex;
   align-items: center;
   background: var(--bg-elevated);
   border: 1px solid var(--border-glass);
@@ -335,6 +331,17 @@ nav a:hover::after {
 
 .typewriter-container {
   color: var(--text-secondary);
+  white-space: pre-wrap;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 4rem;
+  line-height: 1.2;
+  /* Generous fixed height at desktop size (2 lines of copy always fit with
+    room to spare) — auto-height + min-height takes over at the mobile
+    breakpoints below instead of scaling this same fixed value down, since
+    a fixed px height tuned for one font-size stops making sense once the
+    text can wrap to a different number of lines at a smaller size. */
+  height: 360px;
 }
 
 .typewriter .cursor {
@@ -357,6 +364,16 @@ nav a:hover::after {
 /* About Section */
 #about {
   position: relative;
+  /* Every other decorative layer (.services-decor, .portfolio-decor,
+    .experience-decor, .social-decor-frame) is wrapped in its own
+    overflow:hidden container — the floating code-glyphs below were the one
+    exception, positioned directly as children of #about with no
+    containment at all. Their codeDrift animation adds a few px of extra
+    drift on top of an edge-anchored left/right:3% position, which on
+    narrow viewports was enough to push a glyph past #about's own box and
+    trigger horizontal scroll. This brings About in line with how every
+    other section already contains its decoration. */
+  overflow: hidden;
 }
 
 #about .container {
@@ -922,18 +939,34 @@ nav a:hover::after {
   Visibility is toggled by JS (see js/portfolio.js) using the exact same
   "has the user reached the end of the scrollable area" check that drives
   .scroll-up-btn's own show/hide, just measured against the bottom instead
-  of the top. */
+  of the top.
+
+  Styled as a solid white badge with a crimson icon (matching .scroll-up-btn
+  below): the icon alone with just a drop-shadow wasn't reliably visible
+  against the frosted/blurred overlay behind it — a solid background fixes
+  contrast regardless of what image is currently showing through the blur.
+  A thin tinted border + shadow (rather than relying on the white fill
+  alone) keeps it visible in light theme too, where --bg-overlay is itself
+  a translucent white and could otherwise let the badge blend in. */
 .fs-scroll-hint {
   position: fixed;
   left: 50%;
   bottom: 24px;
   transform: translateX(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.25);
   color: var(--color-primary);
-  font-size: 2.25rem;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   pointer-events: none;
   z-index: 100002;
   opacity: 1;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
   transition: opacity 0.3s ease;
   animation: scrollHintBounce 4s ease-in-out infinite;
 }
@@ -944,7 +977,12 @@ nav a:hover::after {
 
 /* Two quick bounces (0s–1s) then a 3s hold, repeating on a 4s cycle — an
   intentionally "tap tap... pause" rhythm rather than a continuous bob, so
-  it reads as a deliberate nudge instead of restless background motion. */
+  it reads as a deliberate nudge instead of restless background motion.
+  Transform is baked into every step (not just the base rule) for the same
+  reason as the Contact/footer glow in animations.css: a keyframe transform
+  REPLACES the computed value rather than composing with it, so omitting
+  translateX(-50%) here would snap the badge off-center the instant the
+  animation starts. */
 @keyframes scrollHintBounce {
 
   0%,
@@ -1194,24 +1232,37 @@ footer .container {
   overflow: hidden;
 }
 
+/* Found during a codebase-wide sweep: this class had no rule anywhere, so
+  the iframe was rendering at the browser's default intrinsic size (300 x
+  150px) instead of filling .map-container — it just happened to go
+  unnoticed because the container's own overflow:hidden clipped the
+  mismatch rather than visibly breaking the layout. */
+.map-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /* Scroll to Top */
 .scroll-up-btn {
   position: fixed;
   height: 45px;
   width: 42px;
-  background: var(--color-primary);
+  background: #fff;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.25);
   right: 30px;
   bottom: 10px;
   text-align: center;
-  line-height: 45px;
-  color: #fff;
+  line-height: 43px;
+  /* -2px vs. the box height to account for the new 1px border on each edge */
+  color: var(--color-primary);
   z-index: 999;
   font-size: 30px;
   border-radius: 6px;
-  border-bottom-width: 2px;
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
 
@@ -1222,7 +1273,9 @@ footer .container {
 }
 
 .scroll-up-btn:hover {
-  filter: brightness(90%);
+  background: var(--color-primary);
+  border-color: transparent;
+  color: #fff;
 }
 
 /* Utilities */
@@ -1324,8 +1377,12 @@ footer .container {
     grid-template-columns: 1fr;
   }
 
-  nav ul,
-  .nav-actions {
+  /* Only the desktop horizontal link list collapses here — .nav-actions
+    (theme toggle + hamburger) must stay visible and grouped together in
+    the header itself. Most mobile visitors never open the slide-out menu
+    at all, so burying the theme toggle inside it meant the vast majority
+    of mobile users had no practical way to switch themes. */
+  nav ul {
     display: none;
   }
 
@@ -1333,8 +1390,17 @@ footer .container {
     display: block;
   }
 
-  .typewriter-container {
-    font-size: 2.5rem !important;
+  /* Container/section padding never shrank on mobile before this — 2rem
+    (32px) of side padding and 6rem (96px) of top+bottom section padding
+    are desktop-generous values that eat a disproportionate share of a
+    350-400px-wide, ~700px-tall phone viewport. Tightened here for the
+    tablet tier; the dedicated phone tier below tightens further still. */
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  section {
+    padding: 4rem 0;
   }
 
   .mobile-nav-panel {
@@ -1364,10 +1430,6 @@ footer .container {
     gap: 2rem;
     font-size: 1.5rem;
     text-align: center;
-  }
-
-  .mobile-nav-panel .theme-toggle {
-    margin-top: 2rem;
   }
 
   .service-card {
@@ -1416,6 +1478,29 @@ footer .container {
     padding: 1.5rem;
   }
 
+  /* Hero had no mobile treatment at all before this — 4rem/2rem of padding
+    on a ~700px-tall phone viewport (already sharing space with the browser
+    chrome) pushes real content out of view unnecessarily. */
+  .hero-content {
+    padding: 2.5rem 1.5rem;
+  }
+
+  /* The old fixed 360px height (previously inline in HTML) only made sense
+    at the desktop 4rem font-size. Switching to auto + min-height lets the
+    box size itself to however many lines the smaller text actually wraps
+    to, instead of leaving a large dead gap or, worse, clipping a line. */
+  .typewriter-container {
+    height: auto;
+    min-height: 110px;
+    font-size: 2.2rem;
+  }
+
+  /* Tier 1 modal (project details) had no mobile padding reduction either
+    — 2.5rem eats a big chunk of an already-narrow modal on a phone. */
+  .modal-content {
+    padding: 1.5rem;
+  }
+
   .social-circle {
     width: 35px;
     height: 35px;
@@ -1429,11 +1514,109 @@ footer .container {
   }
 }
 
-.about-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3rem;
-  align-items: stretch;
-  position: relative;
-  z-index: 2;
+/* =============================================================================
+  PHONE TIER — dedicated to true mobile widths (~320-480px), distinct from
+  the 768px tier above (which was tuned more for tablets/large phones and,
+  before this pass, was the ONLY breakpoint doing any mobile work at all —
+  meaning phones in the 350-400px range, the majority of this site's actual
+  traffic, were only ever getting tablet-level adjustments). Everything here
+  layers on top of the 768px tier's values, tightening further for the
+  narrowest common viewports. Purely spacing/sizing — no layout structure,
+  design language, or animation is touched, so the desktop experience this
+  was explicitly built to preserve is untouched.
+============================================================================= */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  section {
+    padding: 3rem 0;
+  }
+
+  .hero-content {
+    padding: 2rem 1.25rem;
+  }
+
+  .hero-greeting {
+    font-size: 1.4rem;
+  }
+
+  /* Two full-width CTAs side by side ("View My Work" + "Start Your
+    Project") don't reliably fit on a 320-360px screen without wrapping or
+    overflowing — stacking them removes that risk entirely rather than
+    shrinking text/padding to chase a fit that breaks again on the next
+    slightly-narrower device. */
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+  }
+
+  .typewriter-container {
+    min-height: 320px;
+    font-size: 2rem;
+  }
+
+  .about-card,
+  .skills-card {
+    padding: 1.25rem;
+  }
+
+  .modal-content {
+    padding: 1.25rem;
+  }
+
+  /* The services carousel's card width (280px at the 768px tier) leaves
+    very little breathing room on a 320-360px screen once container
+    padding is subtracted — tightened further here, with the prev/next
+    peek-offsets scaled down to match so the side cards still peek in
+    proportionally instead of clipping or overlapping the active card. */
+  .service-card {
+    width: 230px;
+    padding: 2rem 1.5rem;
+  }
+
+  .service-card.active {
+    transform: translate(-50%, -50%) scale(1.02);
+  }
+
+  .service-card.prev {
+    transform: translate(calc(-50% - 130px), -50%) scale(0.78);
+  }
+
+  .service-card.next {
+    transform: translate(calc(-50% + 130px), -50%) scale(0.78);
+  }
+
+  .services-carousel-wrapper {
+    height: 400px;
+  }
+
+  /* A little more breathing room over the image for the fullscreen
+    viewer's controls on the smallest screens. */
+  .fs-close,
+  .fs-prev,
+  .fs-next {
+    width: 42px;
+    height: 42px;
+    font-size: 1.6rem;
+  }
+
+  .fs-close {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .fs-prev {
+    left: 0.5rem;
+  }
+
+  .fs-next {
+    right: 0.5rem;
+  }
 }

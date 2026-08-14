@@ -17,16 +17,16 @@ export function initPortfolio() {
       id: 'proj-1',
       title: 'Wiki Profile Creations',
       category: ['Custom (HTML/CSS/JS)'],
-      thumb: 'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-thumbnail.png',
+      thumb: './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-thumbnail.png',
       screenshots: [
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-landing-page.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-home.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-about-us.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-portfolio.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-services.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-contact-us.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-why-hire-us.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-faqs.png'
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-landing-page.png',
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-home.png',
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-about-us.png',
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-portfolio.png',
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-services.png',
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-contact-us.png',
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-why-hire-us.png',
+        './assets/portfolio/Wiki_Profile_Creations/wikiprofilecreations-faqs.png'
       ],
       description: 'A bespoke Wikipedia page and profile creation service, designed with a clean, modern interface and built entirely with custom HTML, CSS, and vanilla JavaScript — no page builder, no shortcuts.'
     },
@@ -34,13 +34,13 @@ export function initPortfolio() {
       id: 'proj-2',
       title: 'StepTech Solutions',
       category: ['WordPress/Wix/Shopify'],
-      thumb: 'https://wasiarain.github.io/PortfolioV2/assets/portfolio/StepTech/StepTech-thumbnail.png',
+      thumb: './assets/portfolio/StepTech/StepTech-thumbnail.png',
       screenshots: [
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/StepTech/StepTech-Landing-Page.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/StepTech/StepTech-Home.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/StepTech/StepTech-Portfolio.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/StepTech/StepTech-Services.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/StepTech/StepTech-Contact-Us.png'
+        './assets/portfolio/StepTech/StepTech-Landing-Page.png',
+        './assets/portfolio/StepTech/StepTech-Home.png',
+        './assets/portfolio/StepTech/StepTech-Portfolio.png',
+        './assets/portfolio/StepTech/StepTech-Services.png',
+        './assets/portfolio/StepTech/StepTech-Contact-Us.png'
       ],
       description: 'A comprehensive corporate website for StepTech Solutions, built on WordPress for scalable, easy-to-manage content — without sacrificing a polished, professional front-end.'
     },
@@ -48,15 +48,15 @@ export function initPortfolio() {
       id: 'proj-3',
       title: 'Jaries Pet Shop',
       category: ['WordPress/Wix/Shopify'],
-      thumb: 'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Jaries_Pet_Shop/jariespetshop-thumbnail.png',
+      thumb: './assets/portfolio/Jaries_Pet_Shop/jariespetshop-thumbnail.png',
       screenshots: [
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Jaries_Pet_Shop/jariespetshop-thumbnail.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Jaries_Pet_Shop/jariespetshop-shop.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Jaries_Pet_Shop/jariespetshop-collections.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Jaries_Pet_Shop/jariespetshop-featured.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Jaries_Pet_Shop/jariespetshop-social.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Jaries_Pet_Shop/jariespetshop-home.jpeg',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Jaries_Pet_Shop/jariespetshop-logo.jpeg'
+        './assets/portfolio/Jaries_Pet_Shop/jariespetshop-thumbnail.png',
+        './assets/portfolio/Jaries_Pet_Shop/jariespetshop-shop.png',
+        './assets/portfolio/Jaries_Pet_Shop/jariespetshop-collections.png',
+        './assets/portfolio/Jaries_Pet_Shop/jariespetshop-featured.png',
+        './assets/portfolio/Jaries_Pet_Shop/jariespetshop-social.png',
+        './assets/portfolio/Jaries_Pet_Shop/jariespetshop-home.jpeg',
+        './assets/portfolio/Jaries_Pet_Shop/jariespetshop-logo.jpeg'
       ],
       description: 'A vibrant, engaging Wix e-commerce platform for Jaries Pet Shop, designed to make browsing and buying feel effortless for pet owners.'
     },
@@ -64,16 +64,16 @@ export function initPortfolio() {
       id: 'proj-4',
       title: 'Timeless Media',
       category: ['Custom (HTML/CSS/JS)'],
-      thumb: 'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Timeless_Media/TimelessMedia-thumbnail.png',
+      thumb: './assets/portfolio/Timeless_Media/TimelessMedia-thumbnail.png',
       screenshots: [
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Timeless_Media/TimelessMedia-landing-page.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Timeless_Media/TimelessMedia-home.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Timeless_Media/TimelessMedia-about-us.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Timeless_Media/TimelessMedia-portfolio.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Timeless_Media/TimelessMedia-contact-us.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Timeless_Media/TimelessMedia-home-category-engagement.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Timeless_Media/TimelessMedia-home-category-wedding.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Timeless_Media/TimelessMedia-home-category-portrait.png'
+        './assets/portfolio/Timeless_Media/TimelessMedia-landing-page.png',
+        './assets/portfolio/Timeless_Media/TimelessMedia-home.png',
+        './assets/portfolio/Timeless_Media/TimelessMedia-about-us.png',
+        './assets/portfolio/Timeless_Media/TimelessMedia-portfolio.png',
+        './assets/portfolio/Timeless_Media/TimelessMedia-contact-us.png',
+        './assets/portfolio/Timeless_Media/TimelessMedia-home-category-engagement.png',
+        './assets/portfolio/Timeless_Media/TimelessMedia-home-category-wedding.png',
+        './assets/portfolio/Timeless_Media/TimelessMedia-home-category-portrait.png'
       ],
       description: 'A sleek, highly interactive portfolio and booking platform for Timeless Media, hand-built with custom HTML, CSS, and JavaScript — including smooth category transitions and a booking flow designed to convert visitors into clients.'
     },
@@ -81,11 +81,11 @@ export function initPortfolio() {
       id: 'proj-5',
       title: 'KDar',
       category: ['Custom (HTML/CSS/JS)'],
-      thumb: 'https://wasiarain.github.io/PortfolioV2/assets/portfolio/KDar/KDar-thumbnail.png',
+      thumb: './assets/portfolio/KDar/KDar-thumbnail.png',
       screenshots: [
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/KDar/KDar-Landing-Page.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/KDar/KDar-Home.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/KDar/KDar-About-Us.png'
+        './assets/portfolio/KDar/KDar-Landing-Page.png',
+        './assets/portfolio/KDar/KDar-Home.png',
+        './assets/portfolio/KDar/KDar-About-Us.png'
       ],
       description: 'A fast, fully responsive corporate landing page for KDar, hand-coded with a custom HTML/CSS/JS architecture for maximum performance and zero bloat.'
     },
@@ -93,12 +93,12 @@ export function initPortfolio() {
       id: 'proj-6',
       title: 'Muza Capital',
       category: ['Custom (HTML/CSS/JS)'],
-      thumb: 'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Muza_Capital/MuzaCapital-thumbnail.png',
+      thumb: './assets/portfolio/Muza_Capital/MuzaCapital-thumbnail.png',
       screenshots: [
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Muza_Capital/MuzaCapital-Landing-Page.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Muza_Capital/MuzaCapital-Home.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Muza_Capital/MuzaCapital-SignIn.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Muza_Capital/MuzaCapital-SignUp.png'
+        './assets/portfolio/Muza_Capital/MuzaCapital-Landing-Page.png',
+        './assets/portfolio/Muza_Capital/MuzaCapital-Home.png',
+        './assets/portfolio/Muza_Capital/MuzaCapital-SignIn.png',
+        './assets/portfolio/Muza_Capital/MuzaCapital-SignUp.png'
       ],
       description: 'A secure, visually refined digital presence and client portal for Muza Capital, built with pure web technologies to keep it fast, lightweight, and trustworthy.'
     },
@@ -106,15 +106,15 @@ export function initPortfolio() {
       id: 'proj-7',
       title: 'Monki NYC',
       category: ['WordPress/Wix/Shopify'],
-      thumb: 'https://wasiarain.github.io/PortfolioV2/assets/portfolio/MonkiNYC/monkinyc-thumbnail.png',
+      thumb: './assets/portfolio/MonkiNYC/monkinyc-thumbnail.png',
       screenshots: [
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/MonkiNYC/monkinyc-thumbnail.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/MonkiNYC/monkinyc-home.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/MonkiNYC/monkinyc-about-us.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/MonkiNYC/monkinyc-our-projects.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/MonkiNYC/monkinyc-services-our-services-list.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/MonkiNYC/monkinyc-contact-us.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/MonkiNYC/monkinyc-book-appointment.png'
+        './assets/portfolio/MonkiNYC/monkinyc-thumbnail.png',
+        './assets/portfolio/MonkiNYC/monkinyc-home.png',
+        './assets/portfolio/MonkiNYC/monkinyc-about-us.png',
+        './assets/portfolio/MonkiNYC/monkinyc-our-projects.png',
+        './assets/portfolio/MonkiNYC/monkinyc-services-our-services-list.png',
+        './assets/portfolio/MonkiNYC/monkinyc-contact-us.png',
+        './assets/portfolio/MonkiNYC/monkinyc-book-appointment.png'
       ],
       description: 'A sophisticated, high-end agency portfolio for Monki NYC, powered by a fully customized WordPress build tailored to their premium brand identity.'
     },
@@ -122,14 +122,14 @@ export function initPortfolio() {
       id: 'proj-8',
       title: 'CNB Leather Goods',
       category: ['WordPress/Wix/Shopify'],
-      thumb: 'https://wasiarain.github.io/PortfolioV2/assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-thumbnail.png',
+      thumb: './assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-thumbnail.png',
       screenshots: [
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Landing-Page.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Home.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Shop.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Product-Page.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Checkout.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-About-Us.png'
+        './assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Landing-Page.png',
+        './assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Home.png',
+        './assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Shop.png',
+        './assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Product-Page.png',
+        './assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-Checkout.png',
+        './assets/portfolio/CNB_Leather_Goods/CnbLeatherGoods-About-Us.png'
       ],
       description: 'A premium e-commerce storefront for CNB Leather Goods, with shopping functionality seamlessly woven into a custom-tailored WordPress environment.'
     },
@@ -137,12 +137,12 @@ export function initPortfolio() {
       id: 'proj-9',
       title: 'Tenwickets',
       category: ['WordPress/Wix/Shopify'],
-      thumb: 'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Tenwickets/Tenwickets-thumbnail.png',
+      thumb: './assets/portfolio/Tenwickets/Tenwickets-thumbnail.png',
       screenshots: [
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Tenwickets/Tenwickets-Landing-Page.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Tenwickets/Tenwickets-Home.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Tenwickets/Tenwickets-Livestream.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Tenwickets/Tenwickets-News.png'
+        './assets/portfolio/Tenwickets/Tenwickets-Landing-Page.png',
+        './assets/portfolio/Tenwickets/Tenwickets-Home.png',
+        './assets/portfolio/Tenwickets/Tenwickets-Livestream.png',
+        './assets/portfolio/Tenwickets/Tenwickets-News.png'
       ],
       description: 'A dynamic sports news and live-streaming hub for Tenwickets, built on WordPress to handle frequent updates and rich media without breaking a sweat.'
     },
@@ -150,13 +150,13 @@ export function initPortfolio() {
       id: 'proj-10',
       title: 'Masquerade Candle Shop',
       category: ['WordPress/Wix/Shopify'],
-      thumb: 'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-thumbnail.png',
+      thumb: './assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-thumbnail.png',
       screenshots: [
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-home.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-store.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-gift-card.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-contact-us.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-blog.png'
+        './assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-home.png',
+        './assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-store.png',
+        './assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-gift-card.png',
+        './assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-contact-us.png',
+        './assets/portfolio/Masquerade_Candle_Shop/masqueradecandlesshop-blog.png'
       ],
       description: "An elegant, conversion-optimized Shopify storefront for Masquerade Candle Shop, featuring custom theme modifications built to match their brand's aesthetic."
     },
@@ -164,11 +164,11 @@ export function initPortfolio() {
       id: 'proj-11',
       title: 'Unique Kennels',
       category: ['WordPress/Wix/Shopify'],
-      thumb: 'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Unique_Kennels/uniquekennels-org-thumbnail.png',
+      thumb: './assets/portfolio/Unique_Kennels/uniquekennels-org-thumbnail.png',
       screenshots: [
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Unique_Kennels/uniquekennels-org-thumbnail.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Unique_Kennels/uniquekennels-org-landing-page.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Unique_Kennels/uniquekennels-org.png'
+        './assets/portfolio/Unique_Kennels/uniquekennels-org-thumbnail.png',
+        './assets/portfolio/Unique_Kennels/uniquekennels-org-landing-page.png',
+        './assets/portfolio/Unique_Kennels/uniquekennels-org.png'
       ],
       description: 'A dedicated Shopify e-commerce build for Unique Kennels, designed for a seamless, frustration-free browsing and purchasing experience.'
     },
@@ -176,11 +176,11 @@ export function initPortfolio() {
       id: 'proj-12',
       title: 'Black Travel Events',
       category: ['WordPress/Wix/Shopify'],
-      thumb: 'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Black_Travel_Events/blacktravelevents-thumbnail.png',
+      thumb: './assets/portfolio/Black_Travel_Events/blacktravelevents-thumbnail.png',
       screenshots: [
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Black_Travel_Events/blacktravelevents-home-1.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Black_Travel_Events/blacktravelevents-home-2.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Black_Travel_Events/blacktravelevents-home-3.png'
+        './assets/portfolio/Black_Travel_Events/blacktravelevents-home-1.png',
+        './assets/portfolio/Black_Travel_Events/blacktravelevents-home-2.png',
+        './assets/portfolio/Black_Travel_Events/blacktravelevents-home-3.png'
       ],
       description: 'An engaging event directory and booking platform for Black Travel Events, built on a robust, fully customized WordPress foundation.'
     },
@@ -188,10 +188,10 @@ export function initPortfolio() {
       id: 'proj-13',
       title: 'WASI - Developers Old Portfolio',
       category: ['Custom (HTML/CSS/JS)'],
-      thumb: 'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wasi_-_Developers_Portfolio_Old/Wasi-Portfolio-thumbnail.png',
+      thumb: './assets/portfolio/Wasi_-_Developers_Portfolio_Old/Wasi-Portfolio-thumbnail.png',
       screenshots: [
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wasi_-_Developers_Portfolio_Old/Wasi-Portfolio-thumbnail.png',
-        'https://wasiarain.github.io/PortfolioV2/assets/portfolio/Wasi_-_Developers_Portfolio_Old/Wasi-Portfolio.png'
+        './assets/portfolio/Wasi_-_Developers_Portfolio_Old/Wasi-Portfolio-thumbnail.png',
+        './assets/portfolio/Wasi_-_Developers_Portfolio_Old/Wasi-Portfolio.png'
       ],
       description: 'My previous portfolio iteration — a look back at earlier design concepts and vanilla JavaScript animation work, kept here to show the growth.'
     }
