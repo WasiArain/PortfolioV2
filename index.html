@@ -1,35 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="dark">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-01Q06WY3BP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-01Q06WY3BP");
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wasi Ullah | Front-End Developer & E-Commerce UI Specialist</title>
-  <meta name="description" content="Front-End Web Developer specializing in advanced CSS animations, custom Elementor design, and E-Commerce stores across WordPress, Shopify, Wix & Webflow.">
-  <meta name="keywords" content="Wasi Ullah, Front-End Web Developer, UI/UX Designer, Advanced CSS Animations, Custom Elementor Design, E-Commerce Development, WordPress, WooCommerce, Shopify, Wix, Webflow, Responsive Web Design, Core Web Vitals, SEO, JavaScript, React.js, Next.js">
-  <meta name="author" content="Wasi Ullah">
-  <meta name="theme-color" content="#0b0b12">
+  <meta name="description"
+    content="Front-End Web Developer specializing in advanced CSS animations, custom Elementor design, and E-Commerce stores across WordPress, Shopify, Wix & Webflow." />
+  <meta name="keywords"
+    content="Wasi Ullah, Front-End Web Developer, UI/UX Designer, Advanced CSS Animations, Custom Elementor Design, E-Commerce Development, WordPress, WooCommerce, Shopify, Wix, Webflow, Responsive Web Design, Core Web Vitals, SEO, JavaScript, React.js, Next.js" />
+  <meta name="author" content="Wasi Ullah" />
+  <meta name="theme-color" content="#0b0b12" />
 
   <link rel="icon" href="./assets/images/developer.png" type="image/png" sizes="16x16" />
   <link rel="apple-touch-icon" href="./assets/images/developer.png" />
 
   <!-- Open Graph / SEO -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Wasi Ullah | Front-End Developer & E-Commerce UI Specialist">
-  <meta property="og:description" content="Front-End Web Developer specializing in advanced CSS animations, custom Elementor design, and high-converting E-Commerce stores across WordPress, Shopify, Wix & Webflow.">
-  <meta property="og:url" content="https://wasiullah.dotblue-digital.com/">
-  <meta property="og:image" content="https://wasiullah.dotblue-digital.com/assets/images/developer.png">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Wasi Ullah | Front-End Developer & E-Commerce UI Specialist" />
+  <meta property="og:description"
+    content="Front-End Web Developer specializing in advanced CSS animations, custom Elementor design, and high-converting E-Commerce stores across WordPress, Shopify, Wix & Webflow." />
+  <meta property="og:url" content="https://wasiullah.dotblue-digital.com/" />
+  <meta property="og:image" content="https://wasiullah.dotblue-digital.com/assets/images/developer.png" />
 
   <!-- Canonical URL — prevents GitHub Pages from serving this content as
       duplicate under trailing-slash/index.html URL variants. -->
-  <link rel="canonical" href="https://wasiullah.dotblue-digital.com/">
+  <link rel="canonical" href="https://wasiullah.dotblue-digital.com/" />
 
   <!-- Twitter Card — was previously missing; without it, X/Twitter shares
       fall back to a bare link instead of a rich preview card. -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Wasi Ullah | Front-End Developer & E-Commerce UI Specialist">
-  <meta name="twitter:description" content="Front-End Web Developer specializing in advanced CSS animations, custom Elementor design, and E-Commerce stores across WordPress, Shopify, Wix & Webflow.">
-  <meta name="twitter:image" content="https://wasiullah.dotblue-digital.com/assets/images/developer.png">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wasi Ullah | Front-End Developer & E-Commerce UI Specialist" />
+  <meta name="twitter:description"
+    content="Front-End Web Developer specializing in advanced CSS animations, custom Elementor design, and E-Commerce stores across WordPress, Shopify, Wix & Webflow." />
+  <meta name="twitter:image" content="https://wasiullah.dotblue-digital.com/assets/images/developer.png" />
 
   <!--
     RESOURCE HINTS — open the connections to every third-party origin this
@@ -37,11 +52,11 @@
     HTML parsing instead of when the resource is actually requested later).
     Cheap to add, real effect on cross-origin request latency.
   -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://unpkg.com">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" href="https://embed.tawk.to">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://embed.tawk.to" />
 
   <!--
     CSS — direct <link> tags instead of a single main.css that @imports the
@@ -66,9 +81,12 @@
     <noscript> fallback covers the vanishingly rare case of JS being
     disabled, where the onload handler would never fire.
   -->
-  <link rel="preload" href="./css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="./css/animations.css" as="style" onload="
+    this.onload = null;
+    this.rel = 'stylesheet';
+   " />
   <noscript>
-    <link rel="stylesheet" href="./css/animations.css">
+    <link rel="stylesheet" href="./css/animations.css" />
   </noscript>
 
   <!-- CDNs: Ionicons, Three.js, Vanilla-Tilt -->
@@ -79,32 +97,28 @@
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Wasi Ullah",
-      "jobTitle": "Front-End Web Developer & E-Commerce UI Specialist",
-      "description": "Front-End Web Developer specializing in advanced CSS animations, custom Elementor design, and E-Commerce store development across WordPress, Shopify, Wix, and Webflow.",
-      "url": "https://wasiullah.dotblue-digital.com/",
-      "image": "https://wasiullah.dotblue-digital.com/assets/images/developer.png",
-      "email": "mailto:chaudhrywasiullah807@gmail.com",
-      "telephone": "+923358137166",
-      "sameAs": [
-        "https://github.com/WasiArain",
-        "https://linkedin.com/in/wasi-arain"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Karachi",
-        "addressRegion": "Sindh",
-        "addressCountry": "Pakistan"
-      }
+   {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Wasi Ullah",
+    "jobTitle": "Front-End Web Developer & E-Commerce UI Specialist",
+    "description": "Front-End Web Developer specializing in advanced CSS animations, custom Elementor design, and E-Commerce store development across WordPress, Shopify, Wix, and Webflow.",
+    "url": "https://wasiullah.dotblue-digital.com/",
+    "image": "https://wasiullah.dotblue-digital.com/assets/images/developer.png",
+    "email": "mailto:chaudhrywasiullah807@gmail.com",
+    "telephone": "+923358137166",
+    "sameAs": ["https://github.com/WasiArain", "https://linkedin.com/in/wasi-arain"],
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Karachi",
+     "addressRegion": "Sindh",
+     "addressCountry": "Pakistan"
     }
-    </script>
+   }
+  </script>
 </head>
 
 <body>
-
   <!-- Preloader -->
   <div id="preloader">
     <!-- Decorative: same rising-bubble language as the Experience section,
@@ -183,53 +197,53 @@
 
     <!-- About Section -->
     <section id="about">
-      <span class="code-glyph" style="top: 15%; left: 10%;">&lt;/WASI&gt;</span>
-      <span class="code-glyph" style="bottom: 35%; right: 10%;">{ CODE }</span>
-      <span class="code-glyph" style="top: 35%; left: 10%;">var</span>
-      <span class="code-glyph" style="bottom: 10%; left: 10%;">function</span>
-      <span class="code-glyph" style="top: 15%; right: 10%;">console.log()</span>
-      <span class="code-glyph" style="bottom: 35%; left: 10%;">if ()</span>
-      <span class="code-glyph" style="top: 35%; right: 10%;">const</span>
-      <span class="code-glyph" style="bottom: 10%; right: 10%;">else {}</span>
+      <span class="code-glyph" style="top: 15%; left: 10%">&lt;/WASI&gt;</span>
+      <span class="code-glyph" style="bottom: 35%; right: 10%">{ CODE }</span>
+      <span class="code-glyph" style="top: 35%; left: 10%">var</span>
+      <span class="code-glyph" style="bottom: 10%; left: 10%">function</span>
+      <span class="code-glyph" style="top: 15%; right: 10%">console.log()</span>
+      <span class="code-glyph" style="bottom: 35%; left: 10%">if ()</span>
+      <span class="code-glyph" style="top: 35%; right: 10%">const</span>
+      <span class="code-glyph" style="bottom: 10%; right: 10%">else {}</span>
 
       <div class="container">
         <div class="about-card glass reveal" data-reveal="fade-right">
-          <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">About Me</h2>
+          <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem">About Me</h2>
           <p>
-            I'm a Front-End Web Developer obsessed with one thing: making websites that don't just look
-            good, but perform. My specialty is high-end UI design — advanced CSS animations, pixel-perfect
-            responsiveness, and fully custom Elementor builds that break away from generic templates and
-            give brands an identity that actually stands out.
+            I'm a Front-End Web Developer obsessed with one thing: making websites that don't just look good, but
+            perform. My specialty is high-end UI design — advanced CSS animations, pixel-perfect
+            responsiveness, and fully custom Elementor builds that break away from generic templates and give brands an
+            identity that actually stands out.
           </p>
           <br />
           <p>
-            I hold a BS in Information Technology from Sindh Agriculture University, Tando Jam (2020–2024),
-            which gave me the technical foundation — but the real education came from shipping real
-            projects for real clients.
+            I hold a BS in Information Technology from Sindh Agriculture University, Tando Jam (2020–2024), which gave
+            me the technical foundation — but the real education came from shipping real projects
+            for real clients.
           </p>
           <br />
           <p>
-            Since 2022, I've worked as a freelancer for international clients, specializing in E-Commerce
-            development across WordPress (WooCommerce), Shopify, Wix, and Webflow. I don't force every
-            project onto one platform — I choose the right tool for the job and build stores designed to
-            convert, not just exist.
+            Since 2022, I've worked as a freelancer for international clients, specializing in E-Commerce development
+            across WordPress (WooCommerce), Shopify, Wix, and Webflow. I don't force every project
+            onto one platform — I choose the right tool for the job and build stores designed to convert, not just
+            exist.
           </p>
           <br />
           <p>
-            I've also sharpened my craft across teams at ArtStone Digital, Miloady Designs, Technovative
-            Labs, StepTech Solutions, and dotBlue Digital, refining scalable front-end architecture and
-            advanced animation systems across dozens of production sites.
+            I've also sharpened my craft across teams at ArtStone Digital, Miloady Designs, Technovative Labs, StepTech
+            Solutions, and dotBlue Digital, refining scalable front-end architecture and advanced
+            animation systems across dozens of production sites.
           </p>
           <br />
           <p>
-            I care more about getting it right than getting it done fast. Every project I take on gets the
-            same standard: pixel-perfect execution, buttery-smooth animations, and a final product my
-            clients are genuinely excited to show off.
+            I care more about getting it right than getting it done fast. Every project I take on gets the same
+            standard: pixel-perfect execution, buttery-smooth animations, and a final product my clients
+            are genuinely excited to show off.
           </p>
         </div>
 
         <div class="skills-card glass reveal" data-reveal="fade-left">
-          <h3 style="margin-bottom: 2rem; font-family: var(--font-display); font-size: 1.5rem;">Core Competencies</h3>
+          <h3 style="margin-bottom: 2rem; font-family: var(--font-display); font-size: 1.5rem">Core Competencies</h3>
 
           <div class="skill-group">
             <h4>Core Web & Frameworks</h4>
@@ -283,7 +297,11 @@
     <section id="services">
       <div class="container">
         <h2 class="section-title reveal">My Services</h2>
-        <p class="reveal" style="text-align: center; margin-top: -2rem; margin-bottom: 2rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto;">Not sure exactly what your project needs? Every service below is built around one goal — turning your website into your hardest-working salesperson. Take a look and see what fits.</p>
+        <p class="reveal"
+          style="text-align: center; margin-top: -2rem; margin-bottom: 2rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto">
+          Not sure exactly what your project needs? Every service below is built around one goal — turning your website
+          into your hardest-working salesperson. Take a look and see what fits.
+        </p>
       </div>
 
       <div class="services-carousel-wrapper reveal">
@@ -292,7 +310,8 @@
             Styling/positioning lives in css/animations.css; the shape data
             has to live here because SMIL animates the <path> markup itself. -->
         <div class="services-decor decor-layer" aria-hidden="true">
-          <svg class="service-blob service-blob--a" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <svg class="service-blob service-blob--a" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice"
+            xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="svcBlobGradA" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" class="grad-stop-primary" />
@@ -300,14 +319,16 @@
               </linearGradient>
             </defs>
             <path fill="url(#svcBlobGradA)">
-              <animate attributeName="d" dur="17s" repeatCount="indefinite" values="
+              <animate attributeName="d" dur="17s" repeatCount="indefinite"
+                values="
                 M411,296Q382,342,338,372Q294,402,246,398Q198,394,157,367Q116,340,92,296Q68,252,84,204Q100,156,138,124Q176,92,224,78Q272,64,318,86Q364,108,392,150Q420,192,417,244Q414,296,411,296Z;
                 M429,309Q397,368,340,392Q283,416,226,404Q169,392,127,352Q85,312,73,256Q61,200,92,153Q123,106,174,82Q225,58,276,72Q327,86,368,120Q409,154,421,204Q433,254,429,309Z;
                 M403,283Q373,316,340,352Q307,388,258,394Q209,400,164,378Q119,356,94,313Q69,270,77,220Q85,170,120,134Q155,98,203,84Q251,70,299,84Q347,98,378,136Q409,174,411,222Q413,270,403,283Z;
                 M411,296Q382,342,338,372Q294,402,246,398Q198,394,157,367Q116,340,92,296Q68,252,84,204Q100,156,138,124Q176,92,224,78Q272,64,318,86Q364,108,392,150Q420,192,417,244Q414,296,411,296Z" />
             </path>
           </svg>
-          <svg class="service-blob service-blob--b" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <svg class="service-blob service-blob--b" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice"
+            xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="svcBlobGradB" x1="100%" y1="100%" x2="0%" y2="0%">
                 <stop offset="0%" class="grad-stop-secondary" />
@@ -315,7 +336,8 @@
               </linearGradient>
             </defs>
             <path fill="url(#svcBlobGradB)">
-              <animate attributeName="d" dur="21s" repeatCount="indefinite" values="
+              <animate attributeName="d" dur="21s" repeatCount="indefinite"
+                values="
                 M395,270Q368,340,300,368Q232,396,172,362Q112,328,96,264Q80,200,120,150Q160,100,224,90Q288,80,340,116Q392,152,398,211Q404,270,395,270Z;
                 M413,288Q390,356,320,384Q250,412,184,384Q118,356,90,290Q62,224,100,164Q138,104,204,86Q270,68,326,102Q382,136,398,206Q414,276,413,288Z;
                 M380,258Q354,316,296,346Q238,376,180,348Q122,320,102,260Q82,200,116,150Q150,100,210,88Q270,76,322,106Q374,136,382,197Q390,258,380,258Z;
@@ -328,31 +350,46 @@
           <div id="service-frontend" class="service-card glass">
             <div class="service-icon"><ion-icon name="code-slash-outline"></ion-icon></div>
             <h3>Custom UI Design & CSS Animation</h3>
-            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">Pixel-perfect, fully responsive interfaces brought to life with advanced vanilla CSS animations — no generic templates, no cookie-cutter designs.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary)">
+              Pixel-perfect, fully responsive interfaces brought to life with advanced vanilla CSS animations — no
+              generic templates, no cookie-cutter designs.
+            </p>
           </div>
 
           <div id="service-ecommerce" class="service-card glass">
             <div class="service-icon"><ion-icon name="cart-outline"></ion-icon></div>
             <h3>E-Commerce Store Development</h3>
-            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">High-converting stores built on WordPress (WooCommerce), Shopify, Wix, or Webflow — the right platform for your business, engineered to turn visitors into buyers.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary)">
+              High-converting stores built on WordPress (WooCommerce), Shopify, Wix, or Webflow — the right platform for
+              your business, engineered to turn visitors into buyers.
+            </p>
           </div>
 
           <div id="service-cms" class="service-card glass">
             <div class="service-icon"><ion-icon name="layers-outline"></ion-icon></div>
             <h3>Custom Elementor & CMS Design</h3>
-            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">Fully custom Elementor builds and CMS architecture that give you complete creative control without touching a line of code.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary)">
+              Fully custom Elementor builds and CMS architecture that give you complete creative control without
+              touching a line of code.
+            </p>
           </div>
 
           <div id="service-seo" class="service-card glass">
             <div class="service-icon"><ion-icon name="rocket-outline"></ion-icon></div>
             <h3>Performance & SEO Optimization</h3>
-            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">Core Web Vitals-focused optimization and on-page SEO that gets your site found, loading fast, and ranking higher.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary)">
+              Core Web Vitals-focused optimization and on-page SEO that gets your site found, loading fast, and ranking
+              higher.
+            </p>
           </div>
 
           <div id="service-design" class="service-card glass">
             <div class="service-icon"><ion-icon name="color-palette-outline"></ion-icon></div>
             <h3>UI/UX Architecture</h3>
-            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">Intuitive, engagement-driven user experiences designed from the ground up — because a beautiful site that's hard to use isn't actually beautiful.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary)">
+              Intuitive, engagement-driven user experiences designed from the ground up — because a beautiful site
+              that's hard to use isn't actually beautiful.
+            </p>
           </div>
         </div>
       </div>
@@ -385,7 +422,11 @@
 
       <div class="container">
         <h2 class="section-title reveal">Selected Work</h2>
-        <p class="reveal" style="text-align: center; margin-top: -2rem; margin-bottom: 2rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto;">Want proof before you commit? Here's a curated look at real projects across custom builds and multiple CMS platforms — each one designed to do more than just look good. Browse the work below.</p>
+        <p class="reveal"
+          style="text-align: center; margin-top: -2rem; margin-bottom: 2rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto">
+          Want proof before you commit? Here's a curated look at real projects across custom builds and multiple CMS
+          platforms — each one designed to do more than just look good. Browse the work below.
+        </p>
 
         <div class="portfolio-filters reveal">
           <button type="button" class="filter-btn active" data-filter="All">All</button>
@@ -406,8 +447,8 @@
           <!-- Rendered by JS -->
         </div>
 
-        <div class="portfolio-actions reveal" style="text-align: center; margin-top: 3rem;">
-          <button type="button" id="load-more-btn" class="btn" style="display: none;">Show More</button>
+        <div class="portfolio-actions reveal" style="text-align: center; margin-top: 3rem">
+          <button type="button" id="load-more-btn" class="btn" style="display: none">Show More</button>
         </div>
       </div>
     </section>
@@ -436,50 +477,57 @@
           <div id="exp-freelance" class="exp-card glass reveal" data-tilt>
             <div class="exp-date">2022 – Present</div>
             <h3>Freelancing</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">Global</p>
-            <p style="font-size: 0.95rem;">Successfully delivered bespoke web solutions for international clients, focusing on custom frontend architecture and scalable E-Commerce platforms.</p>
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem">Global</p>
+            <p style="font-size: 0.95rem">Successfully delivered bespoke web solutions for international clients,
+              focusing on custom frontend architecture and scalable E-Commerce platforms.</p>
           </div>
 
           <div id="exp-artstone-digital" class="exp-card glass reveal" data-tilt>
             <div class="exp-date">Jan 2025 – Jun 2026</div>
             <h3>ArtStone Digital</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">In-Office</p>
-            <p style="font-size: 0.95rem;">Spearheaded custom web application development and advanced CMS integrations, optimizing content delivery workflows.</p>
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem">In-Office</p>
+            <p style="font-size: 0.95rem">Spearheaded custom web application development and advanced CMS integrations,
+              optimizing content delivery workflows.</p>
           </div>
 
           <div id="exp-miloady-designs" class="exp-card glass reveal" data-tilt>
             <div class="exp-date">Jun 2024 – Dec 2024</div>
             <h3>Miloady Designs</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">Hybrid</p>
-            <p style="font-size: 0.95rem;">Engineered responsive user interfaces and enhanced performance metrics across a suite of internal products.</p>
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem">Hybrid</p>
+            <p style="font-size: 0.95rem">Engineered responsive user interfaces and enhanced performance metrics across
+              a suite of internal products.</p>
           </div>
 
           <div id="exp-technovative" class="exp-card glass reveal" data-tilt>
             <div class="exp-date">Feb 2024 – Jun 2024</div>
             <h3>Technovative Labs</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">In-Office</p>
-            <p style="font-size: 0.95rem;">Developed and deployed high-converting digital storefronts, leveraging modern frontend frameworks to maximize user engagement.</p>
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem">In-Office</p>
+            <p style="font-size: 0.95rem">Developed and deployed high-converting digital storefronts, leveraging modern
+              frontend frameworks to maximize user engagement.</p>
           </div>
 
           <div id="exp-steptech" class="exp-card glass reveal" data-tilt>
             <div class="exp-date">Aug 2023 – Jan 2024</div>
             <h3>StepTech Solutions</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">Hybrid</p>
-            <p style="font-size: 0.95rem;">Architected tailored web experiences by customizing enterprise-level CMS platforms to meet specific client requirements.</p>
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem">Hybrid</p>
+            <p style="font-size: 0.95rem">Architected tailored web experiences by customizing enterprise-level CMS
+              platforms to meet specific client requirements.</p>
           </div>
 
           <div id="exp-technocate" class="exp-card glass reveal" data-tilt>
             <div class="exp-date">Jul 2022 – Aug 2023</div>
             <h3>Technocate</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">Remote</p>
-            <p style="font-size: 0.95rem;">Provided comprehensive frontend engineering support for a diverse portfolio of agency clients, ensuring pixel-perfect implementations.</p>
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem">Remote</p>
+            <p style="font-size: 0.95rem">Provided comprehensive frontend engineering support for a diverse portfolio of
+              agency clients, ensuring pixel-perfect implementations.</p>
           </div>
 
           <div id="exp-dotblue" class="exp-card glass reveal" data-tilt>
             <div class="exp-date">Jul 2022 – Aug 2023</div>
             <h3>dotBlue Digital</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">Hybrid</p>
-            <p style="font-size: 0.95rem;">Led the development of scalable E-Commerce solutions, delivering secure and seamless shopping experiences for growing brands.</p>
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem">Hybrid</p>
+            <p style="font-size: 0.95rem">Led the development of scalable E-Commerce solutions, delivering secure and
+              seamless shopping experiences for growing brands.</p>
           </div>
         </div>
       </div>
@@ -494,37 +542,48 @@
 
       <div class="container">
         <h2 class="section-title reveal">Connect With Me</h2>
-        <p class="reveal" style="text-align: center; margin-top: -2rem; margin-bottom: 2rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto;">Want to see more than just this page? Here's where I share behind-the-scenes work and updates — pick your platform below and say hello.</p>
+        <p class="reveal"
+          style="text-align: center; margin-top: -2rem; margin-bottom: 2rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto">
+          Want to see more than just this page? Here's where I share behind-the-scenes work and updates — pick your
+          platform below and say hello.
+        </p>
         <div class="social-row reveal">
-          <a href="https://github.com/WasiArain" target="_blank" rel="noopener noreferrer" class="social-capsule glass" style="--brand-color: #181717;">
+          <a href="https://github.com/WasiArain" target="_blank" rel="noopener noreferrer" class="social-capsule glass"
+            style="--brand-color: #181717">
             <div class="social-circle"><ion-icon name="logo-github"></ion-icon></div>
             <span>GitHub</span>
           </a>
-          <a href="https://linkedin.com/in/wasi-arain" target="_blank" rel="noopener noreferrer" class="social-capsule glass" style="--brand-color: #0077B5;">
+          <a href="https://linkedin.com/in/wasi-arain" target="_blank" rel="noopener noreferrer"
+            class="social-capsule glass" style="--brand-color: #0077b5">
             <div class="social-circle"><ion-icon name="logo-linkedin"></ion-icon></div>
             <span>LinkedIn</span>
           </a>
-          <a href="https://wa.me/923312784186" target="_blank" rel="noopener noreferrer" class="social-capsule glass" style="--brand-color: #25D366;">
+          <a href="https://wa.me/923312784186" target="_blank" rel="noopener noreferrer" class="social-capsule glass"
+            style="--brand-color: #25d366">
             <div class="social-circle"><ion-icon name="logo-whatsapp"></ion-icon></div>
             <span>WhatsApp</span>
           </a>
-          <a href="mailto:chaudhrywasiullah807@gmail.com" class="social-capsule glass" style="--brand-color: #EA4335;">
+          <a href="mailto:chaudhrywasiullah807@gmail.com" class="social-capsule glass" style="--brand-color: #ea4335">
             <div class="social-circle"><ion-icon name="mail-outline"></ion-icon></div>
             <span>Email</span>
           </a>
-          <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" class="social-capsule glass" style="--brand-color: #1877F2;">
+          <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" class="social-capsule glass"
+            style="--brand-color: #1877f2">
             <div class="social-circle"><ion-icon name="logo-facebook"></ion-icon></div>
             <span>Facebook</span>
           </a>
-          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="social-capsule glass" style="--brand-color: #000000;">
+          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="social-capsule glass"
+            style="--brand-color: #000000">
             <div class="social-circle"><ion-icon name="logo-twitter"></ion-icon></div>
             <span>X (Twitter)</span>
           </a>
-          <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="social-capsule glass" style="--brand-color: #E1306C;">
+          <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="social-capsule glass"
+            style="--brand-color: #e1306c">
             <div class="social-circle"><ion-icon name="logo-instagram"></ion-icon></div>
             <span>Instagram</span>
           </a>
-          <a href="https://snapchat.com/" target="_blank" rel="noopener noreferrer" class="social-capsule glass" style="--brand-color: #FFFC00;">
+          <a href="https://snapchat.com/" target="_blank" rel="noopener noreferrer" class="social-capsule glass"
+            style="--brand-color: #fffc00">
             <div class="social-circle"><ion-icon name="logo-snapchat"></ion-icon></div>
             <span>Snapchat</span>
           </a>
@@ -536,26 +595,30 @@
     <section id="contact">
       <div class="container">
         <h2 class="section-title reveal">Get In Touch</h2>
-        <p class="reveal" style="text-align: center; margin-bottom: 3rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto;">
-          Have a project in mind? Let's build something that gets noticed — and gets results. Choose your preferred way to reach out below.
+        <p class="reveal"
+          style="text-align: center; margin-bottom: 3rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto">
+          Have a project in mind? Let's build something that gets noticed — and gets results. Choose your preferred way
+          to reach out below.
         </p>
         <div class="contact-grid">
-          <a href="tel:+923358137166" class="contact-card-new glass reveal" data-tilt style="--hover-color: #2196F3;">
+          <a href="tel:+923358137166" class="contact-card-new glass reveal" data-tilt style="--hover-color: #2196f3">
             <div class="contact-icon"><ion-icon name="call-outline"></ion-icon></div>
             <h3>Phone Call</h3>
             <span class="selectable">+92 335 8137166</span>
           </a>
 
-          <a href="https://wa.me/923312784186" target="_blank" rel="noopener noreferrer" class="contact-card-new glass reveal" data-tilt style="--hover-color: #25D366;">
+          <a href="https://wa.me/923312784186" target="_blank" rel="noopener noreferrer"
+            class="contact-card-new glass reveal" data-tilt style="--hover-color: #25d366">
             <div class="contact-icon"><ion-icon name="logo-whatsapp"></ion-icon></div>
             <h3>WhatsApp</h3>
             <span class="selectable">+92 331 2784186</span>
           </a>
 
-          <a href="mailto:chaudhrywasiullah807@gmail.com?subject=Hiring%20Inquiry%20%2F%20Service%20Request" class="contact-card-new glass reveal" data-tilt style="--hover-color: #EA4335;">
+          <a href="mailto:chaudhrywasiullah807@gmail.com?subject=Hiring%20Inquiry%20%2F%20Service%20Request"
+            class="contact-card-new glass reveal" data-tilt style="--hover-color: #ea4335">
             <div class="contact-icon"><ion-icon name="mail-outline"></ion-icon></div>
             <h3>Email</h3>
-            <span class="selectable" style="font-size: 0.85rem;">chaudhrywasiullah807@gmail.com</span>
+            <span class="selectable" style="font-size: 0.85rem">chaudhrywasiullah807@gmail.com</span>
           </a>
         </div>
       </div>
@@ -567,9 +630,11 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <div class="logo logo-container" style="margin-bottom: 1rem;">&lt;/WASI&gt;</div>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">
-            Turning Ideas Into High-Converting, Beautifully Animated Websites. Looking for a Front-End Developer who treats your project like his own? I'm available for freelance projects and full-time roles.
+          <div class="logo logo-container" style="margin-bottom: 1rem">&lt;/WASI&gt;</div>
+          <p style="color: var(--text-secondary); font-size: 0.95rem">
+            Turning Ideas Into High-Converting, Beautifully Animated Websites. Looking for a Front-End Developer who
+            treats your project like his own? I'm available for freelance projects and full-time
+            roles.
           </p>
         </div>
 
@@ -586,21 +651,24 @@
         <div class="footer-col">
           <h4>Based In</h4>
           <div class="map-container glass">
-            <iframe class="map-iframe" title="Map of Karachi, Pakistan" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115858.98687790367!2d67.01428389771146!3d24.860734563816527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e06651d4bbf%3A0x9cf92f44555a0c23!2sKarachi%2C%20Karachi%20City%2C%20Sindh%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" allowfullscreen loading="lazy">
+            <iframe class="map-iframe" title="Map of Karachi, Pakistan"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115858.98687790367!2d67.01428389771146!3d24.860734563816527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e06651d4bbf%3A0x9cf92f44555a0c23!2sKarachi%2C%20Karachi%20City%2C%20Sindh%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+              allowfullscreen loading="lazy">
             </iframe>
           </div>
         </div>
       </div>
-      <div style="text-align: center; color: var(--text-secondary); font-size: 0.85rem; border-top: 1px solid var(--border-glass); padding-top: 1.5rem;">
-        &copy; 2026 Wasi Ullah. All rights reserved.
-      </div>
+      <div
+        style="text-align: center; color: var(--text-secondary); font-size: 0.85rem; border-top: 1px solid var(--border-glass); padding-top: 1.5rem">
+        &copy; 2026 Wasi Ullah. All rights reserved.</div>
     </div>
   </footer>
 
   <!-- Tier 1 Modal Overlay -->
   <div class="modal-overlay">
     <div class="modal-content glass">
-      <button type="button" class="modal-close" aria-label="Close modal"><ion-icon name="close-outline"></ion-icon></button>
+      <button type="button" class="modal-close" aria-label="Close modal"><ion-icon
+          name="close-outline"></ion-icon></button>
       <div class="modal-inner-content">
         <!-- Content injected by JS -->
       </div>
@@ -609,11 +677,14 @@
 
   <!-- Tier 2 Fullscreen Viewer -->
   <div class="fullscreen-viewer">
-    <button type="button" class="fs-close" aria-label="Close fullscreen viewer"><ion-icon name="close-outline"></ion-icon></button>
-    <button type="button" class="fs-prev" aria-label="Previous image"><ion-icon name="chevron-back-outline"></ion-icon></button>
-    <button type="button" class="fs-next" aria-label="Next image"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+    <button type="button" class="fs-close" aria-label="Close fullscreen viewer"><ion-icon
+        name="close-outline"></ion-icon></button>
+    <button type="button" class="fs-prev" aria-label="Previous image"><ion-icon
+        name="chevron-back-outline"></ion-icon></button>
+    <button type="button" class="fs-next" aria-label="Next image"><ion-icon
+        name="chevron-forward-outline"></ion-icon></button>
     <div class="fullscreen-content">
-      <img src="" alt="Full Screen View">
+      <img src="" alt="Full Screen View" />
     </div>
     <!-- Non-interactive nudge telling the visitor the image scrolls — see
         js/portfolio.js for the logic that shows/hides this based on scroll
@@ -645,7 +716,8 @@
     the network quiet during the critical window.
   -->
   <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart;
+    var Tawk_API = Tawk_API || {},
+      Tawk_LoadStart;
 
     // -----------------------------------------------------------------
     // Hero-safe visibility
@@ -670,7 +742,7 @@
     var heroHeight = 0;
 
     function measureHeroHeight() {
-      var hero = document.getElementById('hero');
+      var hero = document.getElementById("hero");
       heroHeight = hero ? hero.offsetHeight : 0;
     }
 
@@ -690,10 +762,10 @@
     var tawkWidgetVisible = null;
 
     function syncTawkVisibility() {
-      if (!window.Tawk_API || typeof Tawk_API.hideWidget !== 'function') return;
+      if (!window.Tawk_API || typeof Tawk_API.hideWidget !== "function") return;
       // Never yank the widget away mid-conversation — only auto-hide it
       // when the visitor isn't actively looking at an open chat window.
-      var chatIsOpen = typeof Tawk_API.isChatMaximized === 'function' && Tawk_API.isChatMaximized();
+      var chatIsOpen = typeof Tawk_API.isChatMaximized === "function" && Tawk_API.isChatMaximized();
       var shouldBeVisible = isPastHeroSection() || chatIsOpen;
 
       if (shouldBeVisible === tawkWidgetVisible) return;
@@ -719,8 +791,8 @@
     // fully hidden instead of leaving an idle bubble sitting over the CTAs.
     Tawk_API.onChatMinimized = syncTawkVisibility;
 
-    window.addEventListener('scroll', syncTawkVisibility, { passive: true });
-    window.addEventListener('resize', function () {
+    window.addEventListener("scroll", syncTawkVisibility, { passive: true });
+    window.addEventListener("resize", function () {
       measureHeroHeight();
       syncTawkVisibility();
     });
@@ -737,12 +809,12 @@
     // deferred until after the preloader) or fails to load at all (ad
     // blockers commonly block chat widgets), the click just falls through
     // to native anchor navigation instead of silently doing nothing.
-    document.addEventListener('DOMContentLoaded', function () {
-      var startProjectBtn = document.getElementById('start-project-btn');
+    document.addEventListener("DOMContentLoaded", function () {
+      var startProjectBtn = document.getElementById("start-project-btn");
       if (!startProjectBtn) return;
 
-      startProjectBtn.addEventListener('click', function (e) {
-        if (window.Tawk_API && typeof Tawk_API.maximize === 'function') {
+      startProjectBtn.addEventListener("click", function (e) {
+        if (window.Tawk_API && typeof Tawk_API.maximize === "function") {
           e.preventDefault();
           Tawk_API.showWidget();
           Tawk_API.maximize();
@@ -751,18 +823,18 @@
       });
     });
 
-    document.addEventListener('preloaderComplete', function loadTawkWidget() {
-      document.removeEventListener('preloaderComplete', loadTawkWidget);
+    document.addEventListener("preloaderComplete", function loadTawkWidget() {
+      document.removeEventListener("preloaderComplete", loadTawkWidget);
       Tawk_LoadStart = new Date();
-      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
       s1.async = true;
-      s1.src = 'https://embed.tawk.to/6a5d89d13e6eca1d4973ba1b/1jtum4nbo';
-      s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin', '*');
+      s1.src = "https://embed.tawk.to/6a5d89d13e6eca1d4973ba1b/1jtum4nbo";
+      s1.charset = "UTF-8";
+      s1.setAttribute("crossorigin", "*");
       s0.parentNode.insertBefore(s1, s0);
     });
   </script>
-
 </body>
 
 </html>
